@@ -2640,16 +2640,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4889815016081645000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b01509fd343c248b146b42ad484b24, type: 3}
+  m_Script: {fileID: 11500000, guid: ba7128aa0d123254f9a7470ac16a5776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Timer: 0
-  PhaseInTime: 3
-  PhaseOutTime: 1
-  PhasedIn: 1
+  TimeBeforeBreak: 0.6
+  TimeBeforeReform: 0.6
+  State: 1
   Collider: {fileID: 7173170570666303064}
   Body: {fileID: 7888404745499189632}
-  WarningTime: 0.5
 --- !u!212 &7888404745499189632
 SpriteRenderer:
   m_ObjectHideFlags: 0

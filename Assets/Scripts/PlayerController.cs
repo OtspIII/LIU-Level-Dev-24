@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public bool JustKB = false;
     public static bool HasMoved = false;
 	private float GravityStart = 2;
+    public int Score = 0;
 
     private void Awake()
     {
@@ -199,6 +200,11 @@ public class PlayerController : MonoBehaviour
         {
             SetCheckpoint(cc);
             cc.GetChecked();
+        }
+        TreasureScript ts = other.gameObject.GetComponent<TreasureScript>();
+        if (ts != null && !ts.Collected)
+        {
+            ts.BeCollected(this);
         }
     }
 

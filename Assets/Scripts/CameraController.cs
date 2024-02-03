@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,17 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Main;
     public GameObject Target;
     public PlayerController PC;
     public Rect Bounds;
     private Camera Cam;
     public SpriteRenderer Fader;
     public TextMeshPro HP;
+    public TextMeshPro Score;
+    public int MaxTreasure = 0;
 
     public bool YMinOverride = false;
     public float YMin = -0.5f;
     public bool YMaxOverride = false;
     public float YMax;
+
+    private void Awake()
+    {
+        Main = this;
+    }
 
     void Start()
     {
@@ -49,7 +58,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (PC?.MaxHP > 0) HP.text = PC.HP + "/" + PC.HP;
+        if (PC != null)
+        {
+            if (PC.MaxHP > 0) HP.text = PC.HP + "/" + PC.HP;
+            if (MaxTreasure > 0) Score.text = "Score: " + PC.Score + "/" + MaxTreasure;
+        }
     }
     
     void FixedUpdate()
@@ -75,5 +88,11 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(name);
 
+    }
+
+    public void AddTreasure(TreasureScript t)
+    {
+        MaxTreasure += t.Value;
+        Score.gameObject.SetActive(true);
     }
 }

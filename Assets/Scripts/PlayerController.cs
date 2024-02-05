@@ -281,9 +281,22 @@ public class PlayerController : MonoBehaviour
         AS.PlayOneShot(clip);
     }
 
-	public void SetGravity(float grav){
+	public void SetGravity(float grav)
+    {
+        float old = Gravity;
 		Gravity = GravityStart * grav;
+        if (Mathf.Sign(old) != Mathf.Sign(Gravity))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, 1);
+            JumpPower *= -1;
+        }
 	}
+
+    public float GetGravity()
+    {
+        if (GravityStart == 0) return 0;
+        return Gravity / GravityStart;
+    }
 }
 
 [System.Serializable]

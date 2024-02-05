@@ -17,14 +17,13 @@ public class Anthony_Invince : GenericPower
     }
     private IEnumerator BecomeTemporarilyInvincible()
     {
-        Debug.Log("Player turned invincible!");
+        
         Player.GetComponent<PlayerController>().HP = 99999999f;
           
         yield return new WaitForSeconds(Invincible);
 
         Player.GetComponent<PlayerController>().HP = 0;
 
-             
-        Debug.Log("Player is no longer invincible!");
+        
     }
 }

@@ -11,12 +11,12 @@ public class Power_Josh : GenericPower
     }
     public override void Activate()
     {
-        Player.SetGravity(-1);
+        Player.SetGravity(Player.GetGravity() * -1);
     }
 
-    
-        // Update is called once per frame
-        void Update()
+
+    // Update is called once per frame
+    void Update()
     {
         
     }

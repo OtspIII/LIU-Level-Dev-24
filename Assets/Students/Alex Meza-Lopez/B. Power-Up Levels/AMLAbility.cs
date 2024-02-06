@@ -67,7 +67,7 @@ public class AMLAbility : GenericPower
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "Walls")
+        if (other.gameObject.tag == "AlexWalls")
             OnWall = true;
 
     }
@@ -75,7 +75,7 @@ public class AMLAbility : GenericPower
     private void OnCollisionExit2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "Walls")
+        if (other.gameObject.tag == "AlexWalls")
         {
             
             OnWall = false;

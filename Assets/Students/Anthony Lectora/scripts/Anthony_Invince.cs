@@ -9,10 +9,33 @@ public class Anthony_Invince : GenericPower
     private float Invincible = 1.5f;
     //
     // private bool isInvincible;
+    //Dash Script Vars
+    public float Timer = 0;
+    public float Speed = 30;
+    public float Duration = 0.2f;
+    public int MaxDashes = 1;
+    int Dashes;
+    
+    //PlayerController Script Vars
+    public KeyCode AbilityButton2 = KeyCode.X;
+    private GenericPower Power;
+    public static bool HasMoved = false;
+
+    public void Start()
+    {
+        Dashes = MaxDashes;
+        Power = GetComponent<GenericPower>();
+        HasMoved = false;
+
+    }
+
+
 
     public override void Activate()
     {
         StartCoroutine(BecomeTemporarilyInvincible());
+        
+       
 
     }
     private IEnumerator BecomeTemporarilyInvincible()
@@ -25,4 +48,45 @@ public class Anthony_Invince : GenericPower
         Player.HP = 0;
         
     }
+    void Update()
+    {
+        
+        if (  Input.GetKeyDown(AbilityButton2)) //Input.GetKey(KeyCode.LeftShift) ||
+        {
+            HasMoved = true;
+            
+            if (Dashes <= 0 && MaxDashes >= 0) return;
+            Dashes--;
+            Timer = 1;
+            Player.SetInControl(false);
+            Player.RB.gravityScale = 0;
+            Player.KBVel = Vector2.zero;
+            Player.KBDesired = Vector2.zero;
+            Vector2 dir = new Vector2(0,0);
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                dir.x = 1;
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                dir.x = -1;
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+                dir.y = 1;
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+                dir.y = -1;
+            if (dir == Vector2.zero) dir.x = Player.FaceLeft ? -1 : 1;
+            Player.RB.velocity = dir.normalized * Speed;
+        }
+        if (Timer > 0)  
+        {
+            Timer -= Time.deltaTime / Duration;
+            Player.Body.transform.rotation = Quaternion.Euler(0, 0, Timer * 360);
+            if (Timer <= 0)
+            {
+                Player.RB.gravityScale = Player.Gravity; 
+                Player.Body.transform.rotation = Quaternion.Euler(0,0,0);
+                Player.SetInControl(true);
+            }
+        }
+
+        if (Player.OnGround()) Dashes = MaxDashes;
+    }
 }
+

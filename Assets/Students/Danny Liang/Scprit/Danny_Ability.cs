@@ -18,7 +18,7 @@ public class Danny_Ability : GenericPower
     {
         BS.enabled = false; 
         BSF.enabled = false;
-        SR.color=Color.black;
+        SR.color=Color.yellow;
         yield return new WaitForSeconds(0.6f);
         BS.enabled = true; 
         BSF.enabled = true;

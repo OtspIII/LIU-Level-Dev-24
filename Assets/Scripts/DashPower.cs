@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class DashPower : GenericPower
 {
+    
     public float Timer = 0;
     public float Speed = 30;
     public float Duration = 0.2f;

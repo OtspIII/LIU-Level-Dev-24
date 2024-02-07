@@ -5,7 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platforms
-  - AlexWalls
+  - Projectile
+  - Hazard
+  - Safe
+  - Stunning
+  - Boon
+  - Red
+  - Yellow
+  - Green
+  - Blue
+  - Purple
+  - Orange
+  - moneyDoor
+  - coin
+  - Enemy
+  - FakeDark
   layers:
   - Default
   - TransparentFX
@@ -15,17 +29,17 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Platform
+  - Player
+  - Foot
+  - OneWayPlat
+  - RisingPlayer
+  - RisingPlayerFoot
+  - Attack
+  - Hazard
+  - Friendly
+  - Shield
+  - Checkpoint
   - 
   - 
   - 
@@ -42,4 +56,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 371060007
+    locked: 0
+  - name: ForeGround
+    uniqueID: 464578519
     locked: 0

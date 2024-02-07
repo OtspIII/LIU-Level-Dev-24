@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     public TextMeshPro HP;
     public TextMeshPro Score;
     public int MaxTreasure = 0;
+    public TextMeshPro NameText;
 
     public bool YMinOverride = false;
     public float YMin = -0.5f;
@@ -77,16 +78,20 @@ public class CameraController : MonoBehaviour
 
     IEnumerator ShowName()
     {
-        GameObject name = new GameObject("Name");
-        TextMeshPro tmp = name.AddComponent<TextMeshPro>();
-        name.transform.SetParent(transform);
-        name.transform.localPosition = new Vector3(0,0,1.1f);
-        
-//        tmp.au = true;
+        TextMeshPro tmp = Instantiate(NameText,transform);
+        //     new GameObject("Name");
+        // TextMeshPro tmp = name.AddComponent<TextMeshPro>();
+        // tmp.transform.SetParent(transform);
+        tmp.transform.localPosition = new Vector3(0,0,1.1f);
+//         
+// //        tmp.au = true;
+//         tmp.alignment = TextAlignmentOptions.Center;
+//         tmp.fontSizeMax = 30;
+//         tmp.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,18);
+//         tmp.autoSizeTextContainer = true;
         tmp.text = SceneManager.GetActiveScene().name.ToUpper();
-        tmp.alignment = TextAlignmentOptions.Center;
         yield return new WaitForSeconds(1);
-        Destroy(name);
+        Destroy(tmp.gameObject);
 
     }
 

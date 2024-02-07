@@ -9,7 +9,7 @@ public class GenericPower : MonoBehaviour
 
     private void Awake()
     {
-	    Player = GetComponent<PlayerController>();
+        Player = GetComponent<PlayerController>();
     }
 
     //This gets called whenever the player hits 'X'
@@ -20,7 +20,7 @@ public class GenericPower : MonoBehaviour
 
     //This gets called when you die. If it returns true, the player doesn't run their normal death code
     //You can use this to make something alternate happen when the player dies
-	public virtual bool DeathOverride(GameObject source){
-		return false;
-	}
+    public virtual bool DeathOverride(GameObject source){
+        return false;
+    }
 }

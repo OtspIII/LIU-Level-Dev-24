@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewPower_Joncarlos : GenericPower
 {
@@ -20,8 +21,17 @@ public class NewPower_Joncarlos : GenericPower
     {
         if (Time.time - lastTeleportTime >= teleportCooldown)
         {
-            Teleport();
+            Teleport();           
         }
+        if (transform.position.y <= -5)
+        {
+            ReloadCurrentScene();
+        }
+        if (transform.position.y >= 6)
+        {
+            ReloadCurrentScene();
+        }
+
         //Teleport();
     }
 
@@ -45,5 +55,11 @@ public class NewPower_Joncarlos : GenericPower
             else { return; }
         }
         else { return; }
+    }
+     void ReloadCurrentScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        SceneManager.LoadScene(currentSceneName);
     }
 }

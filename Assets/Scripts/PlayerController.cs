@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float Gravity = 2;
 	public int MaxAirJumps = 0;
     public float  MaxHP = 0;
+    public bool CanUseOneWayPlatforms = true;
     public KeyCode AbilityButton = KeyCode.X;
 	[Space]
     [Header("Ignore Us")]
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public bool JustKB = false;
     public static bool HasMoved = false;
 	private float GravityStart = 2;
+    public int Score = 0;
 
     private void Awake()
     {
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Die(gameObject);
 
-        if (RB.velocity.y > 0 || FallPlatTime > 0)
+        if (CanUseOneWayPlatforms && (RB.velocity.y > 0 || FallPlatTime > 0))
         {
             gameObject.layer = LayerMask.NameToLayer("RisingPlayer");
             Foot.gameObject.layer = LayerMask.NameToLayer("RisingPlayerFoot");
@@ -199,6 +201,11 @@ public class PlayerController : MonoBehaviour
         {
             SetCheckpoint(cc);
             cc.GetChecked();
+        }
+        TreasureScript ts = other.gameObject.GetComponent<TreasureScript>();
+        if (ts != null && !ts.Collected)
+        {
+            ts.BeCollected(this);
         }
     }
 
@@ -275,9 +282,22 @@ public class PlayerController : MonoBehaviour
         AS.PlayOneShot(clip);
     }
 
-	public void SetGravity(float grav){
+	public void SetGravity(float grav)
+    {
+        float old = Gravity;
 		Gravity = GravityStart * grav;
+        if (Mathf.Sign(old) != Mathf.Sign(Gravity))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, 1);
+            JumpPower *= -1;
+        }
 	}
+
+    public float GetGravity()
+    {
+        if (GravityStart == 0) return 0;
+        return Gravity / GravityStart;
+    }
 }
 
 [System.Serializable]

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,17 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Main;
     public GameObject Target;
     public PlayerController PC;
     public Rect Bounds;
     private Camera Cam;
     public SpriteRenderer Fader;
     public TextMeshPro HP;
+    public TextMeshPro Score;
+    public int MaxTreasure = 0;
+    public TextMeshPro NameText;
 
     public bool YMinOverride = false;
     public float YMin = -0.5f;
     public bool YMaxOverride = false;
     public float YMax;
+
+    private void Awake()
+    {
+        Main = this;
+    }
 
     void Start()
     {
@@ -49,7 +59,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (PC?.MaxHP > 0) HP.text = PC.HP + "/" + PC.HP;
+        if (PC != null)
+        {
+            if (PC.MaxHP > 0) HP.text = PC.HP + "/" + PC.HP;
+            if (MaxTreasure > 0) Score.text = "Score: " + PC.Score + "/" + MaxTreasure;
+        }
     }
     
     void FixedUpdate()
@@ -64,16 +78,26 @@ public class CameraController : MonoBehaviour
 
     IEnumerator ShowName()
     {
-        GameObject name = new GameObject("Name");
-        TextMeshPro tmp = name.AddComponent<TextMeshPro>();
-        name.transform.SetParent(transform);
-        name.transform.localPosition = new Vector3(0,0,1.1f);
-        
-//        tmp.au = true;
+        TextMeshPro tmp = Instantiate(NameText,transform);
+        //     new GameObject("Name");
+        // TextMeshPro tmp = name.AddComponent<TextMeshPro>();
+        // tmp.transform.SetParent(transform);
+        tmp.transform.localPosition = new Vector3(0,0,1.1f);
+//         
+// //        tmp.au = true;
+//         tmp.alignment = TextAlignmentOptions.Center;
+//         tmp.fontSizeMax = 30;
+//         tmp.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,18);
+//         tmp.autoSizeTextContainer = true;
         tmp.text = SceneManager.GetActiveScene().name.ToUpper();
-        tmp.alignment = TextAlignmentOptions.Center;
         yield return new WaitForSeconds(1);
-        Destroy(name);
+        Destroy(tmp.gameObject);
 
+    }
+
+    public void AddTreasure(TreasureScript t)
+    {
+        MaxTreasure += t.Value;
+        Score.gameObject.SetActive(true);
     }
 }

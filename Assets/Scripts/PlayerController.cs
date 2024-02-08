@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float Gravity = 2;
 	public int MaxAirJumps = 0;
     public float  MaxHP = 0;
+    public bool CanUseOneWayPlatforms = true;
     public KeyCode AbilityButton = KeyCode.X;
 	[Space]
     [Header("Ignore Us")]
@@ -134,7 +135,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Die(gameObject);
 
-        if (RB.velocity.y > 0 || FallPlatTime > 0)
+        if (CanUseOneWayPlatforms && (RB.velocity.y > 0 || FallPlatTime > 0))
         {
             gameObject.layer = LayerMask.NameToLayer("RisingPlayer");
             Foot.gameObject.layer = LayerMask.NameToLayer("RisingPlayerFoot");

@@ -6,7 +6,7 @@ using UnityEngine;
 public class JumpRefill : MonoBehaviour
 {
     public SpriteRenderer SR;
-    public float ResetTime = 1;
+    public float ResetTime = 2;
     private float OffTimer = 0;
     private Color StartColor;
     public Color OffColor = new Color(0,1,1,0);

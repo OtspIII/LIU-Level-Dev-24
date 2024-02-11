@@ -17,7 +17,7 @@ public class DraggingPlatform : MonoBehaviour
     public bool Sticky = true;
     public List<Rigidbody2D> Touching;
     public Dictionary<Rigidbody2D,float> TouchingTemp = new Dictionary<Rigidbody2D, float>();
-    private bool MidMove = false;
+    //private bool MidMove = false;
     public float TouchTimedown = 0.5f;
 
     private void Start()
@@ -41,7 +41,7 @@ public class DraggingPlatform : MonoBehaviour
     {
         if (Dragging)
         {
-            MidMove = true;
+            //MidMove = true;
             Vector3 old = LastMouse;
             LastMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 move = LastMouse - old;
@@ -59,7 +59,7 @@ public class DraggingPlatform : MonoBehaviour
             {
                 rb.transform.position = stick[rb];
             }
-            MidMove = false;
+            //MidMove = false;
         }
 
         foreach (Rigidbody2D rb in TouchingTemp.Keys.ToArray())

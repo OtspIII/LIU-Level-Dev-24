@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class DraggingPlatform : MonoBehaviour
     public BoxCollider2D StickyBox;
     public bool Sticky = true;
     public List<Rigidbody2D> Touching;
+    public Dictionary<Rigidbody2D,float> TouchingTemp = new Dictionary<Rigidbody2D, float>();
+    //private bool MidMove = false;
+    public float TouchTimedown = 0.5f;
 
     private void Start()
     {
@@ -29,7 +33,7 @@ public class DraggingPlatform : MonoBehaviour
             Vector2 size = BodyBox.size;
             size.y *= 0.5f;
             StickyBox.size = size;
-            StickyBox.offset = BodyBox.offset + new Vector2(0,0.01f + size.y/2);
+            StickyBox.offset = BodyBox.offset + new Vector2(0,size.y/1.5f);
         }
     }
 
@@ -37,17 +41,38 @@ public class DraggingPlatform : MonoBehaviour
     {
         if (Dragging)
         {
+            //MidMove = true;
             Vector3 old = LastMouse;
             LastMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 move = LastMouse - old;
-            transform.position += move;
+
+            Dictionary<Rigidbody2D, Vector2> stick = new Dictionary<Rigidbody2D, Vector2>();
             if (Sticky)
             {
-                foreach (Rigidbody2D rb in Touching)
+                foreach (Rigidbody2D rb in TouchingTemp.Keys.ToArray())
                 {
-                    rb.MovePosition(rb.transform.position + move);
+                    stick.Add(rb,rb.transform.position + move);
                 }
             }
+            transform.position += move;
+            foreach (Rigidbody2D rb in stick.Keys)
+            {
+                rb.transform.position = stick[rb];
+            }
+            //MidMove = false;
+        }
+
+        foreach (Rigidbody2D rb in TouchingTemp.Keys.ToArray())
+        {
+            if (!Touching.Contains(rb))
+            {
+                TouchingTemp[rb] -= Time.deltaTime;
+                if (TouchingTemp[rb] <= 0)
+                    TouchingTemp.Remove(rb);
+            }
+            else
+                TouchingTemp[rb] = TouchTimedown;
+
         }
     }
 
@@ -66,15 +91,19 @@ public class DraggingPlatform : MonoBehaviour
         Dragging = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
-        Debug.Log("OTE: " + other.gameObject.name + " / " + rb);
-        if(rb != null && !Touching.Contains(rb))
+        if (rb != null && !Touching.Contains(rb))
+        {
             Touching.Add(rb);
+            TouchingTemp.TryAdd(rb, 0);
+            TouchingTemp[rb] = TouchTimedown;
+        }
+           
     }
     
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
         if(rb != null)

@@ -10,6 +10,7 @@ public class JumpRefill : MonoBehaviour
     private float OffTimer = 0;
     private Color StartColor;
     public Color OffColor = new Color(0,1,1,0);
+    bool JustTriggered = false;
 
     private void Start()
     {
@@ -24,31 +25,62 @@ public class JumpRefill : MonoBehaviour
     {
         if (OffTimer > 0)
         {
-            OffTimer -= Time.deltaTime;
-            if (OffTimer <= 0)
+            if (!JustTriggered)
             {
-                SR.color = StartColor;
+                OffTimer -= Time.deltaTime;
+                if (OffTimer <= 0)
+                {
+                    SR.color = StartColor;
+                }
             }
         }
     }
 
     public void Trigger(PlayerController pc)
     {
-        if (pc == null || pc.AirJumps == pc.MaxAirJumps) return;
-            pc.AirJumps = pc.MaxAirJumps;
-        OffTimer = ResetTime;
+        if (OffTimer > 0) return;
+        if (pc.AirJumps == pc.MaxAirJumps) return;
+        pc.AirJumps = pc.MaxAirJumps;
+        Cooldown();
+    }
+
+    public void Cooldown(float time=-123)
+    {
+        if (time == -123) time = ResetTime;
+        OffTimer = time;
+        if (OffTimer < 0) OffTimer = 99999;
+        else if (OffTimer == 0) OffTimer = 0.1f;
         SR.color = OffColor;
+        JustTriggered = true;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (OffTimer > 0) return;
-        Trigger(other.gameObject.GetComponent<PlayerController>());
+        PlayerController pc = other.gameObject.GetComponent<PlayerController>();
+        if (pc == null) return;
+        if(pc.MaxAirJumps > 0)
+            Trigger(pc);
+        else
+            pc.AirJumps = 1;
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (OffTimer > 0) return;
-        Trigger(other.gameObject.GetComponent<PlayerController>());
+        
+        PlayerController pc = other.gameObject.GetComponent<PlayerController>();
+        if (pc == null) return;
+        if (pc.MaxAirJumps > 0)
+            Trigger(pc);
+        else
+        {
+            if (pc.AirJumps != 1)
+                Cooldown();
+            pc.AirJumps = 0;
+        }
+        if (JustTriggered)
+        {
+            JustTriggered = false;
+            return;
+        }
     }
 }

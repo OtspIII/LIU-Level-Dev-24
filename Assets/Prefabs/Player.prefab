@@ -140,6 +140,7 @@ MonoBehaviour:
   Gravity: 5
   MaxAirJumps: 1
   MaxHP: 0
+  CanUseOneWayPlatforms: 1
   AbilityButton: 120
   Body: {fileID: 471537704109804624}
   Foot: {fileID: 8783260293361405469}
@@ -153,6 +154,7 @@ MonoBehaviour:
   KBVel: {x: 0, y: 0}
   KBDesired: {x: 0, y: 0}
   JustKB: 0
+  Score: 0
 --- !u!61 &471537704916083729
 BoxCollider2D:
   m_ObjectHideFlags: 0

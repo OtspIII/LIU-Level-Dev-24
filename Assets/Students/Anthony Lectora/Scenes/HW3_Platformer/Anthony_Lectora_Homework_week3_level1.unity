@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -4.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8010425645494148991, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+        type: 3}
+      propertyPath: StandOnHead
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -975,6 +980,9 @@ MonoBehaviour:
   Duration: 0.2
   MaxDashes: 1
   AbilityButton2: 99
+  AbilityButton3: 118
+  dottedLine: {fileID: 8901288122915589812, guid: bdfe195676da0fa4d97fbbef24a9d199,
+    type: 3}
 --- !u!1001 &553827358
 PrefabInstance:
   m_ObjectHideFlags: 0

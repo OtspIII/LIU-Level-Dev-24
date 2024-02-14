@@ -2485,7 +2485,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2559,6 +2559,9 @@ MonoBehaviour:
     height: 0
   Fader: {fileID: 4840126197221166573}
   HP: {fileID: 7861067065714445173}
+  Score: {fileID: 0}
+  MaxTreasure: 0
+  NameText: {fileID: 0}
   YMinOverride: 0
   YMin: -0.5
   YMaxOverride: 0
@@ -2687,6 +2690,7 @@ MonoBehaviour:
   Gravity: 5
   MaxAirJumps: 1
   MaxHP: 0
+  CanUseOneWayPlatforms: 1
   AbilityButton: 120
   Body: {fileID: 1233518286915772182}
   Foot: {fileID: 7958146281168346459}
@@ -2696,10 +2700,12 @@ MonoBehaviour:
   FaceLeft: 0
   StandOnHead: 0
   Floors: []
+  AirJumps: 0
   FallPlatTime: 0
   KBVel: {x: 0, y: 0}
   KBDesired: {x: 0, y: 0}
   JustKB: 0
+  Score: 0
 --- !u!4 &1233518287183345493
 Transform:
   m_ObjectHideFlags: 0

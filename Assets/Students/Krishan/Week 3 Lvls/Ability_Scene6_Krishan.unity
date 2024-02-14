@@ -2134,12 +2134,12 @@ PrefabInstance:
     - target: {fileID: 4077488255412724571, guid: f2caaa0a3407f3442bf7a35ac3c7cb97,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.283868
+      value: 11.457336
       objectReference: {fileID: 0}
     - target: {fileID: 4077488255412724571, guid: f2caaa0a3407f3442bf7a35ac3c7cb97,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.04
+      value: 32.96
       objectReference: {fileID: 0}
     - target: {fileID: 4077488255412724571, guid: f2caaa0a3407f3442bf7a35ac3c7cb97,
         type: 3}
@@ -2306,7 +2306,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2788,6 +2788,7 @@ MonoBehaviour:
   FaceLeft: 0
   StandOnHead: 0
   Floors: []
+  AirJumps: 0
   FallPlatTime: 0
   KBVel: {x: 0, y: 0}
   KBDesired: {x: 0, y: 0}

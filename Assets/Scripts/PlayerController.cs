@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> Floors = new List<GameObject>();
     private GenericPower Power;
     private bool InControl = true;
-    private int AirJumps;
+    public int AirJumps;
     public float FallPlatTime = 0;
     public Vector2 KBVel = new Vector2();
     public Vector2 KBDesired = new Vector2();

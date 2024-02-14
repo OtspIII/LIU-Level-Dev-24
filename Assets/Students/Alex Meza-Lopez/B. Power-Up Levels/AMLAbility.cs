@@ -18,6 +18,9 @@ public class AMLAbility : GenericPower
     }
 
     //This gets called whenever the player hits 'X'
+    
+    //Press X to wall climb
+    
     public override void Activate()
     {
 
@@ -67,7 +70,8 @@ public class AMLAbility : GenericPower
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "AlexWalls")
+        //&& Player.Floors.Count <= 0
+        if (other.gameObject.tag == "AlexWalls" )
             OnWall = true;
 
     }

@@ -142,6 +142,8 @@ MonoBehaviour:
   MaxHP: 0
   CanUseOneWayPlatforms: 1
   AbilityButton: 120
+  DeathPitDepth: -9999
+  MaxFallSpeed: 999
   Body: {fileID: 471537704109804624}
   Foot: {fileID: 8783260293361405469}
   AS: {fileID: 0}
@@ -150,6 +152,7 @@ MonoBehaviour:
   FaceLeft: 0
   StandOnHead: 0
   Floors: []
+  AirJumps: 0
   FallPlatTime: 0
   KBVel: {x: 0, y: 0}
   KBDesired: {x: 0, y: 0}

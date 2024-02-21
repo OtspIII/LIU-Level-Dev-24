@@ -23,7 +23,7 @@ public class gravity_manip : GenericPower
         if (collision.gameObject.GetComponent<sup_david>() != null)
         {
             Debug.Log("HI");
-            Player.SetGravity(Player.Gravity * -1);
+            Player.SetGravity(Player.GetGravity() * -1);
         }
 
         //player gravity switched

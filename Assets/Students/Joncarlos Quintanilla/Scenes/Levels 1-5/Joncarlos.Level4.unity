@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &42706834 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8010425643613910845, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1024754222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &116353727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,8 +628,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 445775917}
+  newColor: {r: 0, g: 0, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  eyeColor: {r: 0.93962264, g: 0.15778072, b: 0.05495901, a: 1}
+  realeyeColor: {r: 0, g: 0, b: 0, a: 1}
+  Body: {fileID: 42706834}
+  Eye: {fileID: 1024754223}
   teleportDistance: 2.2
   teleportCooldown: 0.5
+  timer: 0.5
 --- !u!1001 &506073172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1331,6 +1344,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 445775922}
   m_SourcePrefab: {fileID: 100100000, guid: 664a0bd71eec9a546a8a3afd3d5d70b4, type: 3}
+--- !u!212 &1024754223 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8010425645490699587, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1024754222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1030846274
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1267,7 +1267,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
-  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 1}
+  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 0.68235296}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1479,8 +1479,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 807059936}
+  newColor: {r: 0, g: 0, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  eyeColor: {r: 1, g: 0.17925707, b: 0.015686274, a: 1}
+  realeyeColor: {r: 0, g: 0, b: 0, a: 1}
+  Body: {fileID: 2143767061}
+  Eye: {fileID: 1831058448}
   teleportDistance: 2.2
   teleportCooldown: 0.5
+  timer: 0.5
 --- !u!1001 &843487064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1863,7 +1870,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
-  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 1}
+  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 0.654902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2285,7 +2292,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
-  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 1}
+  m_Color: {r: 0.9670062, g: 1, b: 0.51886785, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3774,6 +3781,12 @@ Rigidbody2D:
     type: 3}
   m_PrefabInstance: {fileID: 1831058446}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1831058448 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8010425645490699587, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1831058446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1849702802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4418,6 +4431,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021b41bb94bd8be48952e0cafcd41155, type: 3}
+--- !u!212 &2143767061 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8010425643613910845, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1831058446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

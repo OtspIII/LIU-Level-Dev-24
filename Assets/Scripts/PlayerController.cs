@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float  MaxHP = 0;
     public bool CanUseOneWayPlatforms = true;
     public KeyCode AbilityButton = KeyCode.X;
+    public float DeathPitDepth = -9999;
+    public float MaxFallSpeed = 20;
 	[Space]
     [Header("Ignore Us")]
     public SpriteRenderer Body;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> Floors = new List<GameObject>();
     private GenericPower Power;
     private bool InControl = true;
-    private int AirJumps;
+    public int AirJumps;
     public float FallPlatTime = 0;
     public Vector2 KBVel = new Vector2();
     public Vector2 KBDesired = new Vector2();
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public static bool HasMoved = false;
 	private float GravityStart = 2;
     public int Score = 0;
+    private bool IsDead = false;
 
     private void Awake()
     {
@@ -69,12 +72,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         FallPlatTime -= Time.deltaTime;
+        if (transform.position.y < DeathPitDepth)
+        {
+            Die(null);
+        }
         if (!InControl) return;      
         
 		bool onGround = OnGround();
         Vector2 vel = KBDesired;
-		if(!onGround)
-        	vel.y -= Gravity * Time.deltaTime * 9.8f;
+        if (!onGround)
+        {
+            vel.y -= Gravity * Time.deltaTime * 9.8f;
+            if (Mathf.Abs(vel.y) > MaxFallSpeed)
+                vel.y = Mathf.Sign(vel.y) * MaxFallSpeed;
+        }
 		else
 			vel.y = 0;
         
@@ -256,6 +267,8 @@ public class PlayerController : MonoBehaviour
     
     public void Die(GameObject source,bool force=false)
     {
+        if (IsDead) return;
+        IsDead = true;
 		if(!force && Power != null && Power.DeathOverride(source)) return;
         DeathCount++;
         Debug.Log("YOU DIED: " + DeathCount + " / " + SceneManager.GetActiveScene().name.ToUpper());

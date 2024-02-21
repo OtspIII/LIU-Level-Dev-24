@@ -6,9 +6,18 @@ using UnityEngine.SceneManagement;
 public class NewPower_Joncarlos : GenericPower
 {
 
+    public Color newColor = Color.blue;
+    public Color normalColor = Color.white;
+    public Color eyeColor = Color.red;
+    public Color realeyeColor = Color.black;
+    public SpriteRenderer Body;
+    public SpriteRenderer Eye;
+
     public float teleportDistance = 2.2f;
     public float teleportCooldown = 0.5f;
     private float lastTeleportTime;
+    public float timer = 0.5f;
+    public bool TP = true;
 
 
     public override void Activate()
@@ -21,7 +30,8 @@ public class NewPower_Joncarlos : GenericPower
     {
         if (Time.time - lastTeleportTime >= teleportCooldown)
         {
-            Teleport();           
+            Teleport();
+            TP = true;
         }
         if (transform.position.y <= -5)
         {
@@ -32,29 +42,55 @@ public class NewPower_Joncarlos : GenericPower
             ReloadCurrentScene();
         }
 
+
+        timer -= Time.deltaTime;
+        if (timer <=0)
+        {
+
+        }
+
         //Teleport();
     }
 
     void Teleport()
     {
-        Vector2 currentPlayerPosition = transform.position;
-        if (Input.GetKey(KeyCode.X))
+        if (TP == true)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            Vector2 currentPlayerPosition = transform.position;
+            Eye.color = realeyeColor;
+            if (Input.GetKey(KeyCode.X))
             {
-                Vector2 teleportDestination = new Vector2(currentPlayerPosition.x, currentPlayerPosition.y + teleportDistance);
-                transform.position = teleportDestination;
-                lastTeleportTime = Time.time;
+
+                Body.color = newColor;
+
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    Vector2 teleportDestination = new Vector2(currentPlayerPosition.x, currentPlayerPosition.y + teleportDistance);
+                    transform.position = teleportDestination;
+
+                    Body.color = normalColor;
+                    Eye.color = eyeColor;
+                    lastTeleportTime = Time.time;
+                    TP = false;
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    Vector2 teleportDestination = new Vector2(currentPlayerPosition.x, currentPlayerPosition.y - teleportDistance);
+                    transform.position = teleportDestination;
+
+                    Body.color = normalColor;
+                    Eye.color = eyeColor;
+                    lastTeleportTime = Time.time;
+                    TP = false;
+                }
+
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else
             {
-                Vector2 teleportDestination = new Vector2(currentPlayerPosition.x, currentPlayerPosition.y - teleportDistance);
-                transform.position = teleportDestination;
-                lastTeleportTime = Time.time;
+                Body.color = normalColor;
+                return;
             }
-            else { return; }
         }
-        else { return; }
     }
      void ReloadCurrentScene()
     {

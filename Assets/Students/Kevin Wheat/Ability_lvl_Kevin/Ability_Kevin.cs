@@ -7,8 +7,11 @@ public class Ability_Kevin : GenericPower
 {
   public override void Activate()
   {
-    transform.position += new Vector3(5, 0, 0);
-    //transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //transform.position += new Vector3(5, 0, 0);
+    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    pos.z = 0;
+    transform.position = pos;
+
   }
   //private void Update()
     //{

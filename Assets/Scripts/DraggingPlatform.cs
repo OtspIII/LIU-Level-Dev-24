@@ -19,9 +19,17 @@ public class DraggingPlatform : MonoBehaviour
     public Dictionary<Rigidbody2D,float> TouchingTemp = new Dictionary<Rigidbody2D, float>();
     //private bool MidMove = false;
     public float TouchTimedown = 0.5f;
+    public Rect MaxDragBounds = new Rect(-9999,-9999,9999,9999);
+    public float MaxDragRadius = 9999;
+    private Rect dragBoundsWorld;
+    private Vector3 StartPos;
 
     private void Start()
     {
+        StartPos = transform.position;
+        if(MaxDragBounds.size.magnitude == 0) MaxDragBounds = new Rect(-9999,-9999,9999,9999);
+        dragBoundsWorld = new Rect(transform.position.x + MaxDragBounds.x, transform.position.y + MaxDragBounds.y,
+            transform.position.x + MaxDragBounds.width, transform.position.y + MaxDragBounds.height);
         if(SR != null)
             OriginalColor = SR.color;
         if (!Sticky)
@@ -44,6 +52,13 @@ public class DraggingPlatform : MonoBehaviour
             //MidMove = true;
             Vector3 old = LastMouse;
             LastMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            LastMouse.z = StartPos.z;
+            LastMouse.x = Mathf.Clamp(LastMouse.x, dragBoundsWorld.x, dragBoundsWorld.width);
+            LastMouse.y = Mathf.Clamp(LastMouse.y, dragBoundsWorld.y, dragBoundsWorld.height);
+            if (Vector3.Distance(LastMouse, StartPos) > MaxDragRadius)
+            {
+                LastMouse = StartPos + ((LastMouse-StartPos).normalized * MaxDragRadius);
+            }
             Vector3 move = LastMouse - old;
 
             Dictionary<Rigidbody2D, Vector2> stick = new Dictionary<Rigidbody2D, Vector2>();

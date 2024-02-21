@@ -1286,6 +1286,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Timer: 0
+  Speed: 30
+  Duration: 0.2
+  MaxDashes: 1
+  AbilityButton2: 120
+  AbilityButton3: 118
+  dottedLine: {fileID: 0}
 --- !u!1001 &772501415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4362,9 +4369,9 @@ SceneRoots:
   - {fileID: 1698432484}
   - {fileID: 1555909090}
   - {fileID: 336371427}
+  - {fileID: 714886316}
   - {fileID: 1762963682}
   - {fileID: 633573230}
-  - {fileID: 714886316}
   - {fileID: 1379943429}
   - {fileID: 353354960}
   - {fileID: 697066890}

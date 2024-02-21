@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796606581}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24d68a0123798a9499399d3fe5660341, type: 3}
   m_Name: 
@@ -3042,6 +3042,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Timer: 0
+  Speed: 30
+  Duration: 0.2
+  MaxDashes: 1
+  AbilityButton2: 120
+  AbilityButton3: 118
+  dottedLine: {fileID: 0}
 --- !u!114 &1796606587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 471537704916083730, guid: 22598831b759c774998b1aead81bdd75,

@@ -256,12 +256,12 @@ Transform:
   m_GameObject: {fileID: 175363547}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.81, y: 1.8799999, z: -6.94}
+  m_LocalPosition: {x: 4.34, y: 1.67, z: 2.31}
   m_LocalScale: {x: 0.5227, y: 0.5227, z: 0.5227}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1385215711}
-  m_Father: {fileID: 646524683}
+  m_Father: {fileID: 2131482128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &175363549
 Animator:
@@ -526,7 +526,7 @@ Transform:
   m_GameObject: {fileID: 356400260}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03999996, y: -4.82, z: 10}
+  m_LocalPosition: {x: 0.03999996, y: -4.82, z: 20}
   m_LocalScale: {x: 18.212, y: -10.059376, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -558,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 429016991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.33, y: 2.13, z: 10}
+  m_LocalPosition: {x: 7.33, y: 2.13, z: 20}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -939,12 +939,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021b41bb94bd8be48952e0cafcd41155, type: 3}
---- !u!4 &646524683 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8010425645494148990, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1680002394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &690716438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010425645397122497, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
@@ -1962,7 +1956,7 @@ Transform:
   m_GameObject: {fileID: 1604545356}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.72, y: 3.2600002, z: 10}
+  m_LocalPosition: {x: -1.72, y: 3.2600002, z: 20}
   m_LocalScale: {x: 0.5788111, y: 0.5788111, z: 0.5788111}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2398,6 +2392,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -4.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8010425645494148991, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+        type: 3}
+      propertyPath: MaxFallSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8010425645270134302, guid: 664a0bd71eec9a546a8a3afd3d5d70b4, type: 3}
@@ -2428,14 +2427,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 356400262}
+    - targetCorrespondingSourceObject: {fileID: 8010425643724364421, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175363548}
     - targetCorrespondingSourceObject: {fileID: 8010425645397122497, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1621817673}
-    - targetCorrespondingSourceObject: {fileID: 8010425645494148990, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 175363548}
     - targetCorrespondingSourceObject: {fileID: 8010425644577450490, guid: 664a0bd71eec9a546a8a3afd3d5d70b4,
         type: 3}
       insertIndex: -1
@@ -2468,7 +2467,7 @@ Transform:
   m_GameObject: {fileID: 1760866211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 1.5900002, z: 10}
+  m_LocalPosition: {x: 2.91, y: 1.5900002, z: 20}
   m_LocalScale: {x: 0.26673353, y: 0.26673353, z: 0.26673353}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2651,7 +2650,7 @@ Transform:
   m_GameObject: {fileID: 1806909551}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.22, y: 2.13, z: 10}
+  m_LocalPosition: {x: -6.22, y: 2.13, z: 20}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -30,9 +30,10 @@ public class SprintAbility : GenericPower
         {
             upTime -= Time.deltaTime;
             addSpeed += (Time.deltaTime * 20);
+            Player.Body.color = Color.cyan;
             cdstart = false;
         }
-        
+
         if (Input.GetKeyUp(KeyCode.X) && !cdstart)
         {
             cdstart = true;
@@ -56,10 +57,11 @@ public class SprintAbility : GenericPower
             cooldown -= Time.deltaTime;
             Player.Body.color = new Color(1, 1, 1, 0.5f);
         }
-        else
+        else if (Player.Body.color != Color.cyan)
         {
             Player.Body.color = new Color(1, 1, 1, 1f);
         }
+        
 
         if (cdstart && Player.OnGround() && addSpeed > 10)
         {

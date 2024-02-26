@@ -12,7 +12,7 @@ public class Danny_RainDrop_TT : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Danny_Rain"))
+        if (other.gameObject.CompareTag("Danny_Rain_Fake"))
         {
             Destroy(gameObject);
         }

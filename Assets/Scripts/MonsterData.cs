@@ -22,6 +22,8 @@ public struct MonsterData
     public int MinLevel;
     public float VisionRange;
     public float Knockback;
+    public int Ammo;
+    public float ReloadTime;
 
     public MonsterData(string[] data)
     {
@@ -44,6 +46,8 @@ public struct MonsterData
             MinLevel = int.Parse(data[n]);n++;
             VisionRange = data.Length > n ? float.Parse(data[n]) : 9;n++;
             Knockback = data.Length > n ? float.Parse(data[n]) : 0;n++;
+            Ammo = data.Length > n ? int.Parse(data[n]) : 0;n++;
+            ReloadTime = data.Length > n ? float.Parse(data[n]) : 1;n++;
         }
         catch
         {
@@ -64,6 +68,8 @@ public struct MonsterData
             MinLevel = int.Parse(data[n]);n++;
             VisionRange = data.Length > n ? float.Parse(data[n]) : 9;n++;
             Knockback = data.Length > n ? float.Parse(data[n]) : 0;n++;
+            Ammo = data.Length > n ? int.Parse(data[n]) : 0;n++;
+            ReloadTime = data.Length > n ? float.Parse(data[n]) : 1;n++;
         }
     }
 

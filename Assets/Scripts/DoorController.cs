@@ -2,46 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Diagnostics;
 
-public class DoorController : MonoBehaviour
+public class DoorController : ThingController
 {
-    public CameraController Camera;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            int sceneN = SceneManager.GetActiveScene().buildIndex;
-            StartCoroutine(LoadLevel(sceneN + 1));
-        }
-            
-    }
+    public int Number;
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        PlayerController p = other.gameObject.GetComponent<PlayerController>();
-        if (p != null)
+        PlayerController pc = other.gameObject.GetComponent<PlayerController>();
+        if (pc != null && pc.Keys.Contains(Number))
         {
-            int sceneN = SceneManager.GetActiveScene().buildIndex;
-            StartCoroutine(LoadLevel(sceneN + 1));
+            pc.Keys.Remove(Number);
+            if (JSON.Audio)GameManager.Me.PlaySound(JSON.Audio);
+            Destroy(gameObject);
         }
-    }
-
-    IEnumerator LoadLevel(int n)
-    {
-        if (Camera && Camera.Fader)
-        {
-            Camera.Fader.gameObject.SetActive(true);
-            float timer = 0;
-            while (timer < 1)
-            {
-                timer = Mathf.Lerp(timer, 1.05f, 0.1f);
-                Camera.Fader.color = new Color(0, 0, 0, timer);
-                yield return null;
-            }
-        }
-
-        SceneManager.LoadScene(n);
     }
 }

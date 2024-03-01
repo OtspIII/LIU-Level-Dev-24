@@ -90,4 +90,5 @@ public enum MTypes
     Shooter=3,
     Leaper = 4,
     Bouncer=5,
+    Spinner=6,
 }

@@ -17,6 +17,7 @@ public class ThingController : MonoBehaviour
     public bool Alive = true;
     public bool Mobile = false;
     public ThingController Source;
+    public bool IsJSON = false;
 
     void Awake()
     {
@@ -61,6 +62,7 @@ public class ThingController : MonoBehaviour
     public virtual void ApplyJSON(JSONData data)
     {
         JSON = data;
+        IsJSON = true;
         if (data.Sprite != null)
         {
             if (SR == null) SR = gameObject.AddComponent<SpriteRenderer>();

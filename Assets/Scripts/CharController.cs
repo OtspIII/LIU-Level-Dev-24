@@ -15,6 +15,8 @@ public class CharController : ThingController
     public bool Tile = true;
     public bool BulletImmune = false;
     public float Buff = 1;
+    public int Ammo = 0;
+    public float Reload = 1;
 
     public override void OnAwake()
     {
@@ -39,6 +41,17 @@ public class CharController : ThingController
     {
         base.OnUpdate();
         BulletCooldown += Time.deltaTime;
+        if (Data.Ammo > 0)
+        {
+            if (Ammo <= 0)
+            {
+                Reload -= Time.deltaTime;
+                if (Reload <= 0)
+                {
+                    Ammo = Data.Ammo;
+                }
+            }
+        }
     }
 
 
@@ -56,6 +69,7 @@ public class CharController : ThingController
             MaxHP = HP;
         }
         //if (data.Color == MColors.Player) Debug.Log(data.Color);
+        Ammo = Data.Ammo;
     }
     
     public virtual void TakeDamage(int amt)
@@ -104,7 +118,17 @@ public class CharController : ThingController
 
     public virtual void Shoot()
     {
+        if (Data.Ammo > 0 && Ammo <= 0) return;
         if (BulletCooldown < Data.AttackRate / Buff) return;
+        if (Data.Ammo > 0)
+        {
+            Ammo--;
+            if (Ammo <= 0)
+            {
+                Reload = Data.ReloadTime;
+            }
+        }
+
         //Debug.Log("PEW: " + Time.time);
         Vector3 rot = transform.rotation.eulerAngles;
         Vector3 pos = transform.position + (transform.right * transform.localScale.x * -0.5f);

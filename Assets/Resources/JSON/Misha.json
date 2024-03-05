@@ -5,7 +5,7 @@
 {"Type":"Player", "Symbol":"P"},
 {"Type":"Enemy", "Symbol":"G", "Color":"Green"},
 {"Type":"Enemy", "Symbol":"R", "Color":"Red"},
-{"Type":"Enemy", "Symbol":"Y", "Color":"Yellow","Audio": "Yell"},
+{"Type":"Enemy", "Symbol":"Y", "Color":"Yellow"},
 {"Type":"Enemy", "Symbol":"I", "Color":"Pink"},
 {"Type":"Enemy", "Symbol":"O", "Color":"Orange"},
 {"Type":"Enemy", "Symbol":"B", "Color":"Blue"},
@@ -43,6 +43,6 @@
 {"Type":"Goal", "Symbol":"="}, 
 {"Type":"WallEnemy", "Symbol":"|"}, 
 {"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
-    {"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
-    {"Type":"Powerup", "Symbol":"n","Amount": 10}
+{"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
+{"Type":"Powerup", "Symbol":"n","Amount": 10}
 ]}

@@ -15,6 +15,7 @@ public class EnemyController : CharController
     public float Leaping = 0;
     public Vector2 LeapStart;
     public NPCTeam Team = NPCTeam.Enemy;
+    private Vector2 BounceDir;
     
     
     public override void OnStart()
@@ -73,7 +74,8 @@ public class EnemyController : CharController
             {
                 float desired = Mathf.Atan2(transform.position.y - Target.transform.position.y,
                                     transform.position.x - Target.transform.position.x) * Mathf.Rad2Deg;
-                Rotation = Mathf.LerpAngle(Rotation, desired, 0.05f);
+                if (Data.Type == MTypes.Spinner) desired = Rotation + 90;
+                Rotation = Mathf.LerpAngle(Rotation, desired, Data.TurnSpeed/10);
                 transform.rotation = Quaternion.Euler(0, 0, Rotation);
             }
             else
@@ -114,8 +116,13 @@ public class EnemyController : CharController
                     else
                         speed = 0;
                 }
-                    
-                vel += (Vector2)transform.right * -speed;
+
+                if (Data.Type == MTypes.Bouncer || Data.Type == MTypes.Spinner)
+                {
+                    vel += BounceDir * -speed;
+                }    
+                else
+                    vel += (Vector2)transform.right * -speed;
             }
         }
 
@@ -123,6 +130,8 @@ public class EnemyController : CharController
         {
             switch (Data.Type)
             {
+                case MTypes.Bouncer:
+                case MTypes.Spinner:
                 case MTypes.Shooter: Shoot();
                     break;
                 case MTypes.Leaper:
@@ -160,6 +169,11 @@ public class EnemyController : CharController
             transform.rotation = Quaternion.Euler(0, 0, Rotation);
         }
 
+        if (Data.Type == MTypes.Bouncer || Data.Type == MTypes.Spinner)
+        {
+            BounceDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        }
+
         BulletCooldown = Random.Range(0, Data.AttackRate);
     }
 
@@ -182,13 +196,30 @@ public class EnemyController : CharController
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall")) Leaping = 0;
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            Leaping = 0;
+        }
+        if(Data.Type== MTypes.Bouncer || Data.Type== MTypes.Spinner) Bounce(other.contacts[0].point);
         if (Data.Type == MTypes.Shooter) return;
         PlayerController pc = other.gameObject.GetComponent<PlayerController>();
         if (pc != null)
         {
             pc.Knockback(transform.position,Data.Knockback);
             pc.TakeDamage(Data.Damage);
+        }
+    }
+
+    public void Bounce(Vector2 rel)
+    {
+        rel -= (Vector2)transform.position;
+        if (Mathf.Abs(rel.x) > Mathf.Abs(rel.y))
+        {
+            BounceDir.x = Mathf.Sign(rel.x) * Mathf.Abs(BounceDir.x);
+        }
+        else
+        {
+            BounceDir.y = Mathf.Sign(rel.y) * Mathf.Abs(BounceDir.y);
         }
     }
 

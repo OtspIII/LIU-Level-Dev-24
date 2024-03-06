@@ -22,26 +22,55 @@ public struct MonsterData
     public int MinLevel;
     public float VisionRange;
     public float Knockback;
+    public int Ammo;
+    public float ReloadTime;
 
     public MonsterData(string[] data)
     {
         int n = 0;
-        Creator = data[n]; n++;
-        Color = (MColors)Enum.Parse(typeof(MColors), data[n]);n++;
-        Type = (MTypes)Enum.Parse(typeof(MTypes), data[n]);n++;
-        HP = int.Parse(data[n]);n++;
-        Speed = float.Parse(data[n]) * GameSettings.BaseSpeed;n++;
-        Damage = int.Parse(data[n]);n++;
-        TurnSpeed = GameSettings.BaseTurn * float.Parse(data[n]);n++;
-        Size = float.Parse(data[n]);n++;
-        AttackRate = float.Parse(data[n]);n++;
-        AttackRange = float.Parse(data[n]);n++;
-        AttackSpeed = float.Parse(data[n]);n++;
-        AttackSpread = float.Parse(data[n]);n++;
-        Cost = float.Parse(data[n]);n++;
-        MinLevel = int.Parse(data[n]);n++;
-        VisionRange = data.Length > n ? float.Parse(data[n]) : 9;n++;
-        Knockback = data.Length > n ? float.Parse(data[n]) : 0;n++;
+        try
+        {
+            Creator = data[n]; n++;
+            Color = (MColors)Enum.Parse(typeof(MColors), data[n]);n++;
+            Type = (MTypes)Enum.Parse(typeof(MTypes), data[n]);n++;
+            HP = int.Parse(data[n]);n++;
+            Speed = float.Parse(data[n]) * GameSettings.BaseSpeed;n++;
+            Damage = int.Parse(data[n]);n++;
+            TurnSpeed = GameSettings.BaseTurn * float.Parse(data[n]);n++;
+            Size = float.Parse(data[n]);n++;
+            AttackRate = float.Parse(data[n]);n++;
+            AttackRange = float.Parse(data[n]);n++;
+            AttackSpeed = float.Parse(data[n]);n++;
+            AttackSpread = float.Parse(data[n]);n++;
+            Cost = float.Parse(data[n]);n++;
+            MinLevel = int.Parse(data[n]);n++;
+            VisionRange = data.Length > n ? float.Parse(data[n]) : 9;n++;
+            Knockback = data.Length > n ? float.Parse(data[n]) : 0;n++;
+            Ammo = data.Length > n ? int.Parse(data[n]) : 0;n++;
+            ReloadTime = data.Length > n ? float.Parse(data[n]) : 1;n++;
+        }
+        catch
+        {
+            Debug.Log("INVALID: " + String.Join(',',data) + " / " + data[n]);
+            Creator = data[n]; n++;
+            Color = (MColors)Enum.Parse(typeof(MColors), data[n]);n++;
+            Type = (MTypes)Enum.Parse(typeof(MTypes), data[n]);n++;
+            HP = int.Parse(data[n]);n++;
+            Speed = float.Parse(data[n]) * GameSettings.BaseSpeed;n++;
+            Damage = int.Parse(data[n]);n++;
+            TurnSpeed = GameSettings.BaseTurn * float.Parse(data[n]);n++;
+            Size = float.Parse(data[n]);n++;
+            AttackRate = float.Parse(data[n]);n++;
+            AttackRange = float.Parse(data[n]);n++;
+            AttackSpeed = float.Parse(data[n]);n++;
+            AttackSpread = float.Parse(data[n]);n++;
+            Cost = float.Parse(data[n]);n++;
+            MinLevel = int.Parse(data[n]);n++;
+            VisionRange = data.Length > n ? float.Parse(data[n]) : 9;n++;
+            Knockback = data.Length > n ? float.Parse(data[n]) : 0;n++;
+            Ammo = data.Length > n ? int.Parse(data[n]) : 0;n++;
+            ReloadTime = data.Length > n ? float.Parse(data[n]) : 1;n++;
+        }
     }
 
     public override string ToString()
@@ -60,4 +89,6 @@ public enum MTypes
     Charger=2,
     Shooter=3,
     Leaper = 4,
+    Bouncer=5,
+    Spinner=6,
 }

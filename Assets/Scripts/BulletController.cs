@@ -41,6 +41,10 @@ public class BulletController : ThingController
         Speed = Shooter.AttackSpeed;
         if (shooter.Player)
             gameObject.layer = 10;
+        if (!IsJSON)
+        {
+            Lifetime = Shooter.AttackRange / Mathf.Max(0.1f, Shooter.AttackSpeed);
+        }
         GetComponent<BoxCollider2D>().enabled = true;
     }
 

@@ -114,6 +114,7 @@ public class CharController : ThingController
     
     public virtual void Reset()
     {
+        Buff = 1;
     }
 
     public virtual void Shoot()

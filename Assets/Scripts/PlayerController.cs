@@ -101,7 +101,8 @@ public class PlayerController : CharController
         if (Invincible > 0) return;
         base.TakeDamage(amt);
         GameManager.Me.HPText.text = "HP: " + HP;
-        Invincible = 0.5f;
+        if(amt > 0)
+            Invincible = 0.5f;
     }
 
     public override void Die()

@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.29930577, g: 0.5377358, b: 0.5229081, a: 0}
+  m_BackGroundColor: {r: 0.4490565, g: 0.4490565, b: 0.4490565, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -385,8 +385,23 @@ PrefabInstance:
       objectReference: {fileID: 1347121283}
     - target: {fileID: 1288036201253720395, guid: a0ef24ae16209dd4383d356445531c8b,
         type: 3}
+      propertyPath: Level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288036201253720395, guid: a0ef24ae16209dd4383d356445531c8b,
+        type: 3}
       propertyPath: Creator
-      value: Misha
+      value: Nicholas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288036201253720395, guid: a0ef24ae16209dd4383d356445531c8b,
+        type: 3}
+      propertyPath: Victory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288036201253720395, guid: a0ef24ae16209dd4383d356445531c8b,
+        type: 3}
+      propertyPath: GoalExists
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1288036201253720396, guid: a0ef24ae16209dd4383d356445531c8b,
         type: 3}

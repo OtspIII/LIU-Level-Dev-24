@@ -16,7 +16,7 @@ public class JSONData
     public string Text = "";
     public float Amount;
     public float Size;
-    public float Size2;
+    public float Lifetime;
     public char Bullet = '.';
     public char Drop = ' ';
     public string Tag = "";
@@ -45,7 +45,7 @@ public class JSONData
         if (source.StartOff != null) StartOff = source.StartOff;
         Amount = source.Amount;
         Size = source.Size;
-        Size2 = source.Size2;
+        Lifetime = source.Lifetime;
         if (source.Bullet != null)
             Bullet = source.Bullet.Length > 0 ? source.Bullet[0] : '.';
         if (source.Drop != null)
@@ -66,7 +66,7 @@ public class JSONTemp
     public string Text;
     public float Amount;
     public float Size;
-    public float Size2;
+    public float Lifetime;
     public string Bullet;
     public string Drop;
     public string Tag;

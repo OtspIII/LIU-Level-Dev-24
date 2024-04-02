@@ -8,6 +8,8 @@ public class BulletController : ThingController
     public MonsterData Shooter;
     public float Speed = 10;
     public float Lifetime = 0;
+    public float HP = 1;
+    public BulletController JustHit = null;
     
     void Start()
     {
@@ -18,7 +20,8 @@ public class BulletController : ThingController
     {
         base.ApplyJSON(data);
         if (data.Audio)GameManager.Me.PlaySound(data.Audio);
-        if (data.Amount > 0) Lifetime = data.Amount;
+        if (data.Lifetime > 0) Lifetime = data.Lifetime;
+        if (data.Amount > 0) HP = data.Amount;
     }
 
     void Update()
@@ -53,7 +56,23 @@ public class BulletController : ThingController
         CharController c = other.gameObject.GetComponent<CharController>();
         
         if(c != null && !c.BulletImmune) HitChar(c);
-        Despawn();
+        BulletController b = other.gameObject.GetComponent<BulletController>();
+        if (b != null)
+        {
+            if (b != JustHit)
+            {
+                b.JustHit = this;
+                float tempHP = HP - b.HP;
+                b.HP -= HP;
+                HP = tempHP;
+                if(b.HP <= 0)
+                    b.Despawn();
+                if(HP <= 0)
+                    Despawn();
+            }
+        }
+        else
+            Despawn();
     }
 
     public void HitChar(CharController c)

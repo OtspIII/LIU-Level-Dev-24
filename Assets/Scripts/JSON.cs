@@ -16,7 +16,7 @@ public class JSONData
     public string Text = "";
     public float Amount;
     public float Size;
-    public float Size2;
+    public float Lifetime;
     public char Bullet = '.';
     public char Drop = ' ';
     public string Tag = "";
@@ -45,13 +45,18 @@ public class JSONData
         if (source.StartOff != null) StartOff = source.StartOff;
         Amount = source.Amount;
         Size = source.Size;
-        Size2 = source.Size2;
+        Lifetime = source.Lifetime;
         if (source.Bullet != null)
             Bullet = source.Bullet.Length > 0 ? source.Bullet[0] : '.';
         if (source.Drop != null)
             Drop = source.Drop.Length > 0 ? source.Drop[0] : ' ';
         Target = source.Target != null ? (Targets)Enum.Parse(typeof(Targets), source.Target) : Targets.None;
-        if (source.Layer != null) Layer = LayerMask.NameToLayer(source.Layer);
+        if (source.Layer != null)
+        {
+            Layer = LayerMask.NameToLayer(source.Layer);
+        }
+        else
+            Layer = -1;
     }
 }
 
@@ -66,7 +71,7 @@ public class JSONTemp
     public string Text;
     public float Amount;
     public float Size;
-    public float Size2;
+    public float Lifetime;
     public string Bullet;
     public string Drop;
     public string Tag;
@@ -87,7 +92,6 @@ public static class JsonHelper
 {
     public static T[] FromJson<T>(string json)
     {
-	
         Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
         return wrapper.Items;
     }

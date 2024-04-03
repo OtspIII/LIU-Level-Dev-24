@@ -51,7 +51,12 @@ public class JSONData
         if (source.Drop != null)
             Drop = source.Drop.Length > 0 ? source.Drop[0] : ' ';
         Target = source.Target != null ? (Targets)Enum.Parse(typeof(Targets), source.Target) : Targets.None;
-        if (source.Layer != null) Layer = LayerMask.NameToLayer(source.Layer);
+        if (source.Layer != null)
+        {
+            Layer = LayerMask.NameToLayer(source.Layer);
+        }
+        else
+            Layer = -1;
     }
 }
 

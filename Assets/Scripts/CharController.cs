@@ -131,11 +131,12 @@ public class CharController : ThingController
 
         //Debug.Log("PEW: " + Time.time);
         Vector3 rot = transform.rotation.eulerAngles;
-        Vector3 pos = transform.position + (transform.right * transform.localScale.x * -0.5f);
+        JSONData js = GameManager.Me.GetBullet(JSON.Bullet);
+        float extra = js == null || js.Layer < 0 ? 0 : js.Size * 3f;
+        Vector3 pos = transform.position + (transform.right * (transform.localScale.x + extra) * -0.5f);
         if (Data.AttackSpread > 0) rot.z += Random.Range(0, Data.AttackSpread) - (Data.AttackSpread / 2);
         BulletController b = Instantiate(GameManager.Me.BPrefab, pos, Quaternion.Euler(rot));
         b.Setup(this);
-        JSONData js = GameManager.Me.GetBullet(JSON.Bullet);
         if(js != null)
             b.ApplyJSON(js);
         BulletCooldown = 0;

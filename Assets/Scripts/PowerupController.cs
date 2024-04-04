@@ -8,11 +8,19 @@ public class PowerupController : ThingController
     {
         PlayerController pc = other.gameObject.GetComponent<PlayerController>();
         if (pc == null) return;
-        if (JSON.Amount > 0)
-            pc.Buff *= JSON.Amount;
-        else
-            pc.Buff *= 2;
-        Debug.Log("PCBUFF: " + pc.Buff);
+        if (JSON.Type == SpawnThings.Powerup)
+        {
+            if (JSON.Amount > 0)
+                pc.Buff *= JSON.Amount;
+            else
+                pc.Buff *= 2;
+            if (JSON.Lifetime > 0)
+                pc.BuffTime = JSON.Lifetime;
+        }
+        else if (JSON.Type == SpawnThings.Weapon)
+        {
+            
+        }
         if (JSON.Audio)GameManager.Me.PlaySound(JSON.Audio);
         Destroy(gameObject);
     }

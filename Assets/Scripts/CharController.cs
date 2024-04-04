@@ -15,6 +15,7 @@ public class CharController : ThingController
     public bool Tile = true;
     public bool BulletImmune = false;
     public float Buff = 1;
+    public float BuffTime = 0;
     public int Ammo = 0;
     public float Reload = 1;
 
@@ -41,6 +42,14 @@ public class CharController : ThingController
     {
         base.OnUpdate();
         BulletCooldown += Time.deltaTime;
+        if (BuffTime > 0)
+        {
+            BuffTime -= Time.deltaTime;
+            if (BuffTime <= 0)
+            {
+                Buff = 1;
+            }
+        }
         if (Data.Ammo > 0)
         {
             if (Ammo <= 0)

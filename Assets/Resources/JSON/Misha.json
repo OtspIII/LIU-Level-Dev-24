@@ -44,5 +44,6 @@
 {"Type":"WallEnemy", "Symbol":"|"}, 
 {"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
 {"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
-{"Type":"Powerup", "Symbol":"n","Amount": 10}
+{"Type":"Powerup", "Symbol":"n","Amount": 2, "Lifetime": 5},
+{"Type":"Weapon", "Symbol":"k","Amount": 10, "Color": "Green"}
 ]}

@@ -35,7 +35,7 @@
 {"Type":"Bomb", "Symbol":"b","Color":"Pink","Size":0.5,"Drop":"~"},
 {"Type":"Music", "Symbol":"m","Audio":"Yell"},
 {"Type":"Bullet", "Symbol":".","Size":0.2},
-    {"Type":"Bullet", "Symbol":"&","Size":0.2,"Color": "Red"},
+    {"Type":"Bullet", "Symbol":"&","Size":0.2,"Color": "Red", "Drop": "~"},
 {"Type":"Explosion", "Symbol":"~","Amount":4},
   {"Type":"Explosion", "Symbol":"`","Amount":1},
 {"Type":"Zoom", "Symbol":"(","Amount":2},
@@ -46,5 +46,5 @@
 {"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
 {"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
 {"Type":"Powerup", "Symbol":"n","Amount": 2, "Lifetime": 5},
-{"Type":"Weapon", "Symbol":"k","Lifetime": 10, "Color": "Yellow","Bullet": "&"}
+{"Type":"Weapon", "Symbol":"k","Lifetime": 3, "Color": "Yellow","Bullet": "&"}
 ]}

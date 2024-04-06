@@ -135,7 +135,6 @@ public class CharController : ThingController
         WeaponJSON = m;
         WAmmo = data.Lifetime != 0 ? (int)data.Lifetime : -1;
         WBullet = data.Bullet;
-        //##do it
     }
 
     public char GetBullet()
@@ -151,16 +150,6 @@ public class CharController : ThingController
         if (Weapon.Ammo > 0)
         {
             Ammo--;
-            if (WAmmo > 0)
-            {
-                WAmmo--;
-                if (WAmmo <= 0)
-                {
-                    WAmmo = 0;
-                    WBullet = ' ';
-                    WeaponJSON = Data;
-                }
-            }
             if (Ammo <= 0)
             {
                 Reload = Weapon.ReloadTime;
@@ -179,6 +168,17 @@ public class CharController : ThingController
         if(js != null)
             b.ApplyJSON(js);
         BulletCooldown = 0;
+        if (WAmmo > 0)
+        {
+            WAmmo--;
+            if (WAmmo <= 0)
+            {
+                WAmmo = 0;
+                WBullet = ' ';
+                WeaponJSON = Data;
+                Ammo = Data.Ammo;
+            }
+        }
     }
 
     public override void ApplyJSON(JSONData data)

@@ -131,8 +131,10 @@ public class CharController : ThingController
 
     public void SetWeapon(JSONData data)
     {
-        MonsterData m = GameManager.MonDict[GameManager.Me.Creator][data.Color];
-        WeaponJSON = m;
+        if (data.Color != MColors.None)
+            WeaponJSON = GameManager.MonDict[GameManager.Me.Creator][data.Color];
+        else
+            WeaponJSON = Data;
         WAmmo = data.Lifetime != 0 ? (int)data.Lifetime : -1;
         WBullet = data.Bullet;
     }

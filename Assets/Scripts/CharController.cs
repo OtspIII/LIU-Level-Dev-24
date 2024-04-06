@@ -15,6 +15,7 @@ public class CharController : ThingController
     public bool Tile = true;
     public bool BulletImmune = false;
     public float Buff = 1;
+    public float BuffTime = 0;
     public int Ammo = 0;
     public float Reload = 1;
 
@@ -41,6 +42,14 @@ public class CharController : ThingController
     {
         base.OnUpdate();
         BulletCooldown += Time.deltaTime;
+        if (BuffTime > 0)
+        {
+            BuffTime -= Time.deltaTime;
+            if (BuffTime <= 0)
+            {
+                Buff = 1;
+            }
+        }
         if (Data.Ammo > 0)
         {
             if (Ammo <= 0)
@@ -131,11 +140,12 @@ public class CharController : ThingController
 
         //Debug.Log("PEW: " + Time.time);
         Vector3 rot = transform.rotation.eulerAngles;
-        Vector3 pos = transform.position + (transform.right * transform.localScale.x * -0.5f);
+        JSONData js = GameManager.Me.GetBullet(JSON.Bullet);
+        float extra = js == null || js.Layer < 0 ? 0 : js.Size * 3f;
+        Vector3 pos = transform.position + (transform.right * (transform.localScale.x + extra) * -0.5f);
         if (Data.AttackSpread > 0) rot.z += Random.Range(0, Data.AttackSpread) - (Data.AttackSpread / 2);
         BulletController b = Instantiate(GameManager.Me.BPrefab, pos, Quaternion.Euler(rot));
         b.Setup(this);
-        JSONData js = GameManager.Me.GetBullet(JSON.Bullet);
         if(js != null)
             b.ApplyJSON(js);
         BulletCooldown = 0;

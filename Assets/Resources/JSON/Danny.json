@@ -2,12 +2,12 @@
   "OneWayToggles": [],
   "BGColor": "",
   "Items":[
-{"Type":"Player", "Symbol":"P"},
-{"Type":"Enemy", "Symbol":"G", "Color":"Green"},
+{"Type":"Player", "Symbol":"P","Sprite":"Player"},
+{"Type":"Enemy", "Symbol":"G", "Color":"Green","Sprite":"Charger"},
+{"Type":"Enemy", "Symbol":"O", "Color":"Orange","Sprite":"Shooter"},
+{"Type":"Enemy", "Symbol":"I", "Color":"Pink","Sprite":"Leaper"},
+{"Type":"Enemy", "Symbol":"Y", "Color":"Yellow","Sprite":"Bouncer"},
 {"Type":"Enemy", "Symbol":"R", "Color":"Red"},
-{"Type":"Enemy", "Symbol":"Y", "Color":"Yellow"},
-{"Type":"Enemy", "Symbol":"I", "Color":"Pink"},
-{"Type":"Enemy", "Symbol":"O", "Color":"Orange"},
 {"Type":"Enemy", "Symbol":"B", "Color":"Blue"},
 {"Type":"Enemy", "Symbol":"U", "Color":"Purple"},
 {"Type":"Enemy", "Symbol":"W", "Color":"White"},
@@ -15,7 +15,7 @@
 {"Type":"Enemy", "Symbol":"T", "Color":"Tan"},
 {"Type":"Enemy", "Symbol":"A", "Color":"Algea"},
 {"Type":"Enemy", "Symbol":"S", "Color":"Slate"},
-{"Type":"Wall", "Symbol":"x"},
+{"Type":"Wall", "Symbol":"x","Sprite":"Wall"},
 {"Type":"Floor", "Symbol":" "},
 {"Type":"Lava", "Symbol":"l"},
 {"Type":"ConveyorL", "Symbol":"<"},
@@ -35,7 +35,6 @@
 {"Type":"Bomb", "Symbol":"b","Color":"Pink","Size":0.5,"Drop":"~"},
 {"Type":"Music", "Symbol":"m","Audio":"Yell"},
 {"Type":"Bullet", "Symbol":".","Size":0.2},
-    {"Type":"Bullet", "Symbol":"&","Size":0.2,"Color": "Red", "Drop": "~"},
 {"Type":"Explosion", "Symbol":"~","Amount":4},
   {"Type":"Explosion", "Symbol":"`","Amount":1},
 {"Type":"Zoom", "Symbol":"(","Amount":2},
@@ -45,6 +44,5 @@
 {"Type":"WallEnemy", "Symbol":"|"}, 
 {"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
 {"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
-{"Type":"Powerup", "Symbol":"n","Amount": 2, "Lifetime": 5},
-{"Type":"Weapon", "Symbol":"k","Lifetime": 3, "Color": "Yellow","Bullet": "&"}
+{"Type":"Powerup", "Symbol":"n","Amount": 10}
 ]}

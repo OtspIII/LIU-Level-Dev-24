@@ -142,4 +142,5 @@ public enum SpawnThings
     WallEnemy=28,
     Spawner=29,
     Powerup=30,
+    Weapon=31,
 }

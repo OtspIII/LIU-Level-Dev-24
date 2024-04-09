@@ -87,7 +87,7 @@ public class ThingController : MonoBehaviour
             GameManager.Me.AddTag(data.Tag,this);
         }
 
-        if (data.Layer > 0)
+        if (data.Layer >= 0)
         {
             gameObject.layer = data.Layer;
         }
@@ -142,4 +142,5 @@ public enum SpawnThings
     WallEnemy=28,
     Spawner=29,
     Powerup=30,
+    Weapon=31,
 }

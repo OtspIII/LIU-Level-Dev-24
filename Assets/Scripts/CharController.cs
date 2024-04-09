@@ -18,6 +18,10 @@ public class CharController : ThingController
     public float BuffTime = 0;
     public int Ammo = 0;
     public float Reload = 1;
+    public MonsterData Weapon => WAmmo != 0 ? WeaponJSON : Data;
+    protected MonsterData WeaponJSON;
+    public int WAmmo = 0;
+    public char WBullet = ' ';
 
     public override void OnAwake()
     {
@@ -50,14 +54,14 @@ public class CharController : ThingController
                 Buff = 1;
             }
         }
-        if (Data.Ammo > 0)
+        if (Weapon.Ammo > 0)
         {
             if (Ammo <= 0)
             {
                 Reload -= Time.deltaTime;
                 if (Reload <= 0)
                 {
-                    Ammo = Data.Ammo;
+                    Ammo = Weapon.Ammo;
                 }
             }
         }
@@ -125,30 +129,58 @@ public class CharController : ThingController
     {
     }
 
+    public void SetWeapon(JSONData data)
+    {
+        if (data.Color != MColors.None)
+            WeaponJSON = GameManager.MonDict[GameManager.Me.Creator][data.Color];
+        else
+            WeaponJSON = Data;
+        WAmmo = data.Lifetime != 0 ? (int)data.Lifetime : -1;
+        WBullet = data.Bullet;
+    }
+
+    public char GetBullet()
+    {
+        if (WAmmo > 0 && WBullet != ' ') return WBullet;
+        return JSON.Bullet;
+    }
+
     public virtual void Shoot()
     {
-        if (Data.Ammo > 0 && Ammo <= 0) return;
-        if (BulletCooldown < Data.AttackRate / Buff) return;
-        if (Data.Ammo > 0)
+        if (Weapon.Ammo > 0 && Ammo <= 0) return;
+        if (BulletCooldown < Weapon.AttackRate / Buff) return;
+        if (Weapon.Ammo > 0)
         {
             Ammo--;
             if (Ammo <= 0)
             {
-                Reload = Data.ReloadTime;
+                Reload = Weapon.ReloadTime;
             }
         }
+        
 
         //Debug.Log("PEW: " + Time.time);
         Vector3 rot = transform.rotation.eulerAngles;
-        JSONData js = GameManager.Me.GetBullet(JSON.Bullet);
+        JSONData js = GameManager.Me.GetBullet(GetBullet());
         float extra = js == null || js.Layer < 0 ? 0 : js.Size * 3f;
         Vector3 pos = transform.position + (transform.right * (transform.localScale.x + extra) * -0.5f);
-        if (Data.AttackSpread > 0) rot.z += Random.Range(0, Data.AttackSpread) - (Data.AttackSpread / 2);
+        if (Weapon.AttackSpread > 0) rot.z += Random.Range(0, Weapon.AttackSpread) - (Weapon.AttackSpread / 2);
         BulletController b = Instantiate(GameManager.Me.BPrefab, pos, Quaternion.Euler(rot));
         b.Setup(this);
         if(js != null)
             b.ApplyJSON(js);
         BulletCooldown = 0;
+        if (WAmmo > 0)
+        {
+            WAmmo--;
+            if (WAmmo <= 0)
+            {
+                WAmmo = 0;
+                WBullet = ' ';
+                WeaponJSON = Data;
+                Ammo = Data.Ammo;
+            }
+        }
     }
 
     public override void ApplyJSON(JSONData data)

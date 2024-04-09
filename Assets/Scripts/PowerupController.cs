@@ -19,7 +19,7 @@ public class PowerupController : ThingController
         }
         else if (JSON.Type == SpawnThings.Weapon)
         {
-            
+            pc.SetWeapon(JSON);
         }
         if (JSON.Audio)GameManager.Me.PlaySound(JSON.Audio);
         Destroy(gameObject);

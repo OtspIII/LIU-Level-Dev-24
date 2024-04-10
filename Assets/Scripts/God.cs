@@ -30,6 +30,7 @@ public static class God
             case MColors.Slate: c = new Color(0.4f,0.4f,0.4f); break;
             case MColors.WallWhite: c = Color.white; break;
             case MColors.BG: c = new Color(0.2993058f,0.5377358f,0.5229081f); break;
+            case MColors.Transparent: c = new Color(1,1,1,0.2f); break; 
         }
 
         return c;
@@ -55,5 +56,5 @@ public enum MColors
     WallWhite=14,
     BG=15,
     Algae=16,
-    
+    Transparent=17,
 }

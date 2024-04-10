@@ -91,6 +91,7 @@ public class ThingController : MonoBehaviour
         {
             gameObject.layer = data.Layer;
         }
+        if(data.Under != '⌂')
 
         if (data.StartOff) gameObject.SetActive(false);
     }
@@ -142,4 +143,5 @@ public enum SpawnThings
     WallEnemy=28,
     Spawner=29,
     Powerup=30,
+    Weapon=31,
 }

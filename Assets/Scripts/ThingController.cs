@@ -91,6 +91,7 @@ public class ThingController : MonoBehaviour
         {
             gameObject.layer = data.Layer;
         }
+        if(data.Under != '⌂')
 
         if (data.StartOff) gameObject.SetActive(false);
     }

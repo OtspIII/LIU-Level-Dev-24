@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
         return Bullets[Creator][symbol];
     }
 
-    public ThingController SpawnThing(char symbol, string creator, Vector3 pos)
+    public ThingController SpawnThing(char symbol, string creator, Vector3 pos,bool subThing=false)
     {
         
         JSONData data = GetData(symbol, Creator);
@@ -238,6 +238,8 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
+
+        ThingController r = null;
         switch (data.Type)
         {
             case SpawnThings.Player:
@@ -245,7 +247,8 @@ public class GameManager : MonoBehaviour
                 PC.transform.position = pos;
                 PC.Setup(MonDict[creator][MColors.Player]);
                 PC.ApplyJSON(data);
-                return PC;
+                r = PC;
+                break;
             }
             case SpawnThings.Enemy:
             {
@@ -253,7 +256,8 @@ public class GameManager : MonoBehaviour
                 if(!MonDict[creator].ContainsKey(data.Color)) Debug.Log("MISSING COLOR: " + data.Color + " / " + creator);
                 enemy.Setup(MonDict[creator][data.Color]);
                 enemy.ApplyJSON(data);
-                return enemy;
+                r = enemy;
+                break;
             }
             default:
             {
@@ -261,9 +265,16 @@ public class GameManager : MonoBehaviour
                 ThingController thing = Instantiate(Prefabs[data.Type], pos, Quaternion.identity);
                 thing.ApplyJSON(data);
                 Tiles.Add(thing);
-                return thing;
+                r =  thing;
+                break;
             }
         }
+
+        if (!subThing && GetData(data.Under,creator)?.Type != SpawnThings.None)
+        {
+            SpawnThing(data.Under, creator, pos + new Vector3(0,0,0.1f), true);
+        }
+        return r;
     }
 
     public void AddTag(string tag, ThingController who)

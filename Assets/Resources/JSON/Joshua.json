@@ -2,22 +2,37 @@
   "OneWayToggles": [],
   "BGColor": "",
   "Items":[
+<<<<<<< HEAD
 {"Type":"Player", "Symbol":"P"},
 {"Type":"Enemy", "Symbol":"G", "Color":"Green"},
+=======
+{"Type":"Player", "Symbol":"P", "Sprite": "Face"},
+{"Type":"Enemy", "Symbol":"G", "Color":"Green", "Sprite": "Sword"},
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 {"Type":"Enemy", "Symbol":"R", "Color":"Red"},
 {"Type":"Enemy", "Symbol":"Y", "Color":"Yellow"},
 {"Type":"Enemy", "Symbol":"I", "Color":"Pink"},
 {"Type":"Enemy", "Symbol":"O", "Color":"Orange"},
 {"Type":"Enemy", "Symbol":"B", "Color":"Blue"},
+<<<<<<< HEAD
 {"Type":"Enemy", "Symbol":"U", "Color":"Purple"},
+=======
+{"Type":"Enemy", "Symbol":"U", "Color":"Purple", "Sprite": "enemy"},
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 {"Type":"Enemy", "Symbol":"W", "Color":"White"},
 {"Type":"Enemy", "Symbol":"E", "Color":"Ebony"},
 {"Type":"Enemy", "Symbol":"T", "Color":"Tan"},
 {"Type":"Enemy", "Symbol":"A", "Color":"Algea"},
 {"Type":"Enemy", "Symbol":"S", "Color":"Slate"},
+<<<<<<< HEAD
 {"Type":"Wall", "Symbol":"x"},
 {"Type":"Floor", "Symbol":" "},
 {"Type":"Lava", "Symbol":"l"},
+=======
+{"Type":"Wall", "Symbol":"x", "Sprite": "Wall"},
+{"Type":"Floor", "Symbol":" "},
+{"Type":"Lava", "Symbol":"l","Size": 1},
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 {"Type":"ConveyorL", "Symbol":"<"},
 {"Type":"ConveyorR", "Symbol":">"},
 {"Type":"ConveyorU", "Symbol":"^"},
@@ -28,21 +43,39 @@
 {"Type":"Door2", "Symbol":"@"},
 {"Type":"Key3", "Symbol":"3"},
 {"Type":"Door3", "Symbol":"#"},
+<<<<<<< HEAD
 {"Type":"Event", "Symbol":"h","Sprite":"Hi","Color":"Purple","Text":"And that's how it all\nhappened! ;)","Audio":"Yell"},
   {"Type":"Event", "Symbol":"$","Sprite":"Hi","Color":"Purple","Toggle": "ABC"},
+=======
+{"Type":"Event", "Symbol":"h","Sprite":"Hi","Color":"Purple","Text":"Welcome to the world of Chaos! Where you will fight extremely bizzare creatures."},
+  {"Type":"Event", "Symbol":"$","Sprite":"Misha Thug Life","Color":"Purple","Audio":"Misha"},
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 {"Type":"Destructable", "Symbol":"d","Color":"WallWhite","Amount":3}, 
 {"Type":"DestructableE", "Symbol":"e","Color":"WallWhite","Amount":3},
 {"Type":"Bomb", "Symbol":"b","Color":"Pink","Size":0.8,"Drop":"~"},
 {"Type":"Music", "Symbol":"m","Audio":"Yell"},
+<<<<<<< HEAD
 {"Type":"Bullet", "Symbol":".","Size":0.2},
+=======
+{"Type":"Bullet", "Symbol":".","Size":0.2,"Sprite":"projectile"},
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 {"Type":"Explosion", "Symbol":"~","Amount":8},
   {"Type":"Explosion", "Symbol":"`","Amount":5},
 {"Type":"Zoom", "Symbol":"(","Amount":2},
 {"Type":"Zoom", "Symbol":")","Amount":1},
+<<<<<<< HEAD
 {"Type":"Health", "Symbol":"+","Amount":5,"Audio": "Heal"},
 {"Type":"Goal", "Symbol":"="}, 
 {"Type":"WallEnemy", "Symbol":"|"}, 
 {"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
 {"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
 {"Type":"Powerup", "Symbol":"n","Amount": 15}
+=======
+{"Type":"Health", "Symbol":"+","Amount":5,"Audio": "Heal", "Sprite": "Medkit"},
+{"Type":"Goal", "Symbol":"="}, 
+{"Type":"WallEnemy", "Symbol":"|"}, 
+{"Type":"Destructable", "Symbol":"s","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
+{"Type":"Spawner", "Symbol":"c","Drop":"U","Amount": 3},
+{"Type":"Powerup", "Symbol":"n","Amount": 15, "Sprite": "Level_Up"}
+>>>>>>> a05959803d90d881d636748e2fca6fe017451b3f
 ]}

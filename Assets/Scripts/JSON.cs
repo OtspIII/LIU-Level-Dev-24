@@ -19,6 +19,7 @@ public class JSONData
     public float Lifetime;
     public char Bullet = '.';
     public char Drop = ' ';
+    public char Under = ' ';
     public string Tag = "";
     public string Toggle = "";
     public Targets Target;
@@ -32,6 +33,7 @@ public class JSONData
         if (source.Symbol == null)
         {
             Debug.Log("JSON CRASH: " + author + " / " + source + " / " + ta.text);
+            return;
         }
         Symbol = source.Symbol.Length > 0 ? source.Symbol[0] : ' ';
         Type = source.Type != null ? (SpawnThings)Enum.Parse(typeof(SpawnThings), source.Type) : SpawnThings.None;
@@ -42,7 +44,7 @@ public class JSONData
         if (source.Tag != null) Tag = source.Tag;
         if (source.Toggle != null) Toggle = source.Toggle;
         if (source.Special != null) Special = source.Special;
-        if (source.StartOff != null) StartOff = source.StartOff;
+        StartOff = source.StartOff;
         Amount = source.Amount;
         Size = source.Size;
         Lifetime = source.Lifetime;
@@ -50,6 +52,8 @@ public class JSONData
             Bullet = source.Bullet.Length > 0 ? source.Bullet[0] : '.';
         if (source.Drop != null)
             Drop = source.Drop.Length > 0 ? source.Drop[0] : ' ';
+        
+        Under = source.Under != null && source.Under.Length > 0 ? source.Under[0] : '⌂';
         Target = source.Target != null ? (Targets)Enum.Parse(typeof(Targets), source.Target) : Targets.None;
         if (source.Layer != null)
         {
@@ -80,6 +84,7 @@ public class JSONTemp
     public string Layer;
     public string Special;
 	public bool StartOff;
+    public string Under;
 }
 
 [System.Serializable]

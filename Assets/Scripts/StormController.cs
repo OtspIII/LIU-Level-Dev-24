@@ -45,22 +45,22 @@ public class StormController : TriggerableController
 	    other.gameObject.SendMessage("OnStormExit",SendMessageOptions.DontRequireReceiver);
     }
 
-    public override void Trigger(string type = "", GameObject target = null)
+    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
     {
 	    base.Trigger(type,target);
 	    switch (type)
 	    {
-		    case "Start":
+		    case TriggerMessages.Start:
 		    {
 			    Active = true;
 			    break;
 		    }
-		    case "Stop":case "Pause":
+		    case TriggerMessages.Stop:
 		    {
 			    Active = false;
 			    break;
 		    }
-		    case "Toggle":
+		    case TriggerMessages.Toggle:
 		    {
 			    Active = !Active;
 			    break;

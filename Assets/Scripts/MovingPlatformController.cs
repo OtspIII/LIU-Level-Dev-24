@@ -47,22 +47,22 @@ public class MovingPlatformController : TriggerableController
         Riders.Remove(other.transform);
     }
 
-    public override void Trigger(string type = "", GameObject target = null)
+    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
     {
         base.Trigger(type, target);
         switch (type)
         {
-            case "Begin":case "Start":
+            case TriggerMessages.Start:
             {
                 Active = true;
                 break;
             }
-            case "End":case "Stop":
+            case TriggerMessages.Stop:
             {
                 Active = false;
                 break;
             }
-            case "Toggle":
+            case TriggerMessages.Toggle:
             {
                 Active = !Active;
                 break;

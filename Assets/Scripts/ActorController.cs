@@ -273,12 +273,12 @@ public class ActorController : TriggerableController
         God.Actors.Remove(this);
     }
 
-    public override void Trigger(string type = "", GameObject target = null)
+    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
     {
         base.Trigger(type, target);
         switch (type)
         {
-            case "Die":case "Destroy":
+            case TriggerMessages.Die:
             {
                 Die(target != null ? target.GetComponent<ActorController>() : null);
                 break;

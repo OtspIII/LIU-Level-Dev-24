@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class TriggerableController : MonoBehaviour
 {
-    public virtual void Trigger(string type="",GameObject target=null)
+    public virtual void Trigger(TriggerMessages type=TriggerMessages.None,GameObject target=null)
     {
         switch (type)
         {
-            case "On":
-            case "TurnOn":
+            case TriggerMessages.Exist:
             {
                 gameObject.SetActive(true);
                 break;
             }
-            case "Off":
-            case "TurnOff":
+            case TriggerMessages.Vanish:
             {
                 gameObject.SetActive(false);
                 break;
             }
-            case "ToggleOn":
+            case TriggerMessages.ToggleExist:
             {
                 gameObject.SetActive(!gameObject.activeSelf);
                 break;

@@ -55,22 +55,22 @@ public class WeaponSpawnController : TriggerableController
     }
     
     
-    public override void Trigger(string type = "", GameObject target = null)
+    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
     {
         base.Trigger(type, target);
         switch (type)
         {
-            case "Spawn":
+            case TriggerMessages.Spawn:
             {
                 Spawn();
                 break;
             }
-            case "Start":
+            case TriggerMessages.Start:
             {
                 Active = true;
                 break;
             }
-            case "Stop":
+            case TriggerMessages.Stop:
             {
                 Active = false;
                 break;

@@ -31,7 +31,7 @@ public class DoorController : TriggerableController
 
         if (AutoClose && Detector != null)
         {
-            Detector.ExitMessage = "Close";
+            Detector.ExitMessage = TriggerMessages.Down;
         }
     }
 
@@ -44,24 +44,24 @@ public class DoorController : TriggerableController
         }
     }
 
-    public override void Trigger(string type = "", GameObject target = null)
+    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
     {
         //if (Body.transform.position != DesiredPos) return;
         switch (type)
         {
-            case "Open":case "Up":
+            case TriggerMessages.Up:
             {
                 DesiredPos = StartPos + Movement;
                 Open = true;
                 break;
             }
-            case "Close":case "Down":
+            case TriggerMessages.Down:
             {
                 DesiredPos = StartPos;
                 Open = true;
                 break;
             }
-            case "Toggle":
+            case TriggerMessages.Toggle:
             {
                 Open = !Open;
                 if (Open)

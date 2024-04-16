@@ -11,7 +11,7 @@ public class InteractiveController : TriggerZoneScript
     
     public override void Trigger(GameObject go)
     {
-        if (Alt && ExitMessage != "")
+        if (Alt && ExitMessage != TriggerMessages.None)
         {
             Untrigger(go);
         }

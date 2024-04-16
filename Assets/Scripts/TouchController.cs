@@ -33,11 +33,12 @@ public class TouchController : MonoBehaviour
         {
             case TouchThings.Lava:
             {
-                pc.TakeDamage((int)Amount);
+                
                 Vector3 dir = KBDir.magnitude == 0 ? (pc.transform.position - transform.position) : KBDir;
                 Vector3 kb = dir.normalized * KB;
                 if (kb.y <= 5) kb.y = 5;
                 pc.TakeKnockback(kb);
+                pc.TakeDamage((int)Amount);
                 break;
             }
             case TouchThings.Dizzy:

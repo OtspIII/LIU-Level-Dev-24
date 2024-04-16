@@ -28,6 +28,7 @@ public class FirstPersonController : ActorController
     public Vector2 DizzyDir;
     bool Crouching;
     public LayerMask InteractLayer;
+    public bool Doomed = false;
 
     public override void OnStart()
     {
@@ -143,6 +144,7 @@ public class FirstPersonController : ActorController
         InControl = true;
         SetGhostMode(false);
         transform.position = StartSpot;
+        Doomed = false;
     }
 
     public override void HandleMove(Vector3 move, bool jump, float xRot, float yRot, bool sprint)
@@ -211,11 +213,14 @@ public class FirstPersonController : ActorController
 
     public override void Die(ActorController source = null)
     {
+        if (Doomed) return;
         //base.Die(source);
         if(source != null)
             Debug.Log("KILLED BY " + source);
         SendMessage("DidDie",SendMessageOptions.DontRequireReceiver);
-        Reset();
+        // Reset();
+        InControl = false;
+        God.LM.DeathCutscene(this);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // SetGhostMode(true);
         // if(God.LM != null && (source is FirstPersonController))

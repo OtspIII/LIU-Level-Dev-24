@@ -114,6 +114,23 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public IEnumerator Fade(bool fadeOut = true,float speed=1)
+    {
+        float c = fadeOut ? 0.01f : 0.99f;
+        float dest = fadeOut ? 1.01f : -0.01f;
+        Overlay.gameObject.SetActive(true);
+        Overlay.color = new Color(0,0,0,c);
+        CenterText.text = "";
+        while (c > 0 && c < 1)
+        {
+            c = Mathf.Lerp(c, dest, Time.unscaledDeltaTime * speed);
+            c = Mathf.MoveTowards(c, dest, (speed * Time.unscaledDeltaTime) / 2);
+            Overlay.color = new Color(0,0,0,c);
+            yield return null;
+        }
+        Overlay.color = new Color(0,0,0,Mathf.Clamp(dest,0,1));
+    }
+    
     public IEnumerator YouWin(bool skipStart=false)
     {
         if (Won) yield break;
@@ -342,6 +359,19 @@ public class LevelManager : MonoBehaviour
     {
         if (Ruleset.Mode == GameModes.Elim) return false;
         return true;
+    }
+
+    public void DeathCutscene(FirstPersonController pc)
+    {
+        StartCoroutine(deathCutscene(pc));
+    }
+    public IEnumerator deathCutscene(FirstPersonController pc)
+    {
+        yield return StartCoroutine(Fade(true));
+        pc.Reset();
+        pc.InControl = false;
+        yield return StartCoroutine(Fade(false,4));
+        pc.InControl = true;
     }
 
     public void NoticeDeath(FirstPersonController pc,FirstPersonController source=null)

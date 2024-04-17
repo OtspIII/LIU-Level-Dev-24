@@ -21,6 +21,7 @@ public class TriggerZoneScript : TriggerScript
         {
             foreach (TriggerableController t in Targets)
             {
+                if (t == null) continue;
                 t.Trigger(EnterMessage, go);
             }
         }
@@ -46,6 +47,7 @@ public class TriggerZoneScript : TriggerScript
         if (ExitMessage == TriggerMessages.None) return;
         foreach (TriggerableController t in Targets)
         {
+            if (t == null) continue;
             t.Trigger(ExitMessage,go);
         }
 
@@ -58,7 +60,27 @@ public class TriggerZoneScript : TriggerScript
         yield return new WaitForSeconds(time);
         foreach (TriggerableController t in Targets)
         {
+            if (t == null) continue;
             t.Trigger(DelayMessage, go);
+        }
+    }
+
+    public override void Trigger(TriggerMessages type = TriggerMessages.None, GameObject target = null)
+    {
+        base.Trigger(type, target);
+        switch (type)
+        {
+            case TriggerMessages.Toggle:
+            case TriggerMessages.Start:
+            {
+                Trigger(target);
+                break; 
+            }
+            case TriggerMessages.Stop:
+            {
+                Untrigger(target);
+                break; 
+            }
         }
     }
 }

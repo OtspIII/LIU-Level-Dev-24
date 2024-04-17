@@ -8,6 +8,8 @@ public class TriggerZoneScript : TriggerScript
     public List<TriggerableController> Targets;
     [FormerlySerializedAs("EnterMessageX")] public TriggerMessages EnterMessage;
     [FormerlySerializedAs("ExitMessageX")] public TriggerMessages ExitMessage;
+    public TriggerMessages DelayMessage;
+    public float Delay = 0;
     public int Points = 0;
     [TextArea]
     public List<string> TextMessage;
@@ -21,6 +23,11 @@ public class TriggerZoneScript : TriggerScript
             {
                 t.Trigger(EnterMessage, go);
             }
+        }
+
+        if (DelayMessage != TriggerMessages.None)
+        {
+            God.LM.StartCoroutine(DelayTrigger(go, Delay));
         }
 
         if (TextMessage.Count > 0)
@@ -43,6 +50,16 @@ public class TriggerZoneScript : TriggerScript
         }
 
         
+    }
+    
+    
+    public virtual IEnumerator DelayTrigger(GameObject go,float time)
+    {
+        yield return new WaitForSeconds(time);
+        foreach (TriggerableController t in Targets)
+        {
+            t.Trigger(DelayMessage, go);
+        }
     }
 }
 

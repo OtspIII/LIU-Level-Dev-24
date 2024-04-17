@@ -28,12 +28,13 @@ public class TriggerZoneScript : TriggerScript
 
         if (DelayMessage != TriggerMessages.None)
         {
-            God.LM.StartCoroutine(DelayTrigger(go, Delay));
+            if(Delay > 0)
+                God.LM.StartCoroutine(DelayTrigger(go, Delay));
         }
 
         if (TextMessage.Count > 0)
         {
-            God.LM.StartCoroutine(God.LM.Cutscene(TextMessage, Points));
+            God.LM.StartCoroutine(God.LM.Cutscene(TextMessage, Points,this));
         }
         else if (Points > 0)
         {
@@ -54,9 +55,22 @@ public class TriggerZoneScript : TriggerScript
         
     }
     
+    public virtual void CutsceneEnd()
+    {
+        if (DelayMessage == TriggerMessages.None || Delay > 0) return;
+        foreach (TriggerableController t in Targets)
+        {
+            if (t == null) continue;
+            t.Trigger(DelayMessage,null);
+        }
+
+        
+    }
+    
     
     public virtual IEnumerator DelayTrigger(GameObject go,float time)
     {
+        Debug.Log("DT");
         yield return new WaitForSeconds(time);
         foreach (TriggerableController t in Targets)
         {

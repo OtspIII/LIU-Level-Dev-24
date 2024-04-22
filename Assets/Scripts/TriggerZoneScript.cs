@@ -8,6 +8,8 @@ public class TriggerZoneScript : TriggerScript
     public List<TriggerableController> Targets;
     [FormerlySerializedAs("EnterMessageX")] public TriggerMessages EnterMessage;
     [FormerlySerializedAs("ExitMessageX")] public TriggerMessages ExitMessage;
+    public TriggerMessages DelayMessage;
+    public float Delay = 0;
     public int Points = 0;
     [TextArea]
     public List<string> TextMessage;
@@ -19,13 +21,20 @@ public class TriggerZoneScript : TriggerScript
         {
             foreach (TriggerableController t in Targets)
             {
+                if (t == null) continue;
                 t.Trigger(EnterMessage, go);
             }
         }
 
+        if (DelayMessage != TriggerMessages.None)
+        {
+            if(Delay > 0)
+                God.LM.StartCoroutine(DelayTrigger(go, Delay));
+        }
+
         if (TextMessage.Count > 0)
         {
-            God.LM.StartCoroutine(God.LM.Cutscene(TextMessage, Points));
+            God.LM.StartCoroutine(God.LM.Cutscene(TextMessage, Points,this));
         }
         else if (Points > 0)
         {
@@ -39,10 +48,54 @@ public class TriggerZoneScript : TriggerScript
         if (ExitMessage == TriggerMessages.None) return;
         foreach (TriggerableController t in Targets)
         {
+            if (t == null) continue;
             t.Trigger(ExitMessage,go);
         }
 
         
+    }
+    
+    public virtual void CutsceneEnd()
+    {
+        if (DelayMessage == TriggerMessages.None || Delay > 0) return;
+        foreach (TriggerableController t in Targets)
+        {
+            if (t == null) continue;
+            t.Trigger(DelayMessage,null);
+        }
+
+        
+    }
+    
+    
+    public virtual IEnumerator DelayTrigger(GameObject go,float time)
+    {
+        Debug.Log("DT");
+        yield return new WaitForSeconds(time);
+        foreach (TriggerableController t in Targets)
+        {
+            if (t == null) continue;
+            t.Trigger(DelayMessage, go);
+        }
+    }
+
+    public override void Trigger(TriggerMessages type = TriggerMessages.None, GameObject target = null)
+    {
+        base.Trigger(type, target);
+        switch (type)
+        {
+            case TriggerMessages.Toggle:
+            case TriggerMessages.Start:
+            {
+                Trigger(target);
+                break; 
+            }
+            case TriggerMessages.Stop:
+            {
+                Untrigger(target);
+                break; 
+            }
+        }
     }
 }
 

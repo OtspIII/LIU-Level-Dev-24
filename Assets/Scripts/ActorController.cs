@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class ActorController : TriggerableController
 {
     [Header("Ignore Below")]
-    public Rigidbody RB;
+    
     public MeshRenderer MR;
     public Collider Coll;
 
@@ -24,7 +24,7 @@ public class ActorController : TriggerableController
     public ParticleSystem Muzzle;
     
     public Vector3 Fling;
-    public int HP;
+    
     public int Ammo;
 
     public bool InControl = true;
@@ -92,14 +92,7 @@ public class ActorController : TriggerableController
         return null;
     }
     
-    public virtual void Die(ActorController source=null)
-    {
-        Destroy(gameObject);
-        
-        // if(God.LM.Respawn(this))
-        //     Reset();
-        // else
-    }
+    
     
     public virtual void HandleMove(Vector3 move,bool jump, float xRot,float yRot,bool sprint)
     {
@@ -201,14 +194,10 @@ public class ActorController : TriggerableController
         return Floors.Count > 0 && Physics.Raycast(transform.position,transform.up * -1,1.5f);
     }
     
-    public virtual void TakeDamage(int amt, ActorController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null)
     {
         if (Invincible || amt <= 0) return;
-        HP -= amt;
-        if (HP <= 0)
-        {
-            Die(source);
-        }
+        base.TakeDamage(amt,source);
     }
     
     
@@ -221,9 +210,9 @@ public class ActorController : TriggerableController
         }
     }
     
-    public void TakeKnockback(Vector3 kb)
+    public override void TakeKnockback(Vector3 kb)
     {
-        RB.velocity = kb;
+        base.TakeKnockback(kb);
         Fling = new Vector3(kb.x,0,kb.z);
 //        Debug.Log("KB: " + kb);
         JustKnocked = true;
@@ -273,16 +262,4 @@ public class ActorController : TriggerableController
         God.Actors.Remove(this);
     }
 
-    public override void Trigger(TriggerMessages type=TriggerMessages.None, GameObject target = null)
-    {
-        base.Trigger(type, target);
-        switch (type)
-        {
-            case TriggerMessages.Die:
-            {
-                Die(target != null ? target.GetComponent<ActorController>() : null);
-                break;
-            }
-        }
-    }
 }

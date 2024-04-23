@@ -37,7 +37,7 @@ public class SpawnableController : MonoBehaviour
             
             Data = God.LM.GetItem(Name.ToString());
             //Debug.Log("SETUP! " + Name + " / " + Data.Text + " / " + God.LM?.Ruleset?.Author);
-            Desc.text = Name.ToString();
+            if(Desc != null) Desc.text = Name.ToString();
             SetColor();
         }
     }
@@ -45,8 +45,8 @@ public class SpawnableController : MonoBehaviour
     public void SetColor()
     {   
         IsSetup = true;
-        Desc.text = GetName();
-        if (Data.Color != IColors.None)
+        if(Desc != null) Desc.text = GetName();
+        if (Data.Color != IColors.None && MR != null)
         {
             MR.material = God.Library.GetColor(Data.Color);
         }
@@ -78,12 +78,13 @@ public class SpawnableController : MonoBehaviour
             }
             case ItemTypes.Points:
             {
-                //##pc.GetPoint((int)amt);
-                if (Destination != Vector3.zero)
-                {
-                    pc.transform.position = God.LM.transform.position + Destination;
-                    //##pc.SetPosClientRPC(God.LM.transform.position + Destination);
-                }
+                God.LM.GetPoint((int)Data.Amount);
+                // pc.GetPoint((int)amt);
+                // if (Destination != Vector3.zero)
+                // {
+                //     pc.transform.position = God.LM.transform.position + Destination;
+                //     //##pc.SetPosClientRPC(God.LM.transform.position + Destination);
+                // }
                 break;
             }
             case ItemTypes.Jump:

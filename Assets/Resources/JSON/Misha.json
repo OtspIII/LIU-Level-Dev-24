@@ -6,7 +6,7 @@
   "Actors": [
     {
       "Name": "Player",
-      "HP": 0,
+      "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
       "Weapon": ""
@@ -104,17 +104,6 @@
       "Type": "Healing",
       "Amount": 50,
       "Color": "Green"
-    },
-    {
-      "Text": "Jump",
-      "Type": "Jump",
-      "Amount": 10,
-      "Color": "Blue"
-    },
-    {
-      "Text": "Teleporter",
-      "Type": "Teleport",
-      "Color": "White"
     }
   ]
 }

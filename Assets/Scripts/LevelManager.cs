@@ -154,20 +154,20 @@ public class LevelManager : MonoBehaviour
         {
             yield return null;
         }
-        EndCutscene();
+        EndCutscene(null);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //MakeAnnounce("YOU WIN");
     }
 
-    public IEnumerator Cutscene(string text, int points)
+    public IEnumerator Cutscene(string text, int points,TriggerZoneScript src=null)
     {
         yield return StartCoroutine(Cutscene(new List<string>() { text }, points));
     }
     
-    public IEnumerator Cutscene(List<string> text, int points)
+    public IEnumerator Cutscene(List<string> text, int points,TriggerZoneScript src=null)
     {
         if (MidCutscene) yield break;
-        StartCutscene();
+        StartCutscene(src);
         Overlay.gameObject.SetActive(true);
         Overlay.color = new Color(0,0,0,0);
         CenterText.text = "";
@@ -207,6 +207,8 @@ public class LevelManager : MonoBehaviour
         }
         Overlay.color = new Color(0,0,0,1);
         c = 1;
+        if (src != null)
+            src.CutsceneEnd();
         while (c > 0)
         {
             c = Mathf.Lerp(c, -0.01f, Time.unscaledDeltaTime);
@@ -215,7 +217,7 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
-        EndCutscene();
+        EndCutscene(src);
     }
 
     public IEnumerator TextReveal(string txt,float speed=0.05f)
@@ -419,13 +421,13 @@ public class LevelManager : MonoBehaviour
     //         Teams[best].Add(pc);
     //     return best;
     // }
-    public void StartCutscene()
+    public void StartCutscene(TriggerZoneScript src)
     {
         MidCutscene = true;
         Time.timeScale = 0;
     }
 
-    public void EndCutscene()
+    public void EndCutscene(TriggerZoneScript src)
     {
         MidCutscene = false;
         Time.timeScale = 1;

@@ -1,48 +1,120 @@
 {
-  "OneWayToggles": [],
-  "BGColor": "",
+  "Gravity": 1,
+  "Waves": 0,
+  "PointsToWin":1,
+  "TextSpeed": 0.05,
+  "Actors": [
+    {
+      "Name": "Player",
+      "HP": 5,
+      "MoveSpeed": 5,
+      "SprintSpeed": 2,
+      "Weapon": ""
+    },
+    {
+      "Name": "Amogus",
+      "HP": 20,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Sword"
+    }
+  ],
+  "Weapons": [
+    {
+      "Color":"Yellow",
+      "Text": "Pistol",
+      "Damage": 10,
+      "RateOfFire":0.5,
+      "Accuracy":1,
+      "Knockback":10
+    },
+    {
+      "Color":"Blue",
+      "Text": "Rifle",
+      "Type": "Hitscan",
+      "Damage": 10,
+      "Ammo": 30,
+      "RateOfFire":0.2
+    },
+    {
+      "Color":"Red",
+      "Text": "Rocket",
+      "Damage": 10,
+      "Ammo": 3,
+      "RateOfFire":1,
+      "Accuracy":2,
+      "Speed":30,
+      "ExplodeRadius":3,
+      "ExplodeDamage":50,
+      "SelfDamage":true,
+      "Knockback":10
+    },
+    {
+      "Color":"Pink",
+      "Text": "Grenade",
+      "Damage": 20,
+      "Ammo": 10,
+      "RateOfFire":0.5,
+      "Accuracy":5,
+      "Speed":20,
+      "Gravity":2,
+      "ExplodeRadius":2,
+      "ExplodeDamage":20,
+      "SelfDamage":true,
+      "Knockback":1,
+      "Bounce":2.5,
+      "Lifetime":3,
+      "Type":"Grenade"
+    },
+    {
+      "Color":"Green",
+      "Text": "Shotgun",
+      "Damage": 5,
+      "Ammo": 10,
+      "RateOfFire":0.4,
+      "Accuracy":15,
+      "Shots":5
+    },
+    {
+      "Color":"White",
+      "Text": "Uzi",
+      "Damage": 5,
+      "Ammo": 90,
+      "RateOfFire":0.1,
+      "Accuracy":10
+    },
+    {
+      "Color":"Orange",
+      "Text": "Sword",
+      "Damage": 25,
+      "Ammo": 90,
+      "RateOfFire":0.5,
+      "Type": "Melee"
+    }
+  ],
   "Items":[
-{"Type":"Player", "Sprite":"PlayerTopDown", "Symbol":"P"},
-{"Type":"Enemy", "Symbol":"G","Sprite":"GreenLeaper", "Color":"Green"},
-{"Type":"Enemy", "Symbol":"R","Sprite":"RedShotgun", "Color":"Red"},
-{"Type":"Enemy", "Symbol":"Y","Sprite":"YellowShooter", "Color":"Yellow"},
-{"Type":"Enemy", "Symbol":"I", "Color":"Pink"},
-{"Type":"Enemy", "Symbol":"O","Sprite":"MiniBoss", "Color":"Orange"},
-{"Type":"Enemy", "Symbol":"B","Sprite":"BlueLeaper", "Color":"Blue"},
-{"Type":"Enemy", "Symbol":"U", "Sprite":"SniperPurple", "Color":"Purple"},
-{"Type":"Enemy", "Symbol":"W", "Color":"White"},
-{"Type":"Enemy", "Symbol":"E", "Sprite":"EbonyShooter", "Color":"Ebony"},
-{"Type":"Enemy", "Symbol":"T", "Color":"Tan"},
-{"Type":"Enemy", "Symbol":"A", "Color":"Algea"},
-{"Type":"Enemy", "Symbol":"S", "Color":"Slate"},
-{"Type":"Wall", "Symbol":"x"},
-{"Type":"Floor", "Symbol":" "},
-{"Type":"Lava", "Symbol":"l"},
-{"Type":"ConveyorL", "Symbol":"<"},
-{"Type":"ConveyorR", "Symbol":">"},
-{"Type":"ConveyorU", "Symbol":"^"},
-{"Type":"ConveyorD", "Symbol":"v"},
-{"Type":"Key1", "Symbol":"1"},
-{"Type":"Door1", "Symbol":"!"},
-{"Type":"Key2", "Symbol":"2"},
-{"Type":"Door2", "Symbol":"@"},
-{"Type":"Key3", "Symbol":"3"},
-{"Type":"Door3", "Symbol":"#"},
-{"Type":"Event", "Symbol":"h","Sprite":"Hi","Color":"Purple","Text":"And that's how it all\nhappened! ;)","Audio":"Yell"},
-  {"Type":"Event", "Symbol":"$","Sprite":"Hi","Color":"Purple","Toggle": "ABC"},
-{"Type":"Destructable", "Symbol":"d","Color":"WallWhite","Amount":3}, 
-{"Type":"DestructableE", "Symbol":"e","Color":"WallWhite","Amount":3},
-{"Type":"Bomb", "Symbol":"b","Sprite":"Bomb","Color":"Pink","Size":0.5,"Drop":"~"},
-{"Type":"Music", "Symbol":"m","Audio":"Yell"},
-{"Type":"Bullet", "Symbol":".","Size":0.2},
-{"Type":"Explosion", "Symbol":"~","Amount":5}, 
-    {"Type":"Explosion", "Symbol":"`","Amount":3},
-{"Type":"Zoom", "Symbol":"(","Amount":2},
-{"Type":"Zoom", "Symbol":")","Amount":1},
-{"Type":"Health", "Symbol":"+","Amount":5,"Audio": "Heal"},
-{"Type":"Goal", "Symbol":"="}, 
-{"Type":"WallEnemy", "Symbol":"|"}, 
-{"Type":"Destructable", "Symbol":"s","Sprite":"WallCracked","Color":"WallWhite","Amount":1, "Special": "BulletImmune"},
-{"Type":"Spawner", "Symbol":"c","Drop":"Y","Amount": 3},
-{"Type":"Powerup", "Symbol":"n","Amount": 10}
-]}
+    {
+      "Text": "1 Point",
+      "Type": "Points",
+      "Amount": 1,
+      "Color": "Yellow"
+    },
+    {
+      "Text": "Health",
+      "Type": "Healing",
+      "Amount": 50,
+      "Color": "Green"
+    },
+    {
+      "Text": "Jump",
+      "Type": "Jump",
+      "Amount": 10,
+      "Color": "Blue"
+    },
+    {
+      "Text": "Teleporter",
+      "Type": "Teleport",
+      "Color": "White"
+    }
+  ]
+}

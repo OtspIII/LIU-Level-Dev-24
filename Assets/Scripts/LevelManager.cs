@@ -1,160 +1,457 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TMPro;
+using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
-public class LevelManager : GameManager
+public class LevelManager : MonoBehaviour
 {
-    public Dictionary<string,List<List<string>>> Levels = new Dictionary<string, List<List<string>>>();
-    public List<SpawnPair> PrefabPairs;
+    public string Creator;
+    public string Name;
+    public bool UseJSON = false;
+    public JSONCreator Ruleset;
+    public List<PlayerSpawnController> PSpawns;
+    public List<ItemSpawnController> ISpawns;
+    public List<WeaponSpawnController> WSpawns;
+    public List<NPCSpawner> NPCSpawns;
+    public PlayerSpawnController LastPS;
+    public List<string> Announces;
+    public Dictionary<string, JSONActor> Actors = new Dictionary<string, JSONActor>();
+    public Dictionary<string, JSONItem> Items = new Dictionary<string, JSONItem>();
+    public Dictionary<string, JSONWeapon> Weapons = new Dictionary<string, JSONWeapon>();
+    public List<FirstPersonController> AlivePlayers = new List<FirstPersonController>();
+    public List<GameObject> Spawned;
+    public bool RoundComplete;
+    public Dictionary<IColors,List<FirstPersonController>> Teams = new Dictionary<IColors, List<FirstPersonController>>();
+    public int CurrentWave = 0;
+    public int Points = 0;
+    public Image Overlay;
+    public TextMeshProUGUI CenterText;
+    bool Won = false;
+    public static bool MidCutscene = false;
+    public Image Crosshair;
+    public Sprite CrosshairPlus;
+    Sprite CrosshairBasic;
 
-//    public GameObject WallPrefab;
-//    public GameObject FloorPrefab;
-//    public GameObject LavaPrefab;
-//    public GameObject UBeltPrefab;
-//    public GameObject DBeltPrefab;
-//    public GameObject LBeltPrefab;
-//    public GameObject RBeltPrefab;
-//    public GameObject Key1Prefab;
-//    public GameObject Door1Prefab;
-//    public GameObject Key2Prefab;
-//    public GameObject Door2Prefab;
-//    public GameObject Key3Prefab;
-//    public GameObject Door3Prefab;
-    
-    protected override void LoadAssets()
+    void Awake()
     {
-        foreach (SpawnPair sp in PrefabPairs)
-            Prefabs.Add(sp.A,sp.B);
-        GameManager.LevelMode = true;
-        base.LoadAssets();
-        TextAsset[] levels = Resources.LoadAll<TextAsset>("Levels");
-        foreach (TextAsset ta in levels)
-        {
-            Levels.Add(ta.name,new List<List<string>>());
-            string[] lvlStr = ta.text.Split('\n');
-            List<string> current = new List<string>();
-            foreach (string str in lvlStr)
-            {
-                if (str.Length <= 2 && current.Count > 0)
-                {
-                    Levels[ta.name].Add(current);
-                    current = new List<string>();
-                }
-                else if (str.Length > 2)
-                    current.Add(str);
-            }
-            if (current.Count > 0)
-            {
-                Levels[ta.name].Add(current);
-            }
-        }
+        God.LM = this;
+        MidCutscene = false;
+        CrosshairBasic = Crosshair.sprite;
+    }
 
-        TextAsset[] jsons = Resources.LoadAll<TextAsset>("JSON");
-        foreach (TextAsset json in jsons)
+    void Start()
+    {
+        if (!UseJSON) return;
+        string cr = Creator != "" ? Creator : "Misha";
+        if (!God.LS.Rulesets.ContainsKey(cr)) cr = "Misha";
+        Ruleset = God.LS.Rulesets[cr];
+        if (Ruleset.Gravity > 0)
         {
-            Datas.Add(json.name,new Dictionary<char, JSONData>());
-            JSONTemp[] j = JsonHelper.FromJson<JSONTemp>(json.text);
+            Physics.gravity = new Vector3(0,-9.81f,0) * Ruleset.Gravity;
+        }
+        //Debug.Log("WEAPONS: " + Ruleset.Weapons.Count + " / " + cr);
+        foreach(JSONActor i in Ruleset.Actors)
+            Actors.Add(i.Name,i);
+        foreach(JSONItem i in Ruleset.Items)
+            Items.Add(i.Text,i);
+        foreach(JSONWeapon i in Ruleset.Weapons)
+            Weapons.Add(i.Text,i);
+        foreach (FirstPersonController pc in God.Players)
+        {
+            //pc.ImprintRules(Ruleset);
+            AlivePlayers.Add(pc);
+        }
             
-            foreach (JSONTemp t in j)
+    }
+
+    void Update()
+    {
+        string txt = "";
+        foreach(string a in Announces)
+        {
+            if (txt != "") txt += "\n";
+            txt += a;
+        }
+        God.UpdateText.text = txt;
+
+        if (Won) return;
+        if (Ruleset.Waves > 0 && CurrentWave != -1)
+        {
+            bool any = false;
+            foreach (NPCSpawner sp in NPCSpawns)
             {
-                //Debug.Log("X: " + json.name + " / " + t.Symbol);
-                JSONData data = new JSONData(t,json.name,json);
-                if (data.Type == SpawnThings.Bullet)
+                if (sp.Children.Count > 0)
                 {
-                    if(!Bullets.ContainsKey(json.name)) Bullets.Add(json.name,new Dictionary<char, JSONData>());
-                    Bullets[json.name].Add(data.Symbol,data);
+                    any = true;
+                    break;
                 }
-				if(Datas[json.name].ContainsKey(data.Symbol)) Debug.Log("DOUBLE SYMBOL: " + json.name + " / " + data.Symbol);
-                Datas[json.name].Add(data.Symbol,data);
+            }
+            if (!any)
+            {
+                CurrentWave++;
+                if (CurrentWave >= Ruleset.Waves)
+                {
+                    StartCoroutine(YouWin());
+                    // MakeAnnounce("YOU WIN");
+                    CurrentWave = -1;
+                }
+                else
+                {
+                    foreach (NPCSpawner sp in NPCSpawns)
+                    {
+                        sp.Spawn();
+                    }
+                }
             }
         }
     }
 
-    public override void PickCreator()
+    public IEnumerator Fade(bool fadeOut = true,float speed=1)
     {
-        
-    }
-
-    public List<string> GetLevel(string who, int lvl)
-    {
-        if (!Levels.ContainsKey(who) || Levels[who].Count <= lvl - 1) return null;
-        return Levels[who][lvl-1];
-    }
-
-    public override void SpawnLevel(int level)
-    {
-        StartCoroutine(LevelBuild(level));
-    }
-
-    public IEnumerator LevelBuild(int level)
-    {
-        foreach (ThingController tile in Tiles)
+        float c = fadeOut ? 0.01f : 0.99f;
+        float dest = fadeOut ? 1.01f : -0.01f;
+        Overlay.gameObject.SetActive(true);
+        Overlay.color = new Color(0,0,0,c);
+        CenterText.text = "";
+        while (c > 0 && c < 1)
         {
-            Destroy(tile.gameObject);
+            c = Mathf.Lerp(c, dest, Time.unscaledDeltaTime * speed);
+            c = Mathf.MoveTowards(c, dest, (speed * Time.unscaledDeltaTime) / 2);
+            Overlay.color = new Color(0,0,0,c);
+            yield return null;
         }
-        Tiles.Clear();
-        PC.Reset();
-        foreach(EnemyController e in AllEnemies)
-            e.Reset();
-        CameraController.Me.SetZoom(1);
-        Tags.Clear();
-        foreach(BulletController bc in GameObject.FindObjectsOfType<BulletController>())
-            Destroy(bc.gameObject);
-        
-        if (level > 1)
-            yield return new WaitForSeconds(0.5f);
-        AnnounceText.text = "LEVEL " + level + "\n\n"+Creator;
-        LevelText.text = "Level " + level;
-        
-        string[] creators = Levels.Keys.ToArray();
-        string chosen = Creator != "" ? Creator : creators[Random.Range(0, creators.Length)];
-        CreditsText.text = chosen;
-        List<string> lvl = GetLevel(chosen,level);
-        if (lvl == null)
+        Overlay.color = new Color(0,0,0,Mathf.Clamp(dest,0,1));
+    }
+    
+    public IEnumerator YouWin(bool skipStart=false)
+    {
+        if (Won) yield break;
+        Won = true;
+        Overlay.gameObject.SetActive(true);
+        Overlay.color = new Color(0,0,0,0);
+        CenterText.text = "";
+        float c = 0;
+        if (skipStart) c = 1;
+        while (c < 1)
         {
-            SceneManager.LoadScene("YouWin");
+            c = Mathf.Lerp(c, 1.01f, Time.unscaledDeltaTime);
+            c = Mathf.MoveTowards(c, 1.01f, Time.unscaledDeltaTime / 2);
+            Overlay.color = new Color(0,0,0,c);
+            yield return null;
+        }
+        Overlay.color = new Color(0,0,0,1);
+        yield return StartCoroutine(TextReveal("YOU WIN",0.15f));
+        // CenterText.text = "YOU WIN";
+        while (!Input.GetKeyDown(KeyCode.Space) && !Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+        EndCutscene(null);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //MakeAnnounce("YOU WIN");
+    }
+
+    public IEnumerator Cutscene(string text, int points,TriggerZoneScript src=null)
+    {
+        yield return StartCoroutine(Cutscene(new List<string>() { text }, points));
+    }
+    
+    public IEnumerator Cutscene(List<string> text, int points,TriggerZoneScript src=null)
+    {
+        if (MidCutscene) yield break;
+        StartCutscene(src);
+        Overlay.gameObject.SetActive(true);
+        Overlay.color = new Color(0,0,0,0);
+        CenterText.text = "";
+        float c = 0;
+        while (c < 1)
+        {
+            c = Mathf.Lerp(c, 1.01f, Time.unscaledDeltaTime);
+            c = Mathf.MoveTowards(c, 1.01f, Time.unscaledDeltaTime);
+            Overlay.color = new Color(0,0,0,c);
+            yield return null;
+        }
+        Overlay.color = new Color(0,0,0,1);
+        // if (bg != null)
+        // {
+        //     Overlay.color = new Color(1,1,1);
+        //     Overlay.sprite = bg;
+        // }
+        foreach(string txt in text)
+        {
+            yield return StartCoroutine(TextReveal(txt,Ruleset.TextSpeed));
+            // CenterText.text = txt;
+            while (!Input.GetKeyDown(KeyCode.Space) && !Input.GetMouseButtonDown(0))
+            {
+                yield return null;
+            }
+
+            yield return null;
+        }
+        CenterText.text = "";
+        if(points != 0)
+            GetPoint(points,false);
+        if (Points >= Ruleset.PointsToWin)
+        {
+            
+            yield return StartCoroutine(YouWin(true));
             yield break;
         }
-
-        for (int y = 0; y < lvl.Count; y++)
+        Overlay.color = new Color(0,0,0,1);
+        c = 1;
+        if (src != null)
+            src.CutsceneEnd();
+        while (c > 0)
         {
-            for (int x = 0; x < lvl[y].Length; x++)
+            c = Mathf.Lerp(c, -0.01f, Time.unscaledDeltaTime);
+            c = Mathf.MoveTowards(c, -0.01f, Time.unscaledDeltaTime);
+            Overlay.color = new Color(0,0,0,c);
+            yield return null;
+        }
+
+        EndCutscene(src);
+    }
+
+    public IEnumerator TextReveal(string txt,float speed=0.05f)
+    {
+        float time = 0;
+        for (int n = 0; n <= txt.Length; n++)
+        {
+            if (n < txt.Length && txt.Substring(n, 1) == "<")
             {
-                Vector3 pos = new Vector3(x,-y,0);
-                char tile = lvl[y][x];
-                SpawnThing(tile,chosen,pos);
-                
+                while (txt.Substring(n, 1) != ">" && n <= txt.Length)
+                    n++;
+                n++;
+            }
+            CenterText.text = txt.Substring(0, n);
+            time = speed;
+            while (time > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                {
+                    speed = 0;
+                    time = 0;
+                }
+                time -= Time.unscaledDeltaTime;
+                yield return null;
             }
         }
-        yield return new WaitForSeconds(0.5f);
-        PC.Reset();
-        AnnounceText.text = "";
-        Paused = false;
     }
 
-    public override IEnumerator gameOver()
+    public PlayerSpawnController GetPSpawn(FirstPersonController pc)
     {
-        
-        AnnounceText.text = "GAME OVER\n\nLEVEL " + Level + "\n\n"+Creator+"\n\nHit 'x' To Continue";
-        while(!Input.GetKeyDown(KeyCode.X))
-            yield return null;
-        PC.Reset();
-        PC.HP = PC.MaxHP;
-        Paused = true;
-        Victory = false;
-        GoalExists = false;
-        SpawnLevel(Level);
-        
+        if (PSpawns.Count == 0) return null;
+        PlayerSpawnController r = PSpawns[Random.Range(0, PSpawns.Count)];
+        if (LastPS != null) PSpawns.Add(LastPS);
+        if(PSpawns.Count > 1) PSpawns.Remove(r);
+        LastPS = r;
+        return r;
     }
-}
 
+    public void AwardPoint(FirstPersonController who, int amt = 1, string targ="")
+    {
+//         if (who.Team != IColors.None)
+//         {
+//             IColors team = who.Team;
+//             if (!God.RM.TeamScores.ContainsKey(team)) God.RM.TeamScores.Add(team, amt);
+//             else God.RM.TeamScores[team] += amt;
+//             if(God.RM.TeamScores[team] >= Ruleset.PointsToWin) SetWinner(team);
+//             string teamtxt = who.Name.Value.ToString()  + " <"+team.ToString()+"> ";
+//             if (targ != "") teamtxt += " > " + targ;
+//             teamtxt += " ("+God.RM.TeamScores[team]+")";
+//             MakeAnnounce(teamtxt);
+// //            StartCoroutine(Announce(teamtxt));
+//             return;
+//         }
+//         if (!God.RM.Scores.ContainsKey(who)) God.RM.Scores.Add(who, amt);
+//         else God.RM.Scores[who] += amt;
+//         if(God.RM.Scores[who] >= Ruleset.PointsToWin) SetWinner(who);
+//         string txt = who.Name.Value.ToString();
+//         if (targ != "") txt += " > " + targ;
+//         txt += " ("+God.RM.Scores[who]+")";
+//         MakeAnnounce(txt);
+    }
 
-[System.Serializable]
-public class SpawnPair
-{
-    public SpawnThings A;
-    public ThingController B;
+    public void MakeAnnounce(string txt, bool big = false)
+    {
+        if (big)
+        {
+            God.LS.StartCoroutine(Winner(txt));
+        }
+        else
+            StartCoroutine(Announce(txt));
+
+        God.RM?.AlertClientRPC(txt, big);
+    }
+    
+    public IEnumerator Announce(string txt)
+    {
+        Announces.Add(txt);
+        yield return new WaitForSeconds(3);
+        Announces.Remove(txt);
+    }
+
+    public void SetWinner(FirstPersonController who)
+    {
+//        Debug.Log(who.Name.Value + " Wins!");
+//        God.LS.StartCoroutine(Winner(who.Name.Value.ToString()));
+        // MakeAnnounce(who.Name.Value.ToString() + " WINS!", true);
+        RoundComplete = true;
+    }
+    
+    public void SetWinner(IColors team)
+    {
+//        Debug.Log(who.Name.Value + " Wins!");
+//        God.LS.StartCoroutine(Winner(team.ToString()));
+        MakeAnnounce(team.ToString() + " WINS!", true);
+        RoundComplete = true;
+    }
+    
+    public IEnumerator Winner(string who)
+    {
+        God.AnnounceText.text = who;
+        if (NetworkManager.Singleton.IsServer)
+            God.LS.PickNextLevel();
+        yield return new WaitForSeconds(3);
+        God.RM.Scores.Clear();
+        God.AnnounceText.text = "";
+        God.LS.StartLevel();
+    }
+
+    public JSONItem GetItem(string n)
+    {
+        if (Items.ContainsKey(n)) return Items[n];
+        if (n == "" && Ruleset.Items.Count > 0) return Ruleset.Items[Random.Range(0, Ruleset.Items.Count)];
+        JSONTempItem r = new JSONTempItem();
+        r.Text = "Useless Item";
+        return new JSONItem(r);
+    }
+
+    public JSONActor GetActor(string n)
+    {
+        if (Actors.ContainsKey(n)) return Actors[n];
+        Debug.Log("ACTOR NOT FOUND: " + n + " / " + Ruleset.Actors.Count + " / " + Actors.Keys.Count);
+        if (Ruleset.Actors.Count > 0) return Ruleset.Actors[0];
+        JSONTempActor a = new JSONTempActor();
+        a.HP = 100;
+        a.MoveSpeed = 10;
+        return new JSONActor(a);
+    }
+    
+    public JSONWeapon GetWeapon(string n)
+    {
+        if (Weapons.ContainsKey(n)) return Weapons[n];
+        return null;
+        // if (Ruleset.Weapons.Count > 0) return Ruleset.Weapons[0];
+        // JSONTempWeapon wpn = new JSONTempWeapon();
+        // wpn.Damage = 10;
+        // wpn.Text = "GENERIC WEAPON";
+        // return new JSONWeapon(wpn);
+    }
+
+    public bool Respawn(FirstPersonController pc)
+    {
+        if (Ruleset.Mode == GameModes.Elim) return false;
+        return true;
+    }
+
+    public void DeathCutscene(FirstPersonController pc)
+    {
+        StartCoroutine(deathCutscene(pc));
+    }
+    public IEnumerator deathCutscene(FirstPersonController pc)
+    {
+        yield return StartCoroutine(Fade(true));
+        pc.Reset();
+        pc.InControl = false;
+        yield return StartCoroutine(Fade(false,4));
+        pc.InControl = true;
+    }
+
+    public void NoticeDeath(FirstPersonController pc,FirstPersonController source=null)
+    {
+        if(source != null && Ruleset.Mode == GameModes.Deathmatch)AwardPoint(source,1);
+        AlivePlayers.Remove(pc);
+        if (Ruleset.Mode == GameModes.Elim)
+        {
+            if (AlivePlayers.Count == 1)
+            {
+                FirstPersonController winner = AlivePlayers[0];
+                AwardPoint(winner);
+                if (RoundComplete) return;
+            }
+            if (AlivePlayers.Count <= 1)
+            {
+                AlivePlayers.Clear();
+                foreach (FirstPersonController dead in God.Players)
+                {
+                    dead.Reset();
+                    AlivePlayers.Add(dead);
+                }
+            }
+        }
+    }
+
+    // public IColors PickTeam(FirstPersonController pc)
+    // {
+    //     if (Ruleset.Teams.Count <= 1) return IColors.None;
+    //     int amt = 999;
+    //     IColors best = IColors.None;
+    //     foreach (IColors c in Ruleset.Teams)
+    //     {
+    //         if(!Teams.ContainsKey(c)) Teams.Add(c,new List<FirstPersonController>());
+    //         if (Teams[c].Contains(pc)) return c;
+    //         int mem = Teams[c].Count;
+    //         if (mem < amt)
+    //         {
+    //             best = c;
+    //             amt = mem;
+    //         }
+    //     }
+    //
+    //     if (Teams.ContainsKey(best))
+    //         Teams[best].Add(pc);
+    //     return best;
+    // }
+    public void StartCutscene(TriggerZoneScript src)
+    {
+        MidCutscene = true;
+        Time.timeScale = 0;
+    }
+
+    public void EndCutscene(TriggerZoneScript src)
+    {
+        MidCutscene = false;
+        Time.timeScale = 1;
+    }
+
+    public void RemovePlayer(FirstPersonController pc)
+    {
+        AlivePlayers.Remove(pc);
+        foreach (IColors c in Teams.Keys)
+            Teams[c].Remove(pc);
+    }
+
+    public void GetPoint(int amt,bool checkWin=true)
+    {
+        Points += amt;
+        if (Points >= Ruleset.PointsToWin && !Won && checkWin)
+        {
+            StartCoroutine(YouWin());
+            // MakeAnnounce("YOU WIN");
+        }
+    }
+
+    public void SetCrosshair(bool fancy)
+    {
+        Crosshair.sprite = fancy ? CrosshairPlus : CrosshairBasic;
+    }
 }

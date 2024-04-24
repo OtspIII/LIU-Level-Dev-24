@@ -21,7 +21,7 @@ public class TriggerZoneScript : TriggerScript
         base.Trigger(go);
         SendMessage(MessageTiming.Enter);
 
-        
+        SendMessage(MessageTiming.Delay);
 
         if (TextMessage.Count > 0)
         {
@@ -96,7 +96,11 @@ public class TriggerZoneScript : TriggerScript
             if(m.Timing != MessageTiming.Delay)
                 m.Target.Trigger(m.Message);
             else
+            {
+                Debug.Log("DELAY: " + m.Delay + " / " + m.Message + " / " + m.Target);
                 God.LM.StartCoroutine(DelayTrigger(go, m.Delay,m.Message,new List<TriggerableController>(){m.Target}));
+            }
+                
         }
     }
     
@@ -110,10 +114,11 @@ public class TriggerZoneScript : TriggerScript
     
     public virtual IEnumerator DelayTrigger(GameObject go,float time,TriggerMessages m,List<TriggerableController> targs)
     {
-        Debug.Log("DT");
+        Debug.Log("DT: " + time + " / " + m + " / " + targs.Count);
         yield return new WaitForSeconds(time);
         foreach (TriggerableController t in targs)
         {
+            Debug.Log("BOOM: " + t);
             if (t == null) continue;
             t.Trigger(m, go);
         }

@@ -2023,7 +2023,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: Delay
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: ExitMessage
@@ -2031,11 +2031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: DelayMessage
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: EnterMessage
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: Targets.Array.size
@@ -2045,6 +2045,14 @@ PrefabInstance:
       propertyPath: Targets.Array.data[0]
       value: 
       objectReference: {fileID: 3353695365472235830}
+    - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
+      propertyPath: TextMessage.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260444781424641847, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
+      propertyPath: TextMessage.Array.data[0]
+      value: zoom
+      objectReference: {fileID: 0}
     - target: {fileID: 2218508709970665127, guid: f139b743d1bd0df4f808f2a99e6505d5, type: 3}
       propertyPath: m_Name
       value: Lever

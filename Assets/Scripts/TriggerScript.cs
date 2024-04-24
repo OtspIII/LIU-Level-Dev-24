@@ -28,6 +28,7 @@ public class TriggerScript : TriggerableController
         Trigger(go);
     }
 
+
     void OnTriggerExit(Collider other)
     {
         GameObject go = other.attachedRigidbody.gameObject;

@@ -28,4 +28,20 @@ public class InteractiveController : TriggerZoneScript
         }
         Alt = !Alt;
     }
+
+    public override IEnumerator DelayTrigger(GameObject go, float time, TriggerMessages m,List<TriggerableController> targs)
+    {
+        yield return new WaitForSeconds(time);
+        if (Alt && m == ExitMessage)
+        {
+            if(ResetAnim != "")
+                Anim.Play(ResetAnim);
+            Alt = false;
+        }
+        foreach (TriggerableController t in targs)
+        {
+            t.Trigger(m, go);
+        }
+    }
+    
 }

@@ -95,9 +95,9 @@ public class NPCController : ActorController
         HandleMove(transform.forward, false, 0, 0, false);
     }
 
-    public override void TakeDamage(int amt, ActorController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null)
     {
-        if (source != null) Attacking = source;
+        if (source != null && source is ActorController) Attacking = (ActorController)source;
         base.TakeDamage(amt, source);
     }
 

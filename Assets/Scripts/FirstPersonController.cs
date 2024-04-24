@@ -211,7 +211,7 @@ public class FirstPersonController : ActorController
         }
     }
 
-    public override void Die(ActorController source = null)
+    public override void Die(TriggerableController source = null)
     {
         if (Doomed) return;
         //base.Die(source);

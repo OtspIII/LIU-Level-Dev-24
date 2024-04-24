@@ -9,7 +9,8 @@ public class FurnitureController : ActorController
     public float ExplosionSize = 0;
     public float ExplosionDamage = 0;
     public float ExplosionKnockback = 0;
-    public GameObject Drop; 
+    public GameObject Drop;
+    private bool Doomed = false;
 
     public override void OnStart()
     {
@@ -22,8 +23,10 @@ public class FurnitureController : ActorController
         return MaxHP;
     }
 
-    public override void Die(ActorController source = null)
+    public override void Die(TriggerableController source = null)
     {
+        if (Doomed) return;
+        Doomed = true;
         if (Drop != null)
         {
             Drop.transform.parent = null;

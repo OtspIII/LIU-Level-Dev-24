@@ -14,23 +14,14 @@ public class TriggerZoneScript : TriggerScript
     [TextArea]
     public List<string> TextMessage;
 
+    public List<MessageThing> ExtraMessages;
+
     public override void Trigger(GameObject go)
     {
         base.Trigger(go);
-        if (EnterMessage != TriggerMessages.None)
-        {
-            foreach (TriggerableController t in Targets)
-            {
-                if (t == null) continue;
-                t.Trigger(EnterMessage, go);
-            }
-        }
+        SendMessage(MessageTiming.Enter);
 
-        if (DelayMessage != TriggerMessages.None)
-        {
-            if(Delay > 0)
-                God.LM.StartCoroutine(DelayTrigger(go, Delay));
-        }
+        SendMessage(MessageTiming.Delay);
 
         if (TextMessage.Count > 0)
         {
@@ -45,37 +36,88 @@ public class TriggerZoneScript : TriggerScript
     public override void Untrigger(GameObject go)
     {
         base.Untrigger(go);
-        if (ExitMessage == TriggerMessages.None) return;
-        foreach (TriggerableController t in Targets)
+        SendMessage(MessageTiming.Exit);
+    }
+
+    public void SendMessage(MessageTiming time,GameObject go=null)
+    {
+        switch (time)
         {
-            if (t == null) continue;
-            t.Trigger(ExitMessage,go);
+            case MessageTiming.Enter:
+            {
+                if (EnterMessage != TriggerMessages.None)
+                {
+                    foreach (TriggerableController t in Targets)
+                    {
+                        if (t == null) continue;
+                        t.Trigger(EnterMessage, go);
+                    }
+                }
+                break;
+            }
+            case MessageTiming.Delay:
+            {
+                if (DelayMessage != TriggerMessages.None && Delay > 0)
+                {
+                    God.LM.StartCoroutine(DelayTrigger(go, Delay,DelayMessage,Targets));
+                }
+                break;
+            }
+            case MessageTiming.Exit:
+            {
+                if (ExitMessage != TriggerMessages.None)
+                {
+                    foreach (TriggerableController t in Targets)
+                    {
+                        if (t == null) continue;
+                        t.Trigger(ExitMessage, go);
+                    }
+                }
+                break;
+            }
+            case MessageTiming.AfterCutscene:
+            {
+                if (DelayMessage != TriggerMessages.None && Delay == 0)
+                {
+                    foreach (TriggerableController t in Targets)
+                    {
+                        if (t == null) continue;
+                        t.Trigger(DelayMessage, null);
+                    }
+                }
+
+                break;
+            }
         }
 
-        
+        foreach (MessageThing m in ExtraMessages)
+        {
+            if (m.Timing != time || m.Target == null) continue;
+            if(m.Timing != MessageTiming.Delay)
+                m.Target.Trigger(m.Message);
+            else
+            {
+                God.LM.StartCoroutine(DelayTrigger(go, m.Delay,m.Message,new List<TriggerableController>(){m.Target}));
+            }
+                
+        }
     }
     
     public virtual void CutsceneEnd()
     {
-        if (DelayMessage == TriggerMessages.None || Delay > 0) return;
-        foreach (TriggerableController t in Targets)
-        {
-            if (t == null) continue;
-            t.Trigger(DelayMessage,null);
-        }
+        SendMessage(MessageTiming.AfterCutscene);
 
         
     }
     
     
-    public virtual IEnumerator DelayTrigger(GameObject go,float time)
+    public virtual IEnumerator DelayTrigger(GameObject go,float time,TriggerMessages m,List<TriggerableController> targs)
     {
-        Debug.Log("DT");
         yield return new WaitForSeconds(time);
-        foreach (TriggerableController t in Targets)
+        foreach (TriggerableController t in targs)
         {
             if (t == null) continue;
-            t.Trigger(DelayMessage, go);
+            t.Trigger(m, go);
         }
     }
 
@@ -112,4 +154,22 @@ public enum TriggerMessages
     Toggle=8,
     Spawn=9,
     Die=10,
+}
+
+public enum MessageTiming
+{
+    None=0,
+    Enter=1,
+    Exit=2,
+    Delay=3,
+    AfterCutscene=4,
+}
+
+[System.Serializable]
+public class MessageThing
+{
+    public TriggerMessages Message;
+    public TriggerableController Target;
+    public MessageTiming Timing;
+    public float Delay = 0;
 }

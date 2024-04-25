@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2235792310510159126}
   - component: {fileID: 6701280136742610446}
+  - component: {fileID: 2937986050602079357}
   m_Layer: 8
   m_Name: Eyes
   m_TagString: Untagged
@@ -270,6 +271,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &2937986050602079357
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772149536382218223}
+  m_Enabled: 1
 --- !u!1 &1778202952090542801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,6 +5265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 2284296766530852865}
+  HP: 0
   MR: {fileID: 5762141610368144449}
   Coll: {fileID: 5762141610368144448}
   Floors: []
@@ -5305,7 +5315,6 @@ MonoBehaviour:
     SelfDamage: 0
   Muzzle: {fileID: 599010692738353530}
   Fling: {x: 0, y: 0, z: 0}
-  HP: 0
   Ammo: 0
   InControl: 1
   CanWalk: 1
@@ -5323,6 +5332,7 @@ MonoBehaviour:
   InteractLayer:
     serializedVersion: 2
     m_Bits: 4096
+  Doomed: 0
 --- !u!33 &5762141610368144450
 MeshFilter:
   m_ObjectHideFlags: 0

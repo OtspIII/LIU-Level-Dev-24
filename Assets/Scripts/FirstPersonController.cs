@@ -114,6 +114,8 @@ public class FirstPersonController : ActorController
         {
             Shoot(Eyes.transform.position + Eyes.transform.forward, Eyes.transform.rotation);
         }
+        else
+            Unshoot();
 
         Ray ray = new Ray(Eyes.transform.position,Eyes.transform.forward);
         bool interactive = false;

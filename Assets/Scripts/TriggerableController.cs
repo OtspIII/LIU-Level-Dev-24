@@ -15,7 +15,6 @@ public class TriggerableController : MonoBehaviour
         if (ExplosionDamageOnly && !explosion) return;
         if (HP < 0) return;
         HP -= amt;
-        Debug.Log("HP: " + HP);
         if (HP <= 0)
         {
             Die(source);
@@ -24,7 +23,7 @@ public class TriggerableController : MonoBehaviour
 
     public virtual void TakeKnockback(Vector3 kb)
     {
-        if (RB == null) return;
+        if (RB == null || RB.isKinematic) return;
         RB.velocity = kb;
     }
     

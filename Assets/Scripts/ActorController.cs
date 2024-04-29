@@ -31,6 +31,8 @@ public class ActorController : TriggerableController
     public bool CanWalk = true;
     public bool Invincible = false;
     public GameObject AimObj;
+    public GameObject BeamHolder;
+    public DamageZoneController Beam;
         
     [Header("Customizable")]
     public float JumpPower = 7;
@@ -126,6 +128,18 @@ public class ActorController : TriggerableController
         JSONWeapon wpn = GetWeapon();
         //Debug.Log("B: " + wpn?.Text + " / " + wpn?.RateOfFire);
         if (wpn == null || wpn.RateOfFire <= 0) return;
+        if (wpn.Type == WeaponTypes.Beam)
+        {
+            if (!Beam.gameObject.activeSelf)
+            {
+                Beam.gameObject.SetActive(true);
+                Beam.Damage = wpn.Damage;
+                Beam.RateOfDamage = wpn.RateOfFire;
+                BeamHolder.transform.localScale = new Vector3(1, 1, wpn.Lifetime);
+                
+            }
+            return; 
+        }
         
         ShotCooldown = wpn.RateOfFire;
 
@@ -185,6 +199,14 @@ public class ActorController : TriggerableController
                 ProjectileController p = Instantiate(God.Library.Projectile, pos, Quaternion.Euler(r));
                 p.Setup(this, wpn);
             }
+        }
+    }
+
+    public void Unshoot()
+    {
+        if (Beam.gameObject.activeSelf)
+        {
+            Beam.gameObject.SetActive(false);
         }
     }
     

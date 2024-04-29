@@ -153,7 +153,7 @@ public class ActorController : TriggerableController
                 if(Muzzle != null) Muzzle.Emit(1);
                 if (Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit))
                 {
-                    ActorController pc = hit.collider.gameObject.GetComponentInParent<ActorController>();
+                    TriggerableController pc = hit.collider.gameObject.GetComponentInParent<TriggerableController>();
                     if (pc != null && pc != this)
                     {
                         pc.TakeDamage(wpn.Damage, this);

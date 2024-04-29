@@ -72,7 +72,7 @@ public class ProjectileController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (Hit) return;
-        ActorController pc = other.gameObject.GetComponentInParent<ActorController>();
+        TriggerableController pc = other.gameObject.GetComponentInParent<TriggerableController>();
         if (pc == Shooter) return;
         if (pc != null && pc != Shooter)
         {
@@ -91,7 +91,14 @@ public class ProjectileController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (Hit) return;
-        
+        TriggerableController pc = other.gameObject.GetComponentInParent<TriggerableController>();
+        if (pc != Shooter && pc != null && pc != Shooter)
+        {
+            pc.TakeDamage(Data.Damage,Shooter);
+            if(Data.Knockback >0 && Data.ExplodeRadius <= 0)
+                pc.TakeKnockback(transform.forward * Data.Knockback);
+            Hit = true;
+        }
         if(Data.Type != WeaponTypes.Grenade)
             Explode();
         else if (Data.Bounce == 0)

@@ -67,8 +67,9 @@ public class NPCController : ActorController
 
     public void IdleAI()
     {
+        Unshoot();
         if (Behavior == NPCBehavior.Idle) return;
-        Vector3 dist = Destination.transform.position - transform.position;
+       Vector3 dist = Destination.transform.position - transform.position;
         dist.y = 0;
         DestTime -= Time.deltaTime;
         if (dist.magnitude < 0.5f || DestTime <= 0)
@@ -95,8 +96,9 @@ public class NPCController : ActorController
         HandleMove(transform.forward, false, 0, 0, false);
     }
 
-    public override void TakeDamage(int amt, TriggerableController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
+        if (ExplosionDamageOnly && !explosion) return;
         if (source != null && source is ActorController) Attacking = (ActorController)source;
         base.TakeDamage(amt, source);
     }

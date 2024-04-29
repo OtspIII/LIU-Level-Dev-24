@@ -3,20 +3,21 @@
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
+  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
       "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Rifle"
+      "Weapon": "Plasma Beam"
     },
     {
       "Name": "Amogus",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Pistol"
+      "Weapon": "Plasma Beam"
     }
   ],
   "Weapons": [
@@ -90,6 +91,14 @@
       "Ammo": 90,
       "RateOfFire":0.5,
       "Type": "Melee"
+    },
+    {
+      "Color":"Orange",
+      "Text": "Plasma Beam",
+      "Type": "Beam",
+      "Lifetime": 15,
+      "Damage": 3,
+      "RateOfFire":0.1
     }
   ],
   "Items":[

@@ -52,6 +52,7 @@ public enum WeaponTypes
     Hitscan,
     Grenade,
     Melee,
+    Beam,
 }
 
 public enum IColors

@@ -114,6 +114,8 @@ public class FirstPersonController : ActorController
         {
             Shoot(Eyes.transform.position + Eyes.transform.forward, Eyes.transform.rotation);
         }
+        else
+            Unshoot();
 
         Ray ray = new Ray(Eyes.transform.position,Eyes.transform.forward);
         bool interactive = false;
@@ -253,6 +255,29 @@ public class FirstPersonController : ActorController
             Debug.Log("HIT CHECKPOINT: " + other.gameObject.name);
         }
             
+    }
+
+    public override void Trigger(TriggerMessages type = TriggerMessages.None, GameObject target = null)
+    {
+        base.Trigger(type, target);
+        switch (type)
+        {
+            case TriggerMessages.Spawn:
+            {
+                StartSpot = transform.position;
+                break;
+            }
+            case TriggerMessages.Up:
+            {
+                God.LM.GetPoint(1);
+                break;
+            }
+            case TriggerMessages.Down:
+            {
+                God.LM.GetPoint(-1);
+                break;
+            }
+        }
     }
 }
 

@@ -31,6 +31,8 @@ public class ActorController : TriggerableController
     public bool CanWalk = true;
     public bool Invincible = false;
     public GameObject AimObj;
+    public GameObject BeamHolder;
+    public DamageZoneController Beam;
         
     [Header("Customizable")]
     public float JumpPower = 7;
@@ -126,6 +128,18 @@ public class ActorController : TriggerableController
         JSONWeapon wpn = GetWeapon();
         //Debug.Log("B: " + wpn?.Text + " / " + wpn?.RateOfFire);
         if (wpn == null || wpn.RateOfFire <= 0) return;
+        if (wpn.Type == WeaponTypes.Beam)
+        {
+            if (!Beam.gameObject.activeSelf)
+            {
+                Beam.gameObject.SetActive(true);
+                Beam.Damage = wpn.Damage;
+                Beam.RateOfDamage = wpn.RateOfFire;
+                BeamHolder.transform.localScale = new Vector3(1, 1, wpn.Lifetime);
+                
+            }
+            return; 
+        }
         
         ShotCooldown = wpn.RateOfFire;
 
@@ -153,7 +167,7 @@ public class ActorController : TriggerableController
                 if(Muzzle != null) Muzzle.Emit(1);
                 if (Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit))
                 {
-                    ActorController pc = hit.collider.gameObject.GetComponentInParent<ActorController>();
+                    TriggerableController pc = hit.collider.gameObject.GetComponentInParent<TriggerableController>();
                     if (pc != null && pc != this)
                     {
                         pc.TakeDamage(wpn.Damage, this);
@@ -187,6 +201,14 @@ public class ActorController : TriggerableController
             }
         }
     }
+
+    public void Unshoot()
+    {
+        if (Beam.gameObject.activeSelf)
+        {
+            Beam.gameObject.SetActive(false);
+        }
+    }
     
 
     public bool OnGround()
@@ -194,7 +216,7 @@ public class ActorController : TriggerableController
         return Floors.Count > 0 && Physics.Raycast(transform.position,transform.up * -1,1.5f);
     }
     
-    public override void TakeDamage(int amt, TriggerableController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
         if (Invincible || amt <= 0) return;
         base.TakeDamage(amt,source);

@@ -11,8 +11,10 @@ public class TriggerableController : MonoBehaviour
     
     public virtual void TakeDamage(int amt, TriggerableController source = null)
     {
+        Debug.Log("TD: " + amt + " / " + gameObject.name);
         if (HP < 0) return;
         HP -= amt;
+        Debug.Log("HP: " + HP);
         if (HP <= 0)
         {
             Die(source);

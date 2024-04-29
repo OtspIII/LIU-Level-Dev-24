@@ -68,7 +68,7 @@ public class NPCController : ActorController
     public void IdleAI()
     {
         if (Behavior == NPCBehavior.Idle) return;
-        Vector3 dist = Destination.transform.position - transform.position;
+       Vector3 dist = Destination.transform.position - transform.position;
         dist.y = 0;
         DestTime -= Time.deltaTime;
         if (dist.magnitude < 0.5f || DestTime <= 0)

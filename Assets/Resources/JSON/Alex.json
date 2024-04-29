@@ -1,22 +1,21 @@
 {
-  "Gravity": 1,
+  "Gravity": 1.8,
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
-  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 0,
+      "HP": 50,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Rifle"
+      "Weapon": "Grenade"
     },
     {
       "Name": "Amogus",
       "HP": 20,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
+      "MoveSpeed": 0,
+      "SprintSpeed": 10,
       "Weapon": "Pistol"
     }
   ],
@@ -25,8 +24,8 @@
       "Color":"Yellow",
       "Text": "Pistol",
       "Damage": 10,
-      "RateOfFire":0.5,
-      "Accuracy":1,
+      "RateOfFire":0.65,
+      "Accuracy":0.8,
       "Knockback":10
     },
     {
@@ -57,14 +56,14 @@
       "Ammo": 10,
       "RateOfFire":0.5,
       "Accuracy":5,
-      "Speed":20,
+      "Speed":15,
       "Gravity":2,
       "ExplodeRadius":2,
       "ExplodeDamage":20,
       "SelfDamage":true,
       "Knockback":1,
-      "Bounce":2.5,
-      "Lifetime":3,
+      "Bounce":1.4,
+      "Lifetime":1.4,
       "Type":"Grenade"
     },
     {

@@ -9,9 +9,7 @@ public class TriggerableController : MonoBehaviour
     
     public virtual void TakeDamage(int amt, TriggerableController source = null)
     {
-        Debug.Log("TD: " + amt + " / " + HP + " / " + gameObject);
         if (HP < 0) return;
-        Debug.Log("TD2");
         HP -= amt;
         if (HP <= 0)
         {
@@ -27,7 +25,6 @@ public class TriggerableController : MonoBehaviour
     
     public virtual void Die(TriggerableController source=null)
     {
-        Debug.Log("BREAK: " + gameObject + " / " + source);
         Destroy(gameObject);
         
         // if(God.LM.Respawn(this))

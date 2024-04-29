@@ -200,21 +200,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: HP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: MB
+      value: 
+      objectReference: {fileID: 1075854128}
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: Ammo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: JSON.HP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: JSON.Name
+      value: Joshua
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603443542290899944, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+      propertyPath: JSON.Weapon
+      value: Rocket
+      objectReference: {fileID: 0}
     - target: {fileID: 5762141610368144451, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5762141610368144451, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.4
+      value: 38.71
       objectReference: {fileID: 0}
     - target: {fileID: 5762141610368144451, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5762141610368144451, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.7
+      value: 10.57
       objectReference: {fileID: 0}
     - target: {fileID: 5762141610368144451, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -460,6 +484,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe400210442e5842abdfa4ba6b9d1db, type: 3}
+--- !u!114 &1075854128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1305311250, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
+  m_PrefabInstance: {fileID: 565054370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c2339037ce3f84c9197f652a619885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1082541547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,8 +504,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 846238550, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
+      propertyPath: Name
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 846238550, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
       propertyPath: Creator
-      value: Test
+      value: Joshua
+      objectReference: {fileID: 0}
+    - target: {fileID: 846238550, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
+      propertyPath: UseJSON
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1986324049438441528, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
       propertyPath: m_RootOrder
@@ -641,10 +684,6 @@ PrefabInstance:
     - target: {fileID: 612995193796160363, guid: bf0da94ad8241fb40855d643428ad50f, type: 3}
       propertyPath: Name
       value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 612995193796160363, guid: bf0da94ad8241fb40855d643428ad50f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2872340312615044144, guid: bf0da94ad8241fb40855d643428ad50f, type: 3}
       propertyPath: m_LocalPosition.x

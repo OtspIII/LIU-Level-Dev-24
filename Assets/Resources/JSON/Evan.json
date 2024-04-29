@@ -1,21 +1,28 @@
 {
-  "Gravity": 1,
+  "Gravity": 2,
   "Waves": 0,
-  "PointsToWin":1,
+  "PointsToWin": 0,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 100,
-      "MoveSpeed": 10,
-      "SprintSpeed": 2,
-      "Weapon": "Rifle"
+      "HP": 10,
+      "MoveSpeed": 8,
+      "SprintSpeed": 1.25,
+      "Weapon": "Pistol"
     },
     {
       "Name": "Amogus",
       "HP": 20,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
+      "MoveSpeed": 8,
+      "SprintSpeed": 1,
+      "Weapon": "Sword"
+    }
+    {
+      "Name": "MonoEnemy Variant",
+      "HP": 20,
+      "MoveSpeed": 8,
+      "SprintSpeed": 1.5,
       "Weapon": "Pistol"
     }
   ],

@@ -254,6 +254,29 @@ public class FirstPersonController : ActorController
         }
             
     }
+
+    public override void Trigger(TriggerMessages type = TriggerMessages.None, GameObject target = null)
+    {
+        base.Trigger(type, target);
+        switch (type)
+        {
+            case TriggerMessages.Spawn:
+            {
+                StartSpot = transform.position;
+                break;
+            }
+            case TriggerMessages.Up:
+            {
+                God.LM.GetPoint(1);
+                break;
+            }
+            case TriggerMessages.Down:
+            {
+                God.LM.GetPoint(-1);
+                break;
+            }
+        }
+    }
 }
 
 

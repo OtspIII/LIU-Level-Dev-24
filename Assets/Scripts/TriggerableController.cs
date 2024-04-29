@@ -81,6 +81,11 @@ public class TriggerableController : MonoBehaviour
                 Die(target != null ? target.GetComponent<ActorController>() : null);
                 break;
             }
+            case TriggerMessages.Unparent:
+            {
+                transform.parent = null;
+                break;
+            }
         }
     }
 }

@@ -4864,6 +4864,7 @@ Transform:
   m_Children:
   - {fileID: 7442884100221511459}
   - {fileID: 7374518340974558044}
+  - {fileID: 2374820298280876550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7442884100032248497
@@ -4933,7 +4934,7 @@ MonoBehaviour:
   InControl: 1
   CanWalk: 1
   Invincible: 0
-  AimObj: {fileID: 7442884101229166747}
+  AimObj: {fileID: 7501370373638984660}
   JumpPower: 7
   MoveSpeed: 10
   SprintSpeed: 1.5
@@ -4998,6 +4999,37 @@ CapsuleCollider:
   m_Height: 3.9
   m_Direction: 1
   m_Center: {x: 0, y: -0.33895487, z: 0}
+--- !u!1 &7501370373638984660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2374820298280876550}
+  m_Layer: 0
+  m_Name: Aim Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2374820298280876550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501370373638984660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7442884100032248511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7371725498183705713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5147,11 +5179,6 @@ MeshRenderer:
 --- !u!4 &7442884101229166746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 74255446827279595, guid: 5d5a5436473637f41bd50c0cc087314f, type: 3}
-  m_PrefabInstance: {fileID: 7371725498183705713}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7442884101229166747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 74255446827279594, guid: 5d5a5436473637f41bd50c0cc087314f, type: 3}
   m_PrefabInstance: {fileID: 7371725498183705713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7442884101221463161

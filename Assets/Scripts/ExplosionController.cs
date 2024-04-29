@@ -60,7 +60,6 @@ public class ExplosionController : MonoBehaviour
         foreach (Collider c in Physics.OverlapSphere(transform.position, Data.ExplodeRadius))
         {
             if (c.gameObject == gameObject) continue;
-            Debug.Log("EXP:" + c.gameObject);
             TriggerableController tc = c.GetComponentInParent<TriggerableController>();
             if (tc != null && !hit.Contains(tc))
             {

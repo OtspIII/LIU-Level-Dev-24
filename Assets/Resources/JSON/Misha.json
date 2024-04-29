@@ -3,20 +3,21 @@
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
+  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
       "HP": 0,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": ""
+      "Weapon": "Rifle"
     },
     {
       "Name": "Amogus",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Sword"
+      "Weapon": "Pistol"
     }
   ],
   "Weapons": [

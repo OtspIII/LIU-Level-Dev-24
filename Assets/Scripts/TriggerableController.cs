@@ -6,12 +6,13 @@ public class TriggerableController : MonoBehaviour
 {
     public Rigidbody RB;
     public int HP = -1;
+    public bool ExplosionDamageOnly = false;
     
     public List<MessageThing> DeathMessages;
     
-    public virtual void TakeDamage(int amt, TriggerableController source = null)
+    public virtual void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
-        Debug.Log("TD: " + amt + " / " + gameObject.name);
+        if (ExplosionDamageOnly && !explosion) return;
         if (HP < 0) return;
         HP -= amt;
         Debug.Log("HP: " + HP);

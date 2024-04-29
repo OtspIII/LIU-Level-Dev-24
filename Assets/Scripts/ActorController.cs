@@ -194,7 +194,7 @@ public class ActorController : TriggerableController
         return Floors.Count > 0 && Physics.Raycast(transform.position,transform.up * -1,1.5f);
     }
     
-    public override void TakeDamage(int amt, TriggerableController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
         if (Invincible || amt <= 0) return;
         base.TakeDamage(amt,source);

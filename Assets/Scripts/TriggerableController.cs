@@ -30,6 +30,7 @@ public class TriggerableController : MonoBehaviour
         foreach (MessageThing m in DeathMessages)
         {
             if (m.Target == null) continue;
+            if (m.Target.transform.parent == transform) m.Target.transform.parent = null;
             if(m.Timing != MessageTiming.Delay)
                 m.Target.Trigger(m.Message);
             else
@@ -78,6 +79,11 @@ public class TriggerableController : MonoBehaviour
             case TriggerMessages.Die:
             {
                 Die(target != null ? target.GetComponent<ActorController>() : null);
+                break;
+            }
+            case TriggerMessages.Unparent:
+            {
+                transform.parent = null;
                 break;
             }
         }

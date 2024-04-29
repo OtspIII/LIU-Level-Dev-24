@@ -145,6 +145,7 @@ public enum TriggerMessages
     Toggle=8,
     Spawn=9,
     Die=10,
+    Unparent=11,
 }
 
 public enum MessageTiming

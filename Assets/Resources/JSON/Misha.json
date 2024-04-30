@@ -10,15 +10,15 @@
       "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Plasma Beam"
+      "Weapon": "Gravgun"
     },
     {
       "Name": "Amogus",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "SlowTurn": 0.99,
-      "Weapon": "Plasma Beam"
+      "SlowTurn": 0.95,
+      "Weapon": "Sword"
     }
   ],
   "Weapons": [
@@ -100,6 +100,13 @@
       "Lifetime": 15,
       "Damage": 3,
       "RateOfFire":0.1
+    },
+    {
+      "Color":"Orange",
+      "Text": "Gravgun",
+      "Type": "Gravgun",
+      "Lifetime": 15,
+      "Damage": 0.99
     }
   ],
   "Items":[

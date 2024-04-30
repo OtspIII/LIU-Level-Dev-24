@@ -222,7 +222,7 @@ public class ActorController : TriggerableController
 
     public void Unshoot()
     {
-        if (Beam.gameObject.activeSelf)
+        if (Beam != null && Beam.gameObject.activeSelf)
         {
             Beam.gameObject.SetActive(false);
         }

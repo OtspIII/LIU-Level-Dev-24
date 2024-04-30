@@ -322,6 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004581975753352234}
+  - component: {fileID: 705445859762261264}
   m_Layer: 0
   m_Name: Gemstone
   m_TagString: Untagged
@@ -354,6 +355,29 @@ Transform:
   - {fileID: 2075298913766438267}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &705445859762261264
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277848164982837412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.027603
+  m_Height: 21.083057
+  m_Direction: 1
+  m_Center: {x: -0.50411606, y: 2.1068172, z: -3.4593048}
 --- !u!1 &3742856414406003085
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,15 +111,6 @@ public class TriggerZoneScript : TriggerScript
     }
     
     
-    public virtual IEnumerator DelayTrigger(GameObject go,float time,TriggerMessages m,List<TriggerableController> targs)
-    {
-        yield return new WaitForSeconds(time);
-        foreach (TriggerableController t in targs)
-        {
-            if (t == null) continue;
-            t.Trigger(m, go);
-        }
-    }
 
     public override void Trigger(TriggerMessages type = TriggerMessages.None, GameObject target = null)
     {
@@ -154,6 +145,7 @@ public enum TriggerMessages
     Toggle=8,
     Spawn=9,
     Die=10,
+    Unparent=11,
 }
 
 public enum MessageTiming

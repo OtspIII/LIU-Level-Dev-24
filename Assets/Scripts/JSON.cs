@@ -53,6 +53,7 @@ public class JSONActor
     public float SprintSpeed;
     public string Weapon;
     public float Vision;
+    public float TurnSpeed;
     
 
     public JSONActor(JSONTempActor source)
@@ -63,6 +64,7 @@ public class JSONActor
         SprintSpeed = source.SprintSpeed;
         Weapon = source.Weapon;
         Vision = source.Vision > 0 ? source.Vision : 999;
+        TurnSpeed = 1 - source.SlowTurn;
     }
 }
 
@@ -140,6 +142,7 @@ public class JSONTempActor
     public float SprintSpeed;
     public string Weapon;
     public float Vision;
+    public float SlowTurn;
 }
 
 [System.Serializable]

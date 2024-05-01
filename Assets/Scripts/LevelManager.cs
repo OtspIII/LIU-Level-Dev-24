@@ -155,7 +155,7 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
         EndCutscene(null);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         //MakeAnnounce("YOU WIN");
     }
 

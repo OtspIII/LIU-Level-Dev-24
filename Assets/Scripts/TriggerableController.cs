@@ -6,9 +6,13 @@ public class TriggerableController : MonoBehaviour
 {
     public Rigidbody RB;
     public int HP = -1;
+    public bool ExplosionDamageOnly = false;
     
-    public virtual void TakeDamage(int amt, TriggerableController source = null)
+    public List<MessageThing> DeathMessages;
+    
+    public virtual void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
+        if (ExplosionDamageOnly && !explosion) return;
         if (HP < 0) return;
         HP -= amt;
         if (HP <= 0)
@@ -19,17 +23,40 @@ public class TriggerableController : MonoBehaviour
 
     public virtual void TakeKnockback(Vector3 kb)
     {
-        if (RB == null) return;
+        if (RB == null || RB.isKinematic) return;
         RB.velocity = kb;
     }
     
     public virtual void Die(TriggerableController source=null)
     {
+        foreach (MessageThing m in DeathMessages)
+        {
+            if (m.Target == null) continue;
+            if (m.Target.transform.parent == transform) m.Target.transform.parent = null;
+            if(m.Timing != MessageTiming.Delay)
+                m.Target.Trigger(m.Message);
+            else
+            {
+                God.LM.StartCoroutine(DelayTrigger(gameObject, m.Delay,m.Message,new List<TriggerableController>(){m.Target}));
+            }
+                
+        }
         Destroy(gameObject);
         
         // if(God.LM.Respawn(this))
         //     Reset();
         // else
+    }
+    
+    
+    public virtual IEnumerator DelayTrigger(GameObject go,float time,TriggerMessages m,List<TriggerableController> targs)
+    {
+        yield return new WaitForSeconds(time);
+        foreach (TriggerableController t in targs)
+        {
+            if (t == null) continue;
+            t.Trigger(m, go);
+        }
     }
 
     public virtual void Trigger(TriggerMessages type=TriggerMessages.None,GameObject target=null)
@@ -54,6 +81,11 @@ public class TriggerableController : MonoBehaviour
             case TriggerMessages.Die:
             {
                 Die(target != null ? target.GetComponent<ActorController>() : null);
+                break;
+            }
+            case TriggerMessages.Unparent:
+            {
+                transform.parent = null;
                 break;
             }
         }

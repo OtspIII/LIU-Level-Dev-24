@@ -1,19 +1,40 @@
 {
   "Gravity": 1,
   "Waves": 0,
-  "PointsToWin":1,
+  "PointsToWin":8,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 5,
+      "HP": 1000,
       "MoveSpeed": 5,
       "SprintSpeed": 2,
-      "Weapon": ""
+      "Weapon": "Rifle"
     },
     {
-      "Name": "Amogus",
-      "HP": 20,
+      "Name": "Nay",
+      "HP": 50,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Pistol"
+    }, 
+    {
+      "Name": "Pascale",
+      "HP": 450,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Uzi"
+    },
+    {
+      "Name": "Walton",
+      "HP": 85,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Rifle"
+    },
+    {
+      "Name": "Messingham",
+      "HP": 300,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
       "Weapon": "Sword"
@@ -23,7 +44,7 @@
     {
       "Color":"Yellow",
       "Text": "Pistol",
-      "Damage": 10,
+      "Damage": 5,
       "RateOfFire":0.5,
       "Accuracy":1,
       "Knockback":10
@@ -52,14 +73,14 @@
     {
       "Color":"Pink",
       "Text": "Grenade",
-      "Damage": 20,
-      "Ammo": 10,
+      "Damage": 5,
+      "Ammo": 3,
       "RateOfFire":0.5,
       "Accuracy":5,
       "Speed":20,
       "Gravity":2,
-      "ExplodeRadius":2,
-      "ExplodeDamage":20,
+      "ExplodeRadius":1,
+      "ExplodeDamage":15,
       "SelfDamage":true,
       "Knockback":1,
       "Bounce":2.5,
@@ -79,7 +100,7 @@
       "Color":"White",
       "Text": "Uzi",
       "Damage": 5,
-      "Ammo": 90,
+      "Ammo": 35,
       "RateOfFire":0.1,
       "Accuracy":10
     },
@@ -102,7 +123,7 @@
     {
       "Text": "Health",
       "Type": "Healing",
-      "Amount": 50,
+      "Amount": 100,
       "Color": "Green"
     },
     {

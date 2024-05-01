@@ -155,7 +155,7 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
         EndCutscene(null);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         //MakeAnnounce("YOU WIN");
     }
 
@@ -370,7 +370,13 @@ public class LevelManager : MonoBehaviour
     public IEnumerator deathCutscene(FirstPersonController pc)
     {
         yield return StartCoroutine(Fade(true));
-        pc.Reset();
+        if (Ruleset.DeathReset)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            yield break;
+        }
+        else
+            pc.Reset();
         pc.InControl = false;
         yield return StartCoroutine(Fade(false,4));
         pc.InControl = true;

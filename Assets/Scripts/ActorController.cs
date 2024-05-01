@@ -31,15 +31,21 @@ public class ActorController : TriggerableController
     public bool CanWalk = true;
     public bool Invincible = false;
     public GameObject AimObj;
+    public GameObject BeamHolder;
+    public DamageZoneController Beam;
         
     [Header("Customizable")]
     public float JumpPower = 7;
     public float MoveSpeed = 10;
     public float SprintSpeed = 1.5f;
+    public Rigidbody Grabbing;
+    private bool GrabIsKinematic;
 
     void Awake()
     {
         MB = GetComponentInChildren<MeleeBox>();
+        if(MB != null)
+            MB.gameObject.SetActive(false);
     }
     
     void Start()
@@ -126,6 +132,34 @@ public class ActorController : TriggerableController
         JSONWeapon wpn = GetWeapon();
         //Debug.Log("B: " + wpn?.Text + " / " + wpn?.RateOfFire);
         if (wpn == null || wpn.RateOfFire <= 0) return;
+        if (wpn.Type == WeaponTypes.Beam)
+        {
+            if (!Beam.gameObject.activeSelf)
+            {
+                Beam.gameObject.SetActive(true);
+                Beam.Damage = wpn.Damage;
+                Beam.RateOfDamage = wpn.RateOfFire;
+                BeamHolder.transform.localScale = new Vector3(1, 1, wpn.Lifetime);
+                
+            }
+            return; 
+        }
+        else if (wpn.Type == WeaponTypes.Gravgun)
+        {
+            GameObject muzz = Muzzle != null ? Muzzle.gameObject : AimObj;
+            if (Grabbing == null && Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit,wpn.Lifetime))
+            {
+                Rigidbody pc = hit.collider.gameObject.GetComponentInParent<Rigidbody>();
+                if (pc != null && pc != RB && RB.mass <= wpn.Damage)
+                {
+                    pc.transform.parent = AimObj.transform;
+                    Grabbing = pc;
+                    GrabIsKinematic = pc.isKinematic;
+                    pc.isKinematic = true;
+                }
+            }
+            return; 
+        }
         
         ShotCooldown = wpn.RateOfFire;
 
@@ -153,7 +187,7 @@ public class ActorController : TriggerableController
                 if(Muzzle != null) Muzzle.Emit(1);
                 if (Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit))
                 {
-                    ActorController pc = hit.collider.gameObject.GetComponentInParent<ActorController>();
+                    TriggerableController pc = hit.collider.gameObject.GetComponentInParent<TriggerableController>();
                     if (pc != null && pc != this)
                     {
                         pc.TakeDamage(wpn.Damage, this);
@@ -187,6 +221,21 @@ public class ActorController : TriggerableController
             }
         }
     }
+
+    public void Unshoot()
+    {
+        if (Beam != null && Beam.gameObject.activeSelf)
+        {
+            Beam.gameObject.SetActive(false);
+        }
+
+        if (Grabbing != null)
+        {
+            Grabbing.transform.parent = null;
+            Grabbing.isKinematic = GrabIsKinematic;
+            Grabbing = null;
+        }
+    }
     
 
     public bool OnGround()
@@ -194,7 +243,7 @@ public class ActorController : TriggerableController
         return Floors.Count > 0 && Physics.Raycast(transform.position,transform.up * -1,1.5f);
     }
     
-    public override void TakeDamage(int amt, TriggerableController source = null)
+    public override void TakeDamage(int amt, TriggerableController source = null,bool explosion=false)
     {
         if (Invincible || amt <= 0) return;
         base.TakeDamage(amt,source);

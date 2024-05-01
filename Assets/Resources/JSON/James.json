@@ -7,18 +7,24 @@
   "Actors": [
     {
       "Name": "Player",
-      "HP": 50,
+      "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Gravgun"
+      "Weapon": "Shotgun"
     },
     {
-      "Name": "Amogus",
+      "Name": "Nay",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "SlowTurn": 0.95,
-      "Weapon": "Sword"
+      "Weapon": "Pistol"
+    },
+    {
+      "Name": "Pascale",
+      "HP": 50,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Uzi"
     }
   ],
   "Weapons": [
@@ -34,9 +40,9 @@
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 10,
-      "Ammo": 30,
-      "RateOfFire":0.2
+      "Damage": 50,
+      "Ammo": 100,
+      "RateOfFire":0.5
     },
     {
       "Color":"Red",
@@ -71,8 +77,8 @@
     {
       "Color":"Green",
       "Text": "Shotgun",
-      "Damage": 5,
-      "Ammo": 10,
+      "Damage": 2,
+      "Ammo": 10000,
       "RateOfFire":0.4,
       "Accuracy":15,
       "Shots":5

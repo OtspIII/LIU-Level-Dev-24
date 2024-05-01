@@ -67,7 +67,7 @@ public class NPCController : ActorController
     {
         Peeper.transform.LookAt(pos);
         float turnAmt = JSON.TurnSpeed / Time.fixedDeltaTime * Time.deltaTime;
-        AimObj.transform.rotation = Quaternion.Euler(Vector3.Lerp(AimObj.transform.rotation.eulerAngles,Peeper.transform.rotation.eulerAngles,JSON.TurnSpeed));
+        AimObj.transform.rotation = Quaternion.Lerp(AimObj.transform.rotation,Peeper.transform.rotation,JSON.TurnSpeed);
         transform.rotation = Quaternion.Euler(new Vector3(0,AimObj.transform.rotation.eulerAngles.y,0));
         Peeper.transform.LookAt(pos);
     }

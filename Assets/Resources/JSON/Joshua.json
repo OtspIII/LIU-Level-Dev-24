@@ -1,22 +1,43 @@
 {
   "Gravity": 1,
-  "Waves": 0,
-  "PointsToWin":1,
+  "Waves": 5,
+  "PointsToWin":10,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 0,
+      "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": ""
+      "Weapon": "Pistol"
     },
     {
       "Name": "Amogus",
-      "HP": 20,
+      "HP": 5,
+      "MoveSpeed": 20,
+      "SprintSpeed": 0.5,
+      "Weapon": "Sword"
+    },
+    {
+      "Name": "NPC Wolf",
+      "HP": 8,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Sword"
+      "Weapon": "Uzi"
+    },
+    {
+      "Name": "NPC Bison",
+      "HP": 8,
+      "MoveSpeed": 2,
+      "SprintSpeed": 0.1,
+      "Weapon": "Shotgun"
+    },
+    {
+      "Name": "NPC Cow",
+      "HP": 8,
+      "MoveSpeed": 1,
+      "SprintSpeed": 0.1,
+      "Weapon": "Grenade"
     }
   ],
   "Weapons": [
@@ -32,14 +53,14 @@
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 10,
+      "Damage": 4,
       "Ammo": 30,
       "RateOfFire":0.2
     },
     {
       "Color":"Red",
       "Text": "Rocket",
-      "Damage": 10,
+      "Damage": 15,
       "Ammo": 3,
       "RateOfFire":1,
       "Accuracy":2,
@@ -69,24 +90,24 @@
     {
       "Color":"Green",
       "Text": "Shotgun",
-      "Damage": 5,
+      "Damage": 8,
       "Ammo": 10,
       "RateOfFire":0.4,
       "Accuracy":15,
-      "Shots":5
+      "Shots":8
     },
     {
       "Color":"White",
       "Text": "Uzi",
-      "Damage": 5,
-      "Ammo": 90,
-      "RateOfFire":0.1,
-      "Accuracy":10
+      "Damage": 2,
+      "Ammo": 30,
+      "RateOfFire":0.3,
+      "Accuracy":1
     },
     {
       "Color":"Orange",
       "Text": "Sword",
-      "Damage": 25,
+      "Damage": 5,
       "Ammo": 90,
       "RateOfFire":0.5,
       "Type": "Melee"

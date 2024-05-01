@@ -3,39 +3,37 @@
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
-  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
       "HP": 100,
-      "MoveSpeed": 10,
+      "MoveSpeed": 5,
       "SprintSpeed": 2,
-      "Weapon": "Rocket"
+      "Weapon": "Rifle"
     },
     {
-      "Name": "Amogus",
-      "HP": 20,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
-      "SlowTurn": 0.95,
-      "Weapon": "Pistol"
+        "Name": "Bally",
+        "HP": 15,
+        "MoveSpeed": 1,
+        "SprintSpeed": 0.1,
+        "Weapon": "Uzi"
     },
     {
-      "Name": "Frog",
-      "HP": 1,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
-      "Weapon": "Sword"
+        "Name": "Chunks",
+        "HP": 50,
+        "MoveSpeed": 3,
+        "SprintSpeed": 0.3,
+        "Weapon": "Sword"
     }
   ],
   "Weapons": [
     {
       "Color":"Yellow",
       "Text": "Pistol",
-      "Damage": 10,
+      "Damage": 25,
       "RateOfFire":0.5,
       "Accuracy":1,
-      "Knockback":10
+      "Knockback":2
     },
     {
       "Color":"Blue",
@@ -87,33 +85,18 @@
     {
       "Color":"White",
       "Text": "Uzi",
-      "Damage": 5,
-      "Ammo": 90,
-      "RateOfFire":0.1,
-      "Accuracy":10
+      "Damage": 1.5,
+      "Ammo": 30,
+      "RateOfFire":0.5,
+      "Accuracy":3
     },
     {
       "Color":"Orange",
       "Text": "Sword",
       "Damage": 25,
       "Ammo": 90,
-      "RateOfFire":0.5,
+      "RateOfFire":1        ,
       "Type": "Melee"
-    },
-    {
-      "Color":"Orange",
-      "Text": "Plasma Beam",
-      "Type": "Beam",
-      "Lifetime": 15,
-      "Damage": 3,
-      "RateOfFire":0.1
-    },
-    {
-      "Color":"Orange",
-      "Text": "Gravgun",
-      "Type": "Gravgun",
-      "Lifetime": 15,
-      "Damage": 0.99
     }
   ],
   "Items":[

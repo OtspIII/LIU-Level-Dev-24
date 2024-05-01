@@ -1,6 +1,6 @@
 {
   "Gravity": 1,
-  "Waves": 0,
+  "Waves": 3,
   "PointsToWin":1,
   "TextSpeed": 0.05,
   "DeathReset": false,
@@ -10,7 +10,7 @@
       "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Gravgun"
+      "Weapon": "Rocket"
     },
     {
       "Name": "Amogus",
@@ -18,7 +18,14 @@
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
       "SlowTurn": 0.95,
-      "Weapon": "Sword"
+      "Weapon": "Pistol"
+    },
+    {
+      "Name": "Frog",
+      "HP": 1,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Pistol"
     }
   ],
   "Weapons": [

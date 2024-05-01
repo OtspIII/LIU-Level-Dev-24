@@ -72,7 +72,7 @@ public class ExplosionController : MonoBehaviour
             if(Data.Knockback >0)
                 pc.TakeKnockback((pc.transform.position - transform.position).normalized * Data.Knockback);
             if (pc == Shooter && !Data.SelfDamage) continue;
-            pc.TakeDamage(Data.ExplodeDamage,Shooter);
+            pc.TakeDamage(Data.ExplodeDamage,Shooter,true);
         }
         PS.Emit(Data.ExplodeDamage);
         yield return null;

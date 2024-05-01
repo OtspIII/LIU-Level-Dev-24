@@ -99,6 +99,7 @@ public class JSONCreator
     public int Waves;
     public GameModes Mode;
     public bool DeathReset;
+    public bool ShowTimer;
     public List<JSONActor> Actors = new List<JSONActor>();
     public List<JSONItem> Items = new List<JSONItem>();
     public List<JSONWeapon> Weapons = new List<JSONWeapon>();
@@ -110,6 +111,7 @@ public class JSONCreator
         Mode = !string.IsNullOrEmpty( source.Mode) ? (GameModes)Enum.Parse(typeof(GameModes), source.Mode) : GameModes.Deathmatch;
         PointsToWin = source.PointsToWin != null ? source.PointsToWin : 999;
         DeathReset = source.DeathReset;
+        ShowTimer = source.ShowTimer;
         foreach (JSONTempActor i in source.Actors)
         {
             Actors.Add(new JSONActor(i));
@@ -184,6 +186,7 @@ public class JSONTempCreator
     public int Waves;
     public float TextSpeed;
     public bool DeathReset;
+    public bool ShowTimer;
     public JSONTempActor[] Actors;
     public JSONTempItem[] Items;
     public JSONTempWeapon[] Weapons;

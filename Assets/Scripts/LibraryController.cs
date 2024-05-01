@@ -53,6 +53,7 @@ public enum WeaponTypes
     Grenade,
     Melee,
     Beam,
+    Gravgun,
 }
 
 public enum IColors

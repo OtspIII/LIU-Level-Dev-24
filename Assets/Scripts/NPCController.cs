@@ -14,7 +14,8 @@ public class NPCController : ActorController
     public int PatrolProgress = -1;
     private Transform Destination;
     public float DestTime = 0;
-    public NPCSpawner Spawner; 
+    public NPCSpawner Spawner;
+    GameObject Peeper;
     
     public override void OnStart()
     {
@@ -25,6 +26,9 @@ public class NPCController : ActorController
         if(God.LM.UseJSON) ImprintJSON(God.LM.GetActor(Type));
         Destination = new GameObject().transform;
         Destination.transform.position = transform.position;
+        Peeper = new GameObject("Peeper");
+        Peeper.transform.parent = transform;
+        Peeper.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     public override void OnUpdate()
@@ -60,9 +64,11 @@ public class NPCController : ActorController
 
     public void LookAt(Transform pos)
     {
-        AimObj.transform.LookAt(pos);
+        Peeper.transform.LookAt(pos);
+        float turnAmt = JSON.TurnSpeed / Time.fixedDeltaTime * Time.deltaTime;
+        AimObj.transform.rotation = Quaternion.Euler(Vector3.Lerp(AimObj.transform.rotation.eulerAngles,Peeper.transform.rotation.eulerAngles,JSON.TurnSpeed));
         transform.rotation = Quaternion.Euler(new Vector3(0,AimObj.transform.rotation.eulerAngles.y,0));
-        AimObj.transform.LookAt(pos);
+        Peeper.transform.LookAt(pos);
     }
 
     public void IdleAI()

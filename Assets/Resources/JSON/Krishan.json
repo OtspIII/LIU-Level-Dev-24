@@ -1,27 +1,20 @@
 {
   "Gravity": 1,
   "Waves": 0,
-  "PointsToWin":10,
+  "PointsToWin":1,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 10000,
+      "HP": 100,
       "MoveSpeed": 10,
-      "SprintSpeed": 5,
-      "Weapon": "Rifle"
+      "SprintSpeed": 2,
+      "Weapon": "Uzi"
     },
     {
-      "Name": "Patchy",
-      "HP": 50,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
-      "Weapon": "Sword"
-    },
-    {
-      "Name": "Maid",
-      "HP": 2,
-      "MoveSpeed": 10,
+      "Name": "Camper",
+      "HP": 35,
+      "MoveSpeed": 0,
       "SprintSpeed": 0.1,
       "Weapon": "Pistol"
     }
@@ -31,9 +24,9 @@
       "Color":"Yellow",
       "Text": "Pistol",
       "Damage": 10,
-      "RateOfFire":0.5,
-      "Accuracy":1,
-      "Knockback":10
+      "RateOfFire":2,
+      "Accuracy":5,
+      "Knockback":5
     },
     {
       "Color":"Blue",
@@ -88,7 +81,7 @@
       "Damage": 5,
       "Ammo": 90,
       "RateOfFire":0.1,
-      "Accuracy":10
+      "Accuracy":3
     },
     {
       "Color":"Orange",

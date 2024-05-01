@@ -38,6 +38,8 @@ public class ActorController : TriggerableController
     public float JumpPower = 7;
     public float MoveSpeed = 10;
     public float SprintSpeed = 1.5f;
+    public Rigidbody Grabbing;
+    private bool GrabIsKinematic;
 
     void Awake()
     {
@@ -140,6 +142,22 @@ public class ActorController : TriggerableController
             }
             return; 
         }
+        else if (wpn.Type == WeaponTypes.Gravgun)
+        {
+            GameObject muzz = Muzzle != null ? Muzzle.gameObject : AimObj;
+            if (Grabbing == null && Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit,wpn.Lifetime))
+            {
+                Rigidbody pc = hit.collider.gameObject.GetComponentInParent<Rigidbody>();
+                if (pc != null && pc != RB && RB.mass <= wpn.Damage)
+                {
+                    pc.transform.parent = AimObj.transform;
+                    Grabbing = pc;
+                    GrabIsKinematic = pc.isKinematic;
+                    pc.isKinematic = true;
+                }
+            }
+            return; 
+        }
         
         ShotCooldown = wpn.RateOfFire;
 
@@ -204,9 +222,16 @@ public class ActorController : TriggerableController
 
     public void Unshoot()
     {
-        if (Beam.gameObject.activeSelf)
+        if (Beam != null && Beam.gameObject.activeSelf)
         {
             Beam.gameObject.SetActive(false);
+        }
+
+        if (Grabbing != null)
+        {
+            Grabbing.transform.parent = null;
+            Grabbing.isKinematic = GrabIsKinematic;
+            Grabbing = null;
         }
     }
     

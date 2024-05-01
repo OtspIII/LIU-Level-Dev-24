@@ -6,24 +6,31 @@
   "Actors": [
     {
       "Name": "Player",
-      "HP": 0,
-      "MoveSpeed": 10,
+      "HP": 100,
+      "MoveSpeed": 5,
       "SprintSpeed": 2,
-      "Weapon": ""
+      "Weapon": "Rifle"
     },
     {
-      "Name": "Amogus",
+      "Name": "Nay",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Sword"
+      "Weapon": "Pistol"
+    }, 
+    {
+      "Name": "Pascale",
+      "HP": 50,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Uzi"
     }
   ],
   "Weapons": [
     {
       "Color":"Yellow",
       "Text": "Pistol",
-      "Damage": 10,
+      "Damage": 5,
       "RateOfFire":0.5,
       "Accuracy":1,
       "Knockback":10
@@ -32,7 +39,7 @@
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 10,
+      "Damage": 5,
       "Ammo": 30,
       "RateOfFire":0.2
     },
@@ -52,14 +59,14 @@
     {
       "Color":"Pink",
       "Text": "Grenade",
-      "Damage": 20,
-      "Ammo": 10,
+      "Damage": 5,
+      "Ammo": 3,
       "RateOfFire":0.5,
       "Accuracy":5,
       "Speed":20,
       "Gravity":2,
-      "ExplodeRadius":2,
-      "ExplodeDamage":20,
+      "ExplodeRadius":1,
+      "ExplodeDamage":15,
       "SelfDamage":true,
       "Knockback":1,
       "Bounce":2.5,
@@ -79,7 +86,7 @@
       "Color":"White",
       "Text": "Uzi",
       "Damage": 5,
-      "Ammo": 90,
+      "Ammo": 35,
       "RateOfFire":0.1,
       "Accuracy":10
     },
@@ -102,7 +109,7 @@
     {
       "Text": "Health",
       "Type": "Healing",
-      "Amount": 50,
+      "Amount": 10,
       "Color": "Green"
     },
     {

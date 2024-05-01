@@ -16,6 +16,7 @@ public class NPCController : ActorController
     public float DestTime = 0;
     public NPCSpawner Spawner;
     GameObject Peeper;
+    public int PointValue;
     
     public override void OnStart()
     {
@@ -116,6 +117,8 @@ public class NPCController : ActorController
 
     void OnDestroy()
     {
+        if(PointValue != 0)
+            God.LM.GetPoint(PointValue);
         God.Actors.Remove(this);
         if (Spawner != null) Spawner.Children.Remove(this);
     }

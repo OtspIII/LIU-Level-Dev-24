@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 5604931466324302692}
   HP: 0
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   MR: {fileID: 4946608782575635276}
   Coll: {fileID: 1678043481304769161}
   Floors: []
@@ -64,6 +66,7 @@ MonoBehaviour:
     SprintSpeed: 0
     Weapon: 
     Vision: 0
+    TurnSpeed: 0
   CurrentWeapon:
     Text: 
     Type: 0
@@ -105,9 +108,12 @@ MonoBehaviour:
   CanWalk: 1
   Invincible: 0
   AimObj: {fileID: 4946608781968436473}
+  BeamHolder: {fileID: 0}
+  Beam: {fileID: 0}
   JumpPower: 7
   MoveSpeed: 10
   SprintSpeed: 1.5
+  Grabbing: {fileID: 0}
   Type: Amogus
   Behavior: 3
   Aggro: 1
@@ -5304,6 +5310,10 @@ PrefabInstance:
     - target: {fileID: 6580943936022039023, guid: 2bb3bb9547a9074448d177d39b2a94dd, type: 3}
       propertyPath: m_Name
       value: Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580943936022039023, guid: 2bb3bb9547a9074448d177d39b2a94dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

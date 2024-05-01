@@ -60,7 +60,6 @@ public class ExplosionController : MonoBehaviour
         foreach (Collider c in Physics.OverlapSphere(transform.position, Data.ExplodeRadius))
         {
             if (c.gameObject == gameObject) continue;
-            Debug.Log("EXP:" + c.gameObject);
             TriggerableController tc = c.GetComponentInParent<TriggerableController>();
             if (tc != null && !hit.Contains(tc))
             {
@@ -73,7 +72,7 @@ public class ExplosionController : MonoBehaviour
             if(Data.Knockback >0)
                 pc.TakeKnockback((pc.transform.position - transform.position).normalized * Data.Knockback);
             if (pc == Shooter && !Data.SelfDamage) continue;
-            pc.TakeDamage(Data.ExplodeDamage,Shooter);
+            pc.TakeDamage(Data.ExplodeDamage,Shooter,true);
         }
         PS.Emit(Data.ExplodeDamage);
         yield return null;

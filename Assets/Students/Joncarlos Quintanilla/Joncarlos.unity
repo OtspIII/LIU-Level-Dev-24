@@ -960,6 +960,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 150630513}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -2, z: 0}
   Speed: 2
   AutoClose: 1
@@ -1338,6 +1340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 193828510}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -5, z: 0}
   Speed: 2
   AutoClose: 1
@@ -1422,6 +1426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 214551896}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -3, z: 0}
   Speed: 2
   AutoClose: 1
@@ -2095,6 +2101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 275082662}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -4, z: 0}
   Speed: 2
   AutoClose: 1
@@ -3791,6 +3799,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 542664512}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -1, z: 0}
   Speed: 2
   AutoClose: 1
@@ -4238,6 +4248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 589711962}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -2, z: 0}
   Speed: 2
   AutoClose: 1
@@ -4891,6 +4903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 688645268}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -5, z: 0}
   Speed: 2
   AutoClose: 1
@@ -5697,6 +5711,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 804962317}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -4, z: 0}
   Speed: 2
   AutoClose: 1
@@ -6177,6 +6193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 820669486}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -5, z: 0}
   Speed: 2
   AutoClose: 1
@@ -6899,6 +6917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 895739983}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -6, z: 0}
   Speed: 2
   AutoClose: 1
@@ -7870,6 +7890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1046895760}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -3, z: 0}
   Speed: 2
   AutoClose: 1
@@ -8171,6 +8193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1060315258}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -4, z: 0}
   Speed: 2
   AutoClose: 1
@@ -10185,6 +10209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1403699095}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -4, z: 0}
   Speed: 2
   AutoClose: 1
@@ -10258,6 +10284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1415024041}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -3, z: 0}
   Speed: 2
   AutoClose: 1
@@ -10889,7 +10917,7 @@ PrefabInstance:
     - target: {fileID: 7726130544930914888, guid: 82016d83222070042824fda9f6688310, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 776501550}
+      objectReference: {fileID: 1362510773}
     - target: {fileID: 7726130544930914892, guid: 82016d83222070042824fda9f6688310, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -11760,6 +11788,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1604472026}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -1, z: 0}
   Speed: 2
   AutoClose: 1
@@ -12405,6 +12435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1709019858}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -4, z: 0}
   Speed: 2
   AutoClose: 1
@@ -13427,7 +13459,8 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.08761626
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2937986050602079357, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -13889,6 +13922,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2657036586315056563, guid: 8bdd2826e189c3946a31a72ffc305038, type: 3}
+      propertyPath: Points
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2657036586315056563, guid: 8bdd2826e189c3946a31a72ffc305038, type: 3}
       propertyPath: Targets.Array.size
       value: 1
@@ -14622,6 +14659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1931876521}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -3, z: 0}
   Speed: 2
   AutoClose: 1
@@ -15021,6 +15060,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 1989666952}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   Movement: {x: 0, y: -2, z: 0}
   Speed: 2
   AutoClose: 1

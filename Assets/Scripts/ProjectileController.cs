@@ -12,7 +12,7 @@ public class ProjectileController : MonoBehaviour
     public Rigidbody RB;
     public float Lifetime = 10;
     public ActorController Shooter;
-    public bool Hit = false;
+    public TriggerableController Hit = null;
     public JSONWeapon Data;
     public MeshRenderer MR;
     public Vector3 OldVel;
@@ -71,7 +71,7 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Hit) return;
+        if (Hit != null) return;
         ActorController pc = other.gameObject.GetComponentInParent<ActorController>();
         if (pc == Shooter) return;
         if (pc != null && pc != Shooter)
@@ -79,7 +79,7 @@ public class ProjectileController : MonoBehaviour
             pc.TakeDamage(Data.Damage,Shooter);
             if(Data.Knockback >0 && Data.ExplodeRadius <= 0)
                 pc.TakeKnockback(transform.forward * Data.Knockback);
-            Hit = true;
+            Hit = pc;
         }
         
         
@@ -90,8 +90,15 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (Hit) return;
-        
+        if (Hit != null) return;
+        TriggerableController pc = other.gameObject.GetComponentInParent<TriggerableController>();
+        if (pc != Shooter && pc != null && pc != Shooter)
+        {
+            pc.TakeDamage(Data.Damage,Shooter);
+            if(Data.Knockback >0 && Data.ExplodeRadius <= 0)
+                pc.TakeKnockback(transform.forward * Data.Knockback);
+            Hit = pc;
+        }
         if(Data.Type != WeaponTypes.Grenade)
             Explode();
         else if (Data.Bounce == 0)
@@ -118,7 +125,7 @@ public class ProjectileController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        ParticleGnome partic = Hit ? God.Library.Blood : God.Library.Dust;
+        ParticleGnome partic = Hit is ActorController ? God.Library.Blood : God.Library.Dust;
         ParticleGnome pg = Instantiate(partic, transform.position, Quaternion.identity);
         pg.Setup(Data.Damage);
         Destroy(gameObject);

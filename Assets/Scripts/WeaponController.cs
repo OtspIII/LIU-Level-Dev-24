@@ -5,7 +5,7 @@ using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : TriggerableController
 {
     [Header("Customizable")]
     public string Name;// = new NetworkVariable<FixedString64Bytes>();
@@ -49,7 +49,7 @@ public class WeaponController : MonoBehaviour
     public void GetTaken(FirstPersonController pc)
     {
         pc.SetWeapon(Data);
-        Spawner.TakenFrom(pc);
+        Spawner?.TakenFrom(pc);
         Destroy(gameObject);
     }
 

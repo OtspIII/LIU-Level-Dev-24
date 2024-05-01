@@ -1,22 +1,31 @@
 {
   "Gravity": 1,
-  "Waves": 0,
+  "Waves": 3,
   "PointsToWin":1,
   "TextSpeed": 0.05,
+  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 0,
+      "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": ""
+      "Weapon": "Rocket"
     },
     {
       "Name": "Amogus",
       "HP": 20,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Sword"
+      "SlowTurn": 0.95,
+      "Weapon": "Pistol"
+    },
+    {
+      "Name": "Frog",
+      "HP": 1,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Pistol"
     }
   ],
   "Weapons": [
@@ -90,6 +99,21 @@
       "Ammo": 90,
       "RateOfFire":0.5,
       "Type": "Melee"
+    },
+    {
+      "Color":"Orange",
+      "Text": "Plasma Beam",
+      "Type": "Beam",
+      "Lifetime": 15,
+      "Damage": 3,
+      "RateOfFire":0.1
+    },
+    {
+      "Color":"Orange",
+      "Text": "Gravgun",
+      "Type": "Gravgun",
+      "Lifetime": 15,
+      "Damage": 0.99
     }
   ],
   "Items":[

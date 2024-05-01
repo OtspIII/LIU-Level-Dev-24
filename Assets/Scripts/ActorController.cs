@@ -44,6 +44,8 @@ public class ActorController : TriggerableController
     void Awake()
     {
         MB = GetComponentInChildren<MeleeBox>();
+        if(MB != null)
+            MB.gameObject.SetActive(false);
     }
     
     void Start()

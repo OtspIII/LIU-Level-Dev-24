@@ -23,7 +23,21 @@
       "HP": 8,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Rifle"
+      "Weapon": "Uzi"
+    },
+    {
+      "Name": "NPC Bison",
+      "HP": 8,
+      "MoveSpeed": 2,
+      "SprintSpeed": 0.1,
+      "Weapon": "Shotgun"
+    },
+    {
+      "Name": "NPC Cow",
+      "HP": 8,
+      "MoveSpeed": 1,
+      "SprintSpeed": 0.1,
+      "Weapon": "Grenade"
     }
   ],
   "Weapons": [
@@ -86,9 +100,9 @@
       "Color":"White",
       "Text": "Uzi",
       "Damage": 2,
-      "Ammo": 90,
-      "RateOfFire":0.1,
-      "Accuracy":5
+      "Ammo": 30,
+      "RateOfFire":0.3,
+      "Accuracy":1
     },
     {
       "Color":"Orange",

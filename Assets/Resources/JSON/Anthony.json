@@ -6,24 +6,38 @@
   "Actors": [
     {
       "Name": "Player",
-      "HP": 100,
+      "HP": 1000,
       "MoveSpeed": 5,
       "SprintSpeed": 2,
       "Weapon": "Rifle"
     },
     {
       "Name": "Nay",
-      "HP": 20,
+      "HP": 50,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
       "Weapon": "Pistol"
     }, 
     {
       "Name": "Pascale",
-      "HP": 50,
+      "HP": 450,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
       "Weapon": "Uzi"
+    },
+    {
+      "Name": "Walton",
+      "HP": 85,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Rifle"
+    },
+    {
+      "Name": "Messingham",
+      "HP": 300,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Sword"
     }
   ],
   "Weapons": [
@@ -39,7 +53,7 @@
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 5,
+      "Damage": 10,
       "Ammo": 30,
       "RateOfFire":0.2
     },
@@ -103,13 +117,13 @@
     {
       "Text": "1 Point",
       "Type": "Points",
-      "Amount": 1,
+      "Amount": 8,
       "Color": "Yellow"
     },
     {
       "Text": "Health",
       "Type": "Healing",
-      "Amount": 10,
+      "Amount": 100,
       "Color": "Green"
     },
     {

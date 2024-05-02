@@ -25,6 +25,7 @@ public class MeleeBox : MonoBehaviour
 
     public void Swing(JSONWeapon wpn)
     {
+        gameObject.SetActive(true);
         Hit = null;
         Data = wpn;
         Anim.speed = 1/wpn.RateOfFire;

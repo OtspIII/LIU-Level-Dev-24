@@ -72,7 +72,7 @@ public class ProjectileController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (Hit != null) return;
-        TriggerableController pc = other.gameObject.GetComponentInParent<TriggerableController>();
+        ActorController pc = other.gameObject.GetComponentInParent<ActorController>();
         if (pc == Shooter) return;
         if (pc != null && pc != Shooter)
         {

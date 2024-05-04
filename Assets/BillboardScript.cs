@@ -8,13 +8,8 @@ public class BillboardScript : MonoBehaviour
     public bool Reverse;
     public float Speed = 1f;
 
-    public AudioSource AS;
-    public AudioClip Clip1;
-    
     void Update()
     {
-        if(Points > 3) 
-            AS.clip = Clip1;
         float old = transform.rotation.eulerAngles.y;
         transform.LookAt(God.Player.transform);
         float after = transform.rotation.eulerAngles.y;

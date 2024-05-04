@@ -1,15 +1,15 @@
 {
-  "Gravity": 1,
+  "Gravity": 2,
   "Waves": 0,
   "PointsToWin": 0,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 30,
-      "MoveSpeed": 10,
+      "HP": 10,
+      "MoveSpeed": 8,
       "SprintSpeed": 1.25,
-      "Weapon": "Shotgun"
+      "Weapon": "Pistol"
     },
     {
       "Name": "Amogus",
@@ -19,113 +19,83 @@
       "Weapon": "Sword"
     },
     {
-      "Name": "MonoEnemy",
+      "Name": "MonoEnemy Variant",
       "HP": 20,
-      "MoveSpeed": 4.5,
+      "MoveSpeed": 8,
       "SprintSpeed": 1.5,
-      "Weapon": "PistolEnemy"
-    },
-    {
-      "Name": "SnakeHeads",
-      "HP": 20,
-      "MoveSpeed": 6,
-      "SprintSpeed": 1.5,
-      "Weapon": "Sword"
-    },
-    {
-      "Name": "EyeWatcher",
-      "HP": 10,
-      "MoveSpeed": 5,
-      "SprintSpeed": 1.5,
-      "Weapon": "UziEnemy"
+      "Weapon": "Pistol"
     }
   ],
   "Weapons": [
     {
-      "Color": "Yellow",
+      "Color":"Yellow",
       "Text": "Pistol",
-      "Damage": 3,
-      "RateOfFire": 0.5,
-      "Accuracy": 1,
-      "Knockback": 10
+      "Damage": 10,
+      "RateOfFire":0.5,
+      "Accuracy":1,
+      "Knockback":10
     },
     {
-      "Color": "Yellow",
-      "Text": "PistolEnemy",
-      "Damage": 3,
-      "RateOfFire": 1.5,
-      "Accuracy": 1,
-      "Knockback": 5
-    },
-    {
-      "Color": "Blue",
+      "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 5,
+      "Damage": 10,
       "Ammo": 30,
-      "RateOfFire": 0.25
+      "RateOfFire":0.2
     },
     {
-      "Color": "Red",
+      "Color":"Red",
       "Text": "Rocket",
       "Damage": 10,
       "Ammo": 3,
-      "RateOfFire": 1,
-      "Accuracy": 2,
-      "Speed": 30,
-      "ExplodeRadius": 3,
-      "ExplodeDamage": 50,
-      "SelfDamage": true,
-      "Knockback": 10
+      "RateOfFire":1,
+      "Accuracy":2,
+      "Speed":30,
+      "ExplodeRadius":3,
+      "ExplodeDamage":50,
+      "SelfDamage":true,
+      "Knockback":10
     },
     {
-      "Color": "Pink",
+      "Color":"Pink",
       "Text": "Grenade",
       "Damage": 20,
       "Ammo": 10,
-      "RateOfFire": 0.5,
-      "Accuracy": 5,
-      "Speed": 20,
-      "Gravity": 2,
-      "ExplodeRadius": 2,
-      "ExplodeDamage": 20,
-      "SelfDamage": true,
-      "Knockback": 1,
-      "Bounce": 2.5,
-      "Lifetime": 3,
-      "Type": "Grenade"
+      "RateOfFire":0.5,
+      "Accuracy":5,
+      "Speed":20,
+      "Gravity":2,
+      "ExplodeRadius":2,
+      "ExplodeDamage":20,
+      "SelfDamage":true,
+      "Knockback":1,
+      "Bounce":2.5,
+      "Lifetime":3,
+      "Type":"Grenade"
     },
     {
-      "Color": "Green",
+      "Color":"Green",
       "Text": "Shotgun",
       "Damage": 5,
       "Ammo": 10,
-      "RateOfFire": 0.4,
-      "Accuracy": 13.5,
-      "Shots": 5
+      "RateOfFire":0.4,
+      "Accuracy":15,
+      "Shots":5
     },
     {
-      "Color": "White",
+      "Color":"White",
       "Text": "Uzi",
       "Damage": 5,
       "Ammo": 90,
-      "RateOfFire": 0.1,
-      "Accuracy": 10
+      "RateOfFire":0.1,
+      "Accuracy":10
     },
     {
-      "Color": "White",
-      "Text": "UziEnemy",
-      "Damage": 2,
-      "Ammo": 90,
-      "RateOfFire": 0.1,
-      "Accuracy": 12
-    },
-    {
-      "Color": "Orange",
+      "Color":"Orange",
       "Text": "Sword",
-      "Damage": 5,
+      "Damage": 25,
       "Ammo": 90,
-      "RateOfFire": 0.65,
+      "RateOfFire":0.5,
       "Type": "Melee"
     }
   ],

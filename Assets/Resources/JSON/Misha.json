@@ -4,13 +4,14 @@
   "PointsToWin":1,
   "TextSpeed": 0.05,
   "DeathReset": false,
+  "ShowTimer": true,
   "Actors": [
     {
       "Name": "Player",
       "HP": 100,
       "MoveSpeed": 10,
       "SprintSpeed": 2,
-      "Weapon": "Rocket"
+      "Weapon": "Gravgun"
     },
     {
       "Name": "Amogus",
@@ -113,7 +114,7 @@
       "Text": "Gravgun",
       "Type": "Gravgun",
       "Lifetime": 15,
-      "Damage": 0.99
+      "Damage": 10
     }
   ],
   "Items":[

@@ -181,7 +181,7 @@ MonoBehaviour:
   Grabbing: {fileID: 0}
   Type: Pascale
   Behavior: 3
-  Aggro: 0
+  Aggro: 1
   Attacking: {fileID: 0}
   PatrolPath:
   - {x: 15, y: 0, z: -9}
@@ -190,6 +190,7 @@ MonoBehaviour:
   PatrolProgress: -1
   DestTime: 0
   Spawner: {fileID: 0}
+  PointValue: 0
 --- !u!54 &8671033223047978883
 Rigidbody:
   m_ObjectHideFlags: 0

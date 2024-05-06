@@ -51,7 +51,19 @@ public class TriggerableController : MonoBehaviour
     
     public virtual IEnumerator DelayTrigger(GameObject go,float time,TriggerMessages m,List<TriggerableController> targs)
     {
-        yield return new WaitForSeconds(time);
+        Debug.Log("DT: " + God.LM.Ruleset.ShowTimer);
+        if (God.LM.Ruleset.ShowTimer)
+        {
+            Debug.Log("SHOW TIMER");
+            for (float n = time; n > 0; n--)
+            {
+                Debug.Log("TIMER: " + n);
+                God.LM.MakeAnnounce(Mathf.Round(n).ToString());
+                yield return new WaitForSeconds(Mathf.Min(1,n));
+            }
+        }
+        else
+            yield return new WaitForSeconds(time);
         foreach (TriggerableController t in targs)
         {
             if (t == null) continue;

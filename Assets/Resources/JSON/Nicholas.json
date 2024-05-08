@@ -23,7 +23,7 @@
             "HP": 15,
             "MoveSpeed": 5,
             "SprintSpeed": 0,
-            "Weapon": "Shotgun"
+            "Weapon": "Uzi"
         },
         {
             "Name": "Turrets",
@@ -67,8 +67,8 @@
         {
             "Color": "Red",
             "Text": "Rocket",
-            "Damage": 10,
-            "Ammo": 3,
+            "Damage": 100,
+            "Ammo": 4,
             "RateOfFire": 1,
             "Accuracy": 2,
             "Speed": 30,
@@ -81,27 +81,27 @@
             "Color": "Pink",
             "Text": "Grenade",
             "Damage": 35,
-            "Ammo": 10,
+            "Ammo": 5,
             "RateOfFire": 1,
             "Accuracy": 5,
             "Speed": 15,
-            "Gravity": 3,
-            "ExplodeRadius": 3.5,
+            "Gravity": 1.5,
+            "ExplodeRadius": 2.5,
             "ExplodeDamage": 25,
             "SelfDamage": false,
-            "Knockback": 1.5,
-            "Bounce": 3,
-            "Lifetime": 2.5,
+            "Knockback": 2,
+            "Bounce": 2,
+            "Lifetime": 2,
             "Type": "Grenade"
         },
         {
             "Color": "Green",
             "Text": "Shotgun",
-            "Damage": 5,
-            "Ammo": 10,
-            "RateOfFire": 0.4,
+            "Damage": 50,
+            "Ammo": 6,
+            "RateOfFire": 0.5,
             "Accuracy": 15,
-            "Shots": 5
+            "Shots": 4
         },
         {
             "Color": "White",

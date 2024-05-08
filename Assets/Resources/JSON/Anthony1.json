@@ -1,0 +1,120 @@
+{
+  "Gravity": 5,
+  "Waves": 0,
+  "PointsToWin":8,
+  "TextSpeed": 0.05,
+  "Actors": [
+    {
+      "Name": "Player",
+      "HP": 1000,
+      "MoveSpeed": 5,
+      "SprintSpeed": 2,
+      "Weapon": "Rifle"
+    },
+    {
+      "Name": "TheBoss",
+      "HP": 10000,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0.1,
+      "Weapon": "Uzi"
+    }
+  ],
+  "Weapons": [
+    {
+      "Color":"Yellow",
+      "Text": "Pistol",
+      "Damage": 5,
+      "RateOfFire":0.5,
+      "Accuracy":1,
+      "Knockback":10
+    },
+    {
+      "Color":"Blue",
+      "Text": "Rifle",
+      "Type": "Hitscan",
+      "Damage": 25,
+      "Ammo": 30,
+      "RateOfFire":0.2
+    },
+    {
+      "Color":"Red",
+      "Text": "Rocket",
+      "Damage": 10,
+      "Ammo": 3,
+      "RateOfFire":1,
+      "Accuracy":2,
+      "Speed":30,
+      "ExplodeRadius":3,
+      "ExplodeDamage":50,
+      "SelfDamage":true,
+      "Knockback":10
+    },
+    {
+      "Color":"Pink",
+      "Text": "Grenade",
+      "Damage": 5,
+      "Ammo": 3,
+      "RateOfFire":0.5,
+      "Accuracy":5,
+      "Speed":20,
+      "Gravity":2,
+      "ExplodeRadius":1,
+      "ExplodeDamage":15,
+      "SelfDamage":true,
+      "Knockback":1,
+      "Bounce":2.5,
+      "Lifetime":3,
+      "Type":"Grenade"
+    },
+    {
+      "Color":"Green",
+      "Text": "Shotgun",
+      "Damage": 5,
+      "Ammo": 10,
+      "RateOfFire":0.4,
+      "Accuracy":15,
+      "Shots":5
+    },
+    {
+      "Color":"White",
+      "Text": "Uzi",
+      "Damage": 99,
+      "Ammo": 100,
+      "RateOfFire":0.1,
+      "Accuracy":5
+    },
+    {
+      "Color":"Orange",
+      "Text": "Sword",
+      "Damage": 25,
+      "Ammo": 90,
+      "RateOfFire":0.5,
+      "Type": "Melee"
+    }
+  ],
+  "Items":[
+    {
+      "Text": "1 Point",
+      "Type": "Points",
+      "Amount": 1,
+      "Color": "Yellow"
+    },
+    {
+      "Text": "Health",
+      "Type": "Healing",
+      "Amount": 250,
+      "Color": "Green"
+    },
+    {
+      "Text": "Jump",
+      "Type": "Jump",
+      "Amount": 10,
+      "Color": "Blue"
+    },
+    {
+      "Text": "Teleporter",
+      "Type": "Teleport",
+      "Color": "White"
+    }
+  ]
+}

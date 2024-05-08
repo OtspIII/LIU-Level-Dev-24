@@ -1,29 +1,47 @@
 {
-  "Gravity": 1,
+  "Gravity": 5,
   "Waves": 0,
-  "PointsToWin":1,
+  "PointsToWin":9,
   "TextSpeed": 0.05,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 100,
+      "HP": 1000,
       "MoveSpeed": 5,
       "SprintSpeed": 2,
       "Weapon": "Rifle"
     },
     {
       "Name": "Nay",
-      "HP": 20,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
-      "Weapon": "Pistol"
-    }, 
-    {
-      "Name": "Pascale",
       "HP": 50,
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
-      "Weapon": "Uzi"
+      "Weapon": "Pistol",
+      "Vision": 20
+    }, 
+    {
+      "Name": "Pascale",
+      "HP": 450,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Uzi",
+      "Vision": 10
+    },
+    {
+      "Name": "Walton",
+      "HP": 85,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Rocket",
+      "Vision": 15
+    },
+    {
+      "Name": "Messingham",
+      "HP": 300,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Sword",
+      "Vision": 10
     }
   ],
   "Weapons": [
@@ -39,7 +57,7 @@
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 5,
+      "Damage": 10,
       "Ammo": 30,
       "RateOfFire":0.2
     },
@@ -109,7 +127,7 @@
     {
       "Text": "Health",
       "Type": "Healing",
-      "Amount": 10,
+      "Amount": 100,
       "Color": "Green"
     },
     {

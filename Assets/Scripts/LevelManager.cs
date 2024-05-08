@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     public int Points = 0;
     public Image Overlay;
     public TextMeshProUGUI CenterText;
+    public TextMeshProUGUI MiscText;
     bool Won = false;
     public static bool MidCutscene = false;
     public Image Crosshair;
@@ -68,6 +69,11 @@ public class LevelManager : MonoBehaviour
         {
             //pc.ImprintRules(Ruleset);
             AlivePlayers.Add(pc);
+        }
+
+        if (Ruleset.Waves > 0)
+        {
+            MakeAnnounce("WAVE " + (Ruleset.Waves - CurrentWave));
         }
             
     }
@@ -105,6 +111,10 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
+                    if(CurrentWave == Ruleset.Waves - 1)
+                        MakeAnnounce("FINAL WAVE");
+                    else
+                        MakeAnnounce("WAVE " + (Ruleset.Waves - CurrentWave));
                     foreach (NPCSpawner sp in NPCSpawns)
                     {
                         sp.Spawn();

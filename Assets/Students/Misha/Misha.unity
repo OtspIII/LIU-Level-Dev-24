@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava
       objectReference: {fileID: 0}
+    - target: {fileID: 7473767688998505336, guid: af6006523c9262f45bdc3047ccab5036, type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -858,8 +862,9 @@ GameObject:
   - component: {fileID: 731053271}
   - component: {fileID: 731053270}
   - component: {fileID: 731053269}
+  - component: {fileID: 731053272}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,18 +1011,32 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731053268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.51}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2100558758}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -20.8, y: 5.2}
   m_SizeDelta: {x: 7, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &731053272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731053268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb9cca70f09b7d479bdc317bbac347d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Reverse: 0
+  Speed: 1
 --- !u!1 &791065368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5762141610368144462, guid: c57b3fe6742b928438daeb30a7b9888c, type: 3}
@@ -1589,11 +1608,11 @@ MonoBehaviour:
   HP: -1
   ExplosionDamageOnly: 0
   DeathMessages: []
-  MR: {fileID: 816093611}
-  Vanish: 0
+  MR: {fileID: 0}
+  Vanish: 1
   CollideWith:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   OneTime: 0
 --- !u!4 &1325858680
 Transform:
@@ -2068,8 +2087,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 846238550, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
-      propertyPath: Creator
-      value: Misha
+      propertyPath: Name
+      value: Test Level
       objectReference: {fileID: 0}
     - target: {fileID: 1986324049438441528, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2120,11 +2139,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
---- !u!4 &2100558758 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7658250056735619932, guid: a534566b6acca8544aa7b7d3e26e4637, type: 3}
-  m_PrefabInstance: {fileID: 9202412544091465000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1114665466407488196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2568,10 +2582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7658250056735619932, guid: a534566b6acca8544aa7b7d3e26e4637, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 731053271}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a534566b6acca8544aa7b7d3e26e4637, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -2596,3 +2607,4 @@ SceneRoots:
   - {fileID: 3353695365472235829}
   - {fileID: 3316579986818991376}
   - {fileID: 6193742071239455397}
+  - {fileID: 731053271}

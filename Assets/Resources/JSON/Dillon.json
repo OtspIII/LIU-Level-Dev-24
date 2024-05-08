@@ -1,32 +1,74 @@
 {
-  "Gravity": 3,
+  "Gravity": 1,
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
-  "Actors": [
-    {
-      "Name": "Player",
-      "HP": 100,
-      "MoveSpeed": 7,
-      "SprintSpeed": 3,
-      "Weapon": "Pistol"
-    },
-    {
-      "Name": "Amogus",
-      "HP": 30,
-      "MoveSpeed": 10,
-      "SprintSpeed": 0.1,
-      "Weapon": "Pistol"
-    }
-  ],
+    "Actors": [
+        {
+            "Name": "Player",
+            "HP": 100,
+            "MoveSpeed": 7,
+            "SprintSpeed": 3,
+            "Weapon": "Pistol"
+        },
+        {
+            "Name": "Owen",
+            "HP": 30,
+            "MoveSpeed": 5,
+            "SprintSpeed": 0.1,
+            "Weapon": "Rifle"
+        },
+        {
+            "Name": "Isabella",
+            "HP": 5,
+            "MoveSpeed": 10,
+            "SprintSpeed": 0.5,
+            "Weapon": "Sword"
+        },
+        {
+            "Name": "Logan",
+            "HP": 100,
+            "MoveSpeed": 1,
+            "SprintSpeed": 0.1,
+            "Weapon": "Rocket"
+        },
+        {
+            "Name": "Ximeng",
+            "HP": 100,
+            "MoveSpeed": 3,
+            "SprintSpeed": 0.1,
+            "Weapon": "Grenade"
+        },
+        {
+            "Name": "Nigel",
+            "HP": 50,
+            "MoveSpeed": 5,
+            "SprintSpeed": 0.1,
+            "Weapon": "Uzi"
+        },
+        {
+            "Name": "Parker",
+            "HP": 1000,
+            "MoveSpeed": 1,
+            "SprintSpeed": 0.1,
+            "Weapon": "Rocket"
+        },
+        {
+            "Name": "Jayden",
+            "HP": 50,
+            "MoveSpeed": 10,
+            "SprintSpeed": 0.5,
+            "Weapon": "Grenade"
+        }
+    ],
   "Weapons": [
     {
       "Color":"Yellow",
       "Text": "Pistol",
       "Damage": 10,
-      "RateOfFire":3,
-      "Accuracy":1,
-      "Knockback":10
+      "RateOfFire":0.5,
+      "Accuracy":3,
+      "Knockback":5
     },
     {
       "Color":"Blue",
@@ -34,59 +76,59 @@
       "Type": "Hitscan",
       "Damage": 15,
       "Ammo": 30,
-      "RateOfFire":0.2
+      "RateOfFire":1
     },
     {
       "Color":"Red",
       "Text": "Rocket",
-      "Damage": 30,
+      "Damage": 100,
       "Ammo": 3,
-      "RateOfFire":1,
-      "Accuracy":2,
+      "RateOfFire":5,
+      "Accuracy":0,
       "Speed":30,
-      "ExplodeRadius":3,
+      "ExplodeRadius":15,
       "ExplodeDamage":50,
-      "SelfDamage":true,
-      "Knockback":10
+      "SelfDamage":false,
+      "Knockback":20
     },
     {
       "Color":"Pink",
       "Text": "Grenade",
-      "Damage": 20,
+      "Damage": 30,
       "Ammo": 10,
-      "RateOfFire":0.5,
+      "RateOfFire":1.5,
       "Accuracy":5,
       "Speed":20,
       "Gravity":2,
-      "ExplodeRadius":2,
-      "ExplodeDamage":20,
-      "SelfDamage":true,
-      "Knockback":1,
-      "Bounce":2.5,
-      "Lifetime":3,
+      "ExplodeRadius":10,
+      "ExplodeDamage":15,
+      "SelfDamage":false,
+      "Knockback":10,
+      "Bounce":0,
+      "Lifetime":5,
       "Type":"Grenade"
     },
     {
-      "Color":"Green",
+      "Color":"Purple",
       "Text": "Shotgun",
-      "Damage": 5,
+      "Damage": 20,
       "Ammo": 10,
-      "RateOfFire":0.4,
-      "Accuracy":15,
-      "Shots":5
+      "RateOfFire":2,
+      "Accuracy":2,
+      "Shots":2
     },
     {
       "Color":"White",
       "Text": "Uzi",
       "Damage": 5,
-      "Ammo": 90,
+      "Ammo": 200,
       "RateOfFire":0.1,
       "Accuracy":10
     },
     {
       "Color":"Orange",
       "Text": "Sword",
-      "Damage": 25,
+      "Damage": 10,
       "Ammo": 90,
       "RateOfFire":0.5,
       "Type": "Melee"
@@ -102,7 +144,7 @@
     {
       "Text": "Health",
       "Type": "Healing",
-      "Amount": 50,
+      "Amount": 10,
       "Color": "Green"
     }
   ]

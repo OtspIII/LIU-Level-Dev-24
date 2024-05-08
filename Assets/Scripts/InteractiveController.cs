@@ -31,7 +31,16 @@ public class InteractiveController : TriggerZoneScript
 
     public override IEnumerator DelayTrigger(GameObject go, float time, TriggerMessages m,List<TriggerableController> targs)
     {
-        yield return new WaitForSeconds(time);
+        if (God.LM.Ruleset.ShowTimer)
+        {
+            for (float n = time; n > 0; n--)
+            {
+                God.LM.MakeAnnounce(Mathf.Round(n).ToString());
+                yield return new WaitForSeconds(Mathf.Min(1,n));
+            }
+        }
+        else
+            yield return new WaitForSeconds(time);
         if (Alt && m == ExitMessage)
         {
             if(ResetAnim != "")

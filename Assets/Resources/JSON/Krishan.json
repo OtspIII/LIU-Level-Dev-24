@@ -1,5 +1,5 @@
 {
-  "Gravity": 1,
+  "Gravity": 3,
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
@@ -7,16 +7,30 @@
     {
       "Name": "Player",
       "HP": 50,
-      "MoveSpeed": 10,
+      "MoveSpeed": 5,
       "SprintSpeed": 2,
       "Weapon": "Uzi"
     },
     {
       "Name": "Camper",
       "HP": 35,
-      "MoveSpeed": 0,
+      "MoveSpeed": 0.2,
       "SprintSpeed": 0.1,
       "Weapon": "Pistol"
+    },
+    {
+      "Name": "Chaser",
+      "HP": 20,
+      "MoveSpeed": 3,
+      "SprintSpeed": 1,
+      "Weapon": "Sword"
+    },
+    {
+      "Name": "Boss",
+      "HP": 1000,
+      "MoveSpeed": 6,
+      "SprintSpeed": 0.7,
+      "Weapon": "Sword"
     }
   ],
   "Weapons": [
@@ -25,22 +39,22 @@
       "Text": "Pistol",
       "Damage": 10,
       "RateOfFire":2,
-      "Accuracy":3,
+      "Accuracy":4,
       "Knockback":5
     },
     {
       "Color":"Blue",
       "Text": "Rifle",
       "Type": "Hitscan",
-      "Damage": 10,
-      "Ammo": 30,
-      "RateOfFire":0.2
+      "Damage": 40,
+      "Ammo": 5,
+      "RateOfFire":2
     },
     {
       "Color":"Red",
       "Text": "Rocket",
-      "Damage": 10,
-      "Ammo": 3,
+      "Damage": 100,
+      "Ammo": 1,
       "RateOfFire":1,
       "Accuracy":2,
       "Speed":30,
@@ -52,14 +66,14 @@
     {
       "Color":"Pink",
       "Text": "Grenade",
-      "Damage": 20,
-      "Ammo": 10,
+      "Damage": 50,
+      "Ammo": 1,
       "RateOfFire":0.5,
       "Accuracy":5,
       "Speed":20,
       "Gravity":2,
       "ExplodeRadius":2,
-      "ExplodeDamage":20,
+      "ExplodeDamage":30,
       "SelfDamage":true,
       "Knockback":1,
       "Bounce":2.5,
@@ -69,17 +83,16 @@
     {
       "Color":"Green",
       "Text": "Shotgun",
-      "Damage": 5,
+      "Damage": 25,
       "Ammo": 10,
       "RateOfFire":0.4,
-      "Accuracy":15,
+      "Accuracy":8,
       "Shots":5
     },
     {
       "Color":"White",
       "Text": "Uzi",
       "Damage": 5,
-      "Ammo": 40,
       "RateOfFire":0.1,
       "Accuracy":3
     },

@@ -4,6 +4,7 @@
   "PointsToWin":1,
   "TextSpeed": 0.05,
   "DeathReset": false,
+  "ShowTimer": true,
   "Actors": [
     {
       "Name": "Player",
@@ -18,6 +19,13 @@
       "MoveSpeed": 10,
       "SprintSpeed": 0.1,
       "SlowTurn": 0.95,
+      "Weapon": "Pistol"
+    },
+    {
+      "Name": "Frog",
+      "HP": 1,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
       "Weapon": "Sword"
     }
   ],
@@ -106,7 +114,7 @@
       "Text": "Gravgun",
       "Type": "Gravgun",
       "Lifetime": 15,
-      "Damage": 0.99
+      "Damage": 10
     }
   ],
   "Items":[

@@ -43,7 +43,10 @@ public class ActorController : TriggerableController
 
     void Awake()
     {
-        MB = GetComponentInChildren<MeleeBox>();
+        if(MB == null)
+            MB = GetComponentInChildren<MeleeBox>(true);
+        if(MB != null)
+            MB.gameObject.SetActive(false);
     }
     
     void Start()
@@ -145,6 +148,7 @@ public class ActorController : TriggerableController
         else if (wpn.Type == WeaponTypes.Gravgun)
         {
             GameObject muzz = Muzzle != null ? Muzzle.gameObject : AimObj;
+            Debug.DrawRay(AimObj.transform.position, muzz.transform.forward,Color.red,3);
             if (Grabbing == null && Physics.Raycast(AimObj.transform.position, muzz.transform.forward, out RaycastHit hit,wpn.Lifetime))
             {
                 Rigidbody pc = hit.collider.gameObject.GetComponentInParent<Rigidbody>();

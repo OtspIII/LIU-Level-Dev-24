@@ -50192,6 +50192,7 @@ GameObject:
   - component: {fileID: 1272053616}
   - component: {fileID: 1272053615}
   - component: {fileID: 1272053614}
+  - component: {fileID: 1272053618}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -50280,13 +50281,29 @@ Transform:
   m_GameObject: {fileID: 1272053613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 2.2926767}
+  m_LocalPosition: {x: 0, y: 50.625, z: 2.2926767}
   m_LocalScale: {x: 8, y: 1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 737280868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &1272053618
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272053613}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c772e14650b8a114b9b1d42d0eedf460, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c772e14650b8a114b9b1d42d0eedf460, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1276128581
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,191 @@
+{
+  "Gravity": 1,
+  "Waves": 0,
+  "PointsToWin":10
+  ,
+  "TextSpeed": 0.05,
+  "DeathReset": false,
+  "ShowTimer": true,
+  "Actors": [
+    {
+      "Name": "Player",
+      "HP": 100,
+      "MoveSpeed": 6,
+      "SprintSpeed": 2.0,
+      "Weapon": "Rocket"
+    },
+    {
+      "Name": "Snowman",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0.1,
+      "SlowTurn": 0.95,
+      "Weapon": "Pistol"
+    },
+    {
+      "Name": "Snowman2",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0.1,
+      "SlowTurn": 0,
+      "Weapon": "Rocket2"
+    },
+    {
+      "Name": "Snowman3",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0.1,
+      "SlowTurn": 0,
+      "Weapon": "Rocket3"
+    },
+    {
+      "Name": "Frog",
+      "HP": 1,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "Weapon": "Sword"
+    }
+  ],
+  "Weapons": [
+    {
+      "Color":"Yellow",
+      "Text": "Pistol",
+      "Damage": 5,
+      "RateOfFire":0.7,
+      "Accuracy":0,
+      "Knockback":10
+    },
+    {
+      "Color":"Yellow",
+      "Text": "Pistol2",
+      "Damage": 5,
+      "RateOfFire":0.7,
+      "Accuracy":0,
+      "Knockback":10,
+      "Speed": 85
+    },
+    {
+      "Color":"Blue",
+      "Text": "AR",
+      "Damage": 1,
+      "RateOfFire":0.2,
+      "Accuracy":1,
+      "Knockback":10
+    },
+    {
+      "Color":"Blue",
+      "Text": "Rifle",
+      "Type": "Hitscan",
+      "Damage": 10,
+      "Ammo": 30,
+      "RateOfFire":0.2
+    },
+    {
+      "Color":"Red",
+      "Text": "Rocket",
+      "Damage": 1,
+      "RateOfFire":1,
+      "Accuracy":2,
+      "Speed":30,
+      "ExplodeRadius":5,
+      "ExplodeDamage":1,
+      "SelfDamage":false,
+      "Knockback":15
+    },
+    {
+      "Color":"Yellow",
+      "Text": "Rocket2",
+      "Damage": 10,
+      "RateOfFire":0.8,
+      "Accuracy":0,
+      "Speed":70,
+      "ExplodeRadius":5,
+      "ExplodeDamage":10,
+      "SelfDamage":false,
+      "Knockback":5
+    },
+    {
+      "Color":"Yellow",
+      "Text": "Rocket3",
+      "Damage": 5,
+      "RateOfFire":1.2,
+      "Accuracy":0,
+      "Speed":30,
+      "ExplodeRadius":2,
+      "ExplodeDamage":2,
+      "SelfDamage":false,
+      "Knockback":5
+    },
+    {
+      "Color":"Pink",
+      "Text": "Grenade",
+      "Damage": 20,
+      "Ammo": 10,
+      "RateOfFire":0.5,
+      "Accuracy":5,
+      "Speed":20,
+      "Gravity":2,
+      "ExplodeRadius":2,
+      "ExplodeDamage":20,
+      "SelfDamage":true,
+      "Knockback":1,
+      "Bounce":2.5,
+      "Lifetime":3,
+      "Type":"Grenade"
+    },
+    {
+      "Color":"Green",
+      "Text": "Shotgun",
+      "Damage": 5,
+      "Ammo": 10,
+      "RateOfFire":0.4,
+      "Accuracy":15,
+      "Shots":5
+    },
+    {
+      "Color":"White",
+      "Text": "Uzi",
+      "Damage": 5,
+      "Ammo": 90,
+      "RateOfFire":0.1,
+      "Accuracy":10
+    },
+    {
+      "Color":"Orange",
+      "Text": "Sword",
+      "Damage": 25,
+      "Ammo": 90,
+      "RateOfFire":0.5,
+      "Type": "Melee"
+    },
+    {
+      "Color":"Orange",
+      "Text": "Plasma Beam",
+      "Type": "Beam",
+      "Lifetime": 15,
+      "Damage": 3,
+      "RateOfFire":0.1
+    },
+    {
+      "Color":"Orange",
+      "Text": "Gravgun",
+      "Type": "Gravgun",
+      "Lifetime": 15,
+      "Damage": 10
+    }
+  ],
+  "Items":[
+    {
+      "Text": "1 Point",
+      "Type": "Points",
+      "Amount": 1,
+      "Color": "Yellow"
+    },
+    {
+      "Text": "Health",
+      "Type": "Healing",
+      "Amount": 50,
+      "Color": "Green"
+    }
+  ]
+}

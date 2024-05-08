@@ -4737,6 +4737,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RB: {fileID: 0}
   HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
   MR: {fileID: 816093611}
   Vanish: 0
   CollideWith:
@@ -6686,6 +6688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 846238550, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
+      propertyPath: Creator
+      value: Joshua
+      objectReference: {fileID: 0}
     - target: {fileID: 1986324049438441528, guid: 693f4328f6ca5af4195e323aafcdc2d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.20373

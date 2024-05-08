@@ -3,102 +3,123 @@
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
-  "Actors": [
-    {
-      "Name": "Player",
-      "HP": 100,
-      "MoveSpeed": 5,
-      "SprintSpeed": 2,
-      "Weapon": "Rifle"
-    },
-    {
-        "Name": "Bally",
-        "HP": 15,
-        "MoveSpeed": 1,
-        "SprintSpeed": 0.1,
-        "Weapon": "Uzi"
-    },
-    {
-        "Name": "Chunks",
-        "HP": 50,
-        "MoveSpeed": 3,
-        "SprintSpeed": 0.3,
-        "Weapon": "Sword"
-    }
-  ],
-  "Weapons": [
-    {
-      "Color":"Yellow",
-      "Text": "Pistol",
-      "Damage": 25,
-      "RateOfFire":0.5,
-      "Accuracy":1,
-      "Knockback":2
-    },
-    {
-      "Color":"Blue",
-      "Text": "Rifle",
-      "Type": "Hitscan",
-      "Damage": 10,
-      "Ammo": 30,
-      "RateOfFire":0.2
-    },
-    {
-      "Color":"Red",
-      "Text": "Rocket",
-      "Damage": 10,
-      "Ammo": 3,
-      "RateOfFire":1,
-      "Accuracy":2,
-      "Speed":30,
-      "ExplodeRadius":3,
-      "ExplodeDamage":50,
-      "SelfDamage":true,
-      "Knockback":10
-    },
-    {
-      "Color":"Pink",
-      "Text": "Grenade",
-      "Damage": 20,
-      "Ammo": 10,
-      "RateOfFire":0.5,
-      "Accuracy":5,
-      "Speed":20,
-      "Gravity":2,
-      "ExplodeRadius":2,
-      "ExplodeDamage":20,
-      "SelfDamage":true,
-      "Knockback":1,
-      "Bounce":2.5,
-      "Lifetime":3,
-      "Type":"Grenade"
-    },
-    {
-      "Color":"Green",
-      "Text": "Shotgun",
-      "Damage": 5,
-      "Ammo": 10,
-      "RateOfFire":0.4,
-      "Accuracy":15,
-      "Shots":5
-    },
-    {
-      "Color":"White",
-      "Text": "Uzi",
-      "Damage": 1.5,
-      "Ammo": 30,
-      "RateOfFire":0.5,
-      "Accuracy":3
-    },
-    {
-      "Color":"Orange",
-      "Text": "Sword",
-      "Damage": 25,
-      "Ammo": 90,
-      "RateOfFire":1        ,
-      "Type": "Melee"
-    }
-  ],
+    "Actors": [
+        {
+            "Name": "Player",
+            "HP": 100,
+            "MoveSpeed": 5,
+            "SprintSpeed": 2,
+            "Weapon": "Rifle"
+        },
+        {
+            "Name": "Watcher",
+            "HP": 15,
+            "MoveSpeed": 2,
+            "SprintSpeed": 0.25,
+            "Weapon": "Pistol"
+        },
+        {
+            "Name": "Bug",
+            "HP": 15,
+            "MoveSpeed": 5,
+            "SprintSpeed": 0,
+            "Weapon": "Shotgun"
+        },
+        {
+            "Name": "Turrets",
+            "HP": 30,
+            "MoveSpeed": 0,
+            "SprintSpeed": 0,
+            "Weapon": "Uzi"
+        },
+        {
+            "Name": "Bomber",
+            "HP": 400,
+            "MoveSpeed": 1.5,
+            "SprintSpeed": 2,
+            "Weapon": "Grenade"
+        },
+        {
+            "Name": "Chunks",
+            "HP": 50,
+            "MoveSpeed": 4,
+            "SprintSpeed": 0.3,
+            "Weapon": "Sword"
+        }
+    ],
+    "Weapons": [
+        {
+            "Color": "Yellow",
+            "Text": "Pistol",
+            "Damage": 10,
+            "RateOfFire": 0.5,
+            "Accuracy": 1,
+            "Knockback": 0
+        },
+        {
+            "Color": "Blue",
+            "Text": "Rifle",
+            "Type": "Hitscan",
+            "Damage": 10,
+            "Ammo": 30,
+            "RateOfFire": 0.2
+        },
+        {
+            "Color": "Red",
+            "Text": "Rocket",
+            "Damage": 10,
+            "Ammo": 3,
+            "RateOfFire": 1,
+            "Accuracy": 2,
+            "Speed": 30,
+            "ExplodeRadius": 3,
+            "ExplodeDamage": 50,
+            "SelfDamage": true,
+            "Knockback": 10
+        },
+        {
+            "Color": "Pink",
+            "Text": "Grenade",
+            "Damage": 35,
+            "Ammo": 10,
+            "RateOfFire": 1,
+            "Accuracy": 5,
+            "Speed": 15,
+            "Gravity": 3,
+            "ExplodeRadius": 3.5,
+            "ExplodeDamage": 25,
+            "SelfDamage": false,
+            "Knockback": 1.5,
+            "Bounce": 3,
+            "Lifetime": 2.5,
+            "Type": "Grenade"
+        },
+        {
+            "Color": "Green",
+            "Text": "Shotgun",
+            "Damage": 5,
+            "Ammo": 10,
+            "RateOfFire": 0.4,
+            "Accuracy": 15,
+            "Shots": 5
+        },
+        {
+            "Color": "White",
+            "Text": "Uzi",
+            "Damage": 1.5,
+            "Ammo": 10,
+            "RateOfFire": 0.4,
+            "Accuracy": 2.5
+        },
+        {
+            "Color": "Orange",
+            "Text": "Sword",
+            "Damage": 25,
+            "Ammo": 90,
+            "RateOfFire": 1,
+            "Type": "Melee"
+        }
+    ],
   "Items":[
     {
       "Text": "1 Point",

@@ -31,6 +31,14 @@
       "Weapon": "Rocket2"
     },
     {
+      "Name": "Snowman3",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0.1,
+      "SlowTurn": 0,
+      "Weapon": "Rocket3"
+    },
+    {
       "Name": "Frog",
       "HP": 1,
       "MoveSpeed": 10,
@@ -93,6 +101,18 @@
       "Speed":70,
       "ExplodeRadius":5,
       "ExplodeDamage":10,
+      "SelfDamage":false,
+      "Knockback":5
+    },
+    {
+      "Color":"Yellow",
+      "Text": "Rocket3",
+      "Damage": 5,
+      "RateOfFire":1.2,
+      "Accuracy":0,
+      "Speed":30,
+      "ExplodeRadius":2,
+      "ExplodeDamage":2,
       "SelfDamage":false,
       "Knockback":5
     },

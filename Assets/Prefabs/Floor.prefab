@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5029620959534679622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0, z: -1.55}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24d2d55d4452bc4c937d7f67a452467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RB: {fileID: 0}
+  HP: -1
+  ExplosionDamageOnly: 0
+  DeathMessages: []
 --- !u!33 &3446791995864005157
 MeshFilter:
   m_ObjectHideFlags: 0

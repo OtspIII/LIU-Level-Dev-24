@@ -1,0 +1,147 @@
+{
+  "Gravity": 2.0,
+  "Waves": 0,
+  "PointsToWin":1,
+  "TextSpeed": 0.05,
+  "DeathReset": true,
+  "Actors": [
+    {
+      "Name": "Player",
+      "HP": 100,
+      "MoveSpeed": 10,
+      "SprintSpeed": 2,
+      "Weapon": "Sword"
+    },
+    {
+      "Name": "Level1Soilder",
+      "HP": 50,
+      "MoveSpeed": 10,
+      "SprintSpeed": 0.1,
+      "SlowTurn": 0.95,
+      "Weapon": "Pistol",
+      "Vision": 20
+    },
+    {
+      "Name": "StaticSoilder",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0,
+      "SlowTurn": 0.95,
+      "Weapon": "PushGun",
+      "Vision": 200
+    },
+    {
+      "Name": "Target",
+      "HP": 50,
+      "MoveSpeed": 0,
+      "SprintSpeed": 0,
+      "SlowTurn": 0.95,
+      "RateOfFire":0,
+      "Weapon": "Sword"
+    }
+  ],
+  "Weapons": [
+    {
+      "Color":"Yellow",
+      "Text": "Pistol",
+      "Type": "Projectile",
+      "Damage": 50,
+      "RateOfFire":1.5,
+      "Accuracy":0.5,
+      "Knockback":10
+    },
+    {
+      "Color":"Blue",
+      "Text": "PushGun",
+      "Type": "Projectile",
+      "Damage": 25,
+      "RateOfFire":1,
+      "Accuracy":0,
+      "Knockback":50,
+      "Speed": 20
+    },
+    
+    {
+      "Text":"Sword",
+      "Type":"Melee",
+      "Damage": 50,
+      "RateOfFire":0.5
+    },
+    {
+      "Color":"Red",
+      "Text": "Rocket",
+      "Damage": 10,
+      "Ammo": 3,
+      "RateOfFire":1,
+      "Accuracy":2,
+      "Speed":30,
+      "ExplodeRadius":3,
+      "ExplodeDamage":50,
+      "SelfDamage":true,
+      "Knockback":10
+    },
+    {
+      "Color":"Pink",
+      "Text": "Grenade",
+      "Damage": 20,
+      "Ammo": 10,
+      "RateOfFire":0.5,
+      "Accuracy":5,
+      "Speed":20,
+      "Gravity":2,
+      "ExplodeRadius":2,
+      "ExplodeDamage":20,
+      "SelfDamage":true,
+      "Knockback":1,
+      "Bounce":2.5,
+      "Lifetime":3,
+      "Type":"Grenade"
+    },
+    {
+      "Color":"Green",
+      "Text": "Shotgun",
+      "Damage": 5,
+      "Ammo": 10,
+      "RateOfFire":0.4,
+      "Accuracy":15,
+      "Shots":5
+    },
+    {
+      "Color":"White",
+      "Text": "Uzi",
+      "Damage": 5,
+      "Ammo": 90,
+      "RateOfFire":0.1,
+      "Accuracy":10
+    },
+    {
+      "Color":"Orange",
+      "Text": "Plasma Beam",
+      "Type": "Beam",
+      "Lifetime": 15,
+      "Damage": 3,
+      "RateOfFire":0.1
+    },
+    {
+      "Color":"Orange",
+      "Text": "Gravgun",
+      "Type": "Gravgun",
+      "Lifetime": 15,
+      "Damage": 10
+    }
+  ],
+  "Items":[
+    {
+      "Text": "1 Point",
+      "Type": "Points",
+      "Amount": 1,
+      "Color": "Yellow"
+    },
+    {
+      "Text": "Health",
+      "Type": "Healing",
+      "Amount": 50,
+      "Color": "Green"
+    }
+  ]
+}

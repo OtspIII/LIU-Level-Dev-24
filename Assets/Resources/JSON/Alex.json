@@ -3,11 +3,11 @@
   "Waves": 0,
   "PointsToWin":1,
   "TextSpeed": 0.05,
-  "DeathReset": true,
+  "DeathReset": false,
   "Actors": [
     {
       "Name": "Player",
-      "HP": 50,
+      "HP": 1000,
       "MoveSpeed": 10,
       "SprintSpeed": 4,
       "Weapon": "Grenade"
@@ -25,8 +25,8 @@
       "Color":"Yellow",
       "Text": "Pistol",
       "Damage": 10,
-      "RateOfFire":0.65,
-      "Accuracy":0.8,
+      "RateOfFire":0.5,
+      "Accuracy":1,
       "Knockback":10
     },
     {
@@ -55,9 +55,9 @@
       "Text": "Grenade",
       "Damage": 1,
       "Ammo": 10,
-      "RateOfFire":2,
+      "RateOfFire":1.5,
       "Accuracy":5,
-      "Speed":15,
+      "Speed":20,
       "Gravity":2,
       "ExplodeRadius":1.25,
       "ExplodeDamage":1,
